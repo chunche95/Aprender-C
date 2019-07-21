@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Capítulo 2</title>
 </head>
 <body>
@@ -70,6 +71,135 @@
                 Resultado=2000
             </code>
         </blockquote>
+    </p>
+    <h2>
+        INICIALIZACIÓN DE VARIABLES.
+    </h2>
+    <p>
+        Las variables del mismo tipo pueden definirse mediante una definiciónmúltiple separándolas mediante "," a saber: <br>
+        <blockquote>
+            <code>
+                int multiplicador, multiplicando, resultado;
+            </code>
+        </blockquote>
+        Esta sentencia es equivalente a las tres definiciones separadas en el ejemplo anterior. Las variables pueden tembién ser inicializadas 
+        en el momento de definirse. 
+        <blockquote>
+            <code>
+                int multiplicador=1000, multiplicando=2, resultado;
+            </code>
+        </blockquote>
+        De esta manera el ejemplo 2 podría escribirse: <br>
+        Ejemplo 2 BIS.
+        <blockquote>
+            <pre>
+            <code>
+            
+                #include &lt;stdio.h&gt;
+                main()
+                {
+                    int multiplicador=1000, multiplicando=2;
+                    printf("Resultado: %d\n", multiplicando*multiplicador);
+                    return 0;
+                }
+            
+            </code>
+            </pre>
+        </blockquote>
+        Obsérvese que en la primer sentencia se definen e inicializan simultáneamente ambas variables. La variable "resultado" la hemos desecho ya 
+        que es innecesaria. Si analizamos la función printf() vemos que se ha reemplazado "resultado" por la operación entre las otras dos variables. 
+        Esta es una de las particularidades del lenguaje C: en los parámetros pasados a las funciones pueden ponerse operaciones (incluso llamadas a 
+        otras funciones), las que se realizan antes de ejecutarse la función, pasando finalmente a esta el valor resultante de las mismas. El 
+        <a href="#ejemplo2">Ejemplo 2</a> funcionaexactamente igual que antes pero su código ahora es mucho más comparcto y claro.
+    </p>
+    <h2>
+        TIPOS DE VARAIBLES.
+    </h2>
+    <h4>Variables del tipo entero.</h4>
+    <p>
+        En el ejemplo anterior definimos a las variables como enteros (int). <br>
+        De acuerdo a la cantidad de bytes que reserve el compilador para este tipo de variable, queda determinado el "alcance" o maximo valor que puede
+        adoptar la misma. Debido a que el tipo int ocupa dos bytes su alcance queda restringido al rango entre -32.768 y +32.767 (incluyendo en 0). <br>
+        En caso de necesitar un rango más amplio, puede definirse la variable como "long int nombre_de_variable" o una forma más abreviada "long nombre_de_variable"
+        Declarada de esta manera, nombre_de_variable puede alcanzar valores entre -2.347.483.648 y +2.347.483.647. <br>
+        A la inversa, si se quisiera un enlace  menor al de int, podría definirse "short int" o "short", aunque por lo general, los compiladores modernos asignan 
+        a este tipo el mismo alcance que "int". <br>
+        Para variables de muy pequelo valor puede usarse el tipo "char" cuyo alcance está restringido a -128 y 127 y por lo general ocupa un único byte. <br>
+        Todos los tipos citados hast ahora pueden alojar valores positivos o negativos y, aunque es redundante, esto puede explicitarse agregando el calificador 
+        "signed" delante; por ejemplo:
+        <blockquote>
+            <code>
+                signed int <br>
+                signed long <br>
+                signed long int <br>
+                signed short <br>
+                signed short init <br>
+                signed char 
+            </code>
+        </blockquote>
+        Si en cambio, tenemos una variable que sólo puede adoptar valores positivos (como por ejemplo la edad de una persona) podemos aumentar el alcance de cualquiera 
+        de los tipos, restringiéndolos a que sólo representen valores sin signo por medio del calificador "unsigned". En la tabla 1 se resumen los alcances de los 
+        distintos tipos de variables enteras.
+        <table>
+            <tr>
+                <td>TIPO</td>
+                <td>BYTES</td>
+                <td>VALOR MINIMO</td>
+                <td>VALOR MAXIMO</td>
+            </tr>
+            <tr>
+                <td>signed char</td>
+                <td>1</td>
+                <td>-128</td>
+                <td>127</td>
+            </tr>
+            <tr>
+                <td>unsigned char</td>
+                <td>1</td>
+                <td>0</td>
+                <td>255</td>
+            </tr>
+            <tr>
+                <td>signed short</td>
+                <td>2</td>
+                <td>-32.768</td>
+                <td>32.767</td>
+            </tr>
+            <tr>
+                <td>unsigned short</td>
+                <td>2</td>
+                <td>0</td>
+                <td>65.535</td>
+            </tr>
+            <tr>
+                <td>signed int</td>
+                <td>2</td>
+                <td>-32.768</td>
+                <td>32.767</td>
+            </tr>
+            <tr>
+                <td>unsigned int</td>
+                <td>2</td>
+                <td>0</td>
+                <td>65.535</td>
+            </tr>
+            <tr>
+                <td>signed long</td>
+                <td>4</td>
+                <td>-2.147.483.648</td>
+                <td>2.147.483.647</td>
+            </tr>
+            <tr>
+                <td>unsigned long</td>
+                <td>4</td>
+                <td>0</td>
+                <td>4.294.967.295</td>
+            </tr>
+        </table>
+        <cite>
+            <strong>Nota:</strong> Si se omite el calificador delante del tipo de la variable entera, éste se adopta por 
+            omisión (default) como "signed".
+        </cite>
     </p>
 </body>
 </html>

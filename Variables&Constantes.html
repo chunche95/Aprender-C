@@ -140,7 +140,7 @@
         Si en cambio, tenemos una variable que sólo puede adoptar valores positivos (como por ejemplo la edad de una persona) podemos aumentar el alcance de cualquiera 
         de los tipos, restringiéndolos a que sólo representen valores sin signo por medio del calificador "unsigned". En la tabla 1 se resumen los alcances de los 
         distintos tipos de variables enteras.
-        <table>
+        <table id="tabla1">
             <tr>
                 <td>TIPO</td>
                 <td>BYTES</td>
@@ -296,7 +296,11 @@
     <p>
         El lenguaje C guarda los caracteres como números de 8 bits de acuerdo a la norma ASCII extendida, que asigna a cada caracter un número comprendido entre 0 y 255 (un byte de 8 bits). 
         Es común entonces que las variables que vayan a alojar caracteres sean definidas como: <strong>char c;</strong>. Sin embargo, también, funciona de manera correcta definirla como: 
-        <strong>int c;</strong>. Ésta desperdicia un poco más de memoria que la anterior, pero en algunos casos particulares presenta
+        <strong>int c;</strong>. Ésta desperdicia un poco más de memoria que la anterior, pero en algunos casos particulares presenta ciertas ventajas. Pongamos por caso una función 
+        que lee un archivo de texto ubicado en un disco. Dicho archivo puede tener cualquier caracter ASCII de valor comprendido entre 0 y 255. Para que la función puede avisarme 
+        que el archivo ha finalizado deberá enviar un número NO comprendido entre 0 y 255 (por lo general se usa el -1, denominado EOF, fin de archivo o End Of File), en este caso dicho número 
+        no puede ser mantenido en una variable del tipo char, ya que esta sólo puede guardar entre 0 y 255 si se define unsigned o no podría mantener los caracteres comprendidos entre 128 y 255 
+        si se define signed (ver <a href="#tabla1">tabla 1</a>). El problema se obvia fácilmente definiéndola como int. <br>
     </p>
 </body>
 </html>

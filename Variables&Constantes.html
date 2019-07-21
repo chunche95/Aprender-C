@@ -40,7 +40,36 @@
             </pre>
             </code>
         </blockquote>
+        En las primeras líneas de texto dentro de main() defino mis variables como números enteros, es decir, del tipo
+        "int" seguido de un identificador (nombre) de la misma. Este identificador puede tener la cantidad de caracteres 
+        que se desee, sin embargo, de acuerdo al compilador que se use, este tomarña como significantes sólo los primeros 
+        'n' de ellos, siendo por lo general 'n' igual a 32. Es conveniente darle a los identificadores de las variables, 
+        nombres que tengan un significado que luego permita una fácil lectura del programa. Los identificadores deben 
+        comenzar con una letra o con el símbolo de subrayado "_", pudiendo continuar con cualquier otro carácter alfanumérico 
+        o el símbolo "_". El único símbolo no alfanumérico aceptado en un nombre es el "_". El lenguaje C es sensible al tipo 
+        de letra usado; así tomará como variables distintas a una llamada "variable", de otra  escrita como "VARIABLE". Es una 
+        converción entre los programadores de C escribir los nombres de las varaibles y las funciones con minúsculas, reservando 
+        las mayúsculas para las constantes. <br>
+        El compliador dará como error de "Definición incorrecta" a la definición de variables con nombres del tipo de: <br>
+        4pesos $variable primer-variable !variable etc,etc.
 
+        <cite>
+            <strong>Nota:</strong>Los compiladores reservan determinados términos o palabras claves (keywords) para el uso sintáctico
+            del lenguaje, tales como: asm,auto,break, case,char,do,for,etc. Si bien estas palabras están definidas para el ANSI C, los 
+            distintos compiladores extienden esta definición a otros términos, por lo que es aconsejable leer la tabla 
+            compleata de palabras reservadas del compilador que se b¡vaya a usar, para no utilizarlas en nombres de variables.
+        </cite>
+        Vemos en las dos lineas subsiguientes a la definición de las variables, que puedo ya asignarles valores (1000 y 2) y luego efectuar 
+        el cálculo de la variable "resultado". Si prestamos ahora atención a la función printf(), ésta nos mostrará la forma de 
+        visualizar el valor de una variable. Insertada en el texto a mostrar, aparece una secuencia de control de impresión "%d" que 
+        indica, que en el lugar que ella ocupa, deberá ponerse el contenido de la variable (que aparece luego de cerradas las comillas que 
+        marcan la finalización del texto, y separada del mismo por una coma)expresado como un número entero decimal. Así, si compilamos y 
+        corremos el programa, obtendremos una salida:
+        <blockquote>
+            <code>
+                Resultado=2000
+            </code>
+        </blockquote>
     </p>
 </body>
 </html>

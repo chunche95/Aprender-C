@@ -196,10 +196,47 @@
                 <td>4.294.967.295</td>
             </tr>
         </table>
+        Tabla-1. <br>
         <cite>
             <strong>Nota:</strong> Si se omite el calificador delante del tipo de la variable entera, éste se adopta por 
             omisión (default) como "signed".
         </cite>
     </p>
+    <h4>Variables de número real o punto flotante.</h4>
+    <p>
+        Un número real o de punto flotante es aquel que además de una parte entera, posee fracciones de unidad. En nuestra convención numérica solemos escribirlos de la 
+        siguiente manera: 2,87. Los compiladores usan en punto decimal, en vez de la coma, así el número Pi se escribirá: 3.14159. <br>
+        La notación científica aceptada es: 2.4993E+02, equivalente a 2.4993*100 0 249.930 <br>
+        de acuerdo a su alcance hay tres tipos de variables de punto flotante, las mismas están descritas en la tabla 2.
+        <table>
+            <tr>
+                <td>TIPO</td>
+                <td>BYTES</td>
+                <td>VALOR MINIMO</td>
+                <td>VALOR MAXIMO</td>
+            </tr>
+            <tr>
+                <td>float</td>
+                <td>4</td>
+                <td>3.4E-38</td>
+                <td>3.4E+38</td>
+            </tr>
+            <tr>
+                <td>double</td>
+                <td>8</td>
+                <td>1.7E-308</td>
+                <td>1.7E+308</td>
+            </tr>
+            <tr>
+                <td>long double</td>
+                <td>10</td>
+                <td>3.4E-4932</td>
+                <td>3.4E+4932</td>
+            </tr>
+        </table>
+        Tabla-2 <br>
+        Las variables de punto flotante son siempre con signo, y en el caso que el exponente sea positivo puede obviarse el signo del mismo.
+    </p>
+    
 </body>
 </html>

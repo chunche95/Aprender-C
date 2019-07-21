@@ -237,6 +237,66 @@
         Tabla-2 <br>
         Las variables de punto flotante son siempre con signo, y en el caso que el exponente sea positivo puede obviarse el signo del mismo.
     </p>
-    
+
+    <h4>
+        Conversión automática de tipos.
+    </h4>
+    <p>
+        Cuando dos o más tipos de variables distintas se encuentran dentro de una misma operación o expresión matemática, ocurre una conversión automática del tipo de las 
+        variables. En todo momento de realizarse una operación  se aplica la siguiente secuencia de reglas de conversión (previamente a la realización de dicha operación).
+        <ul>
+            <li>Las variables de tipo char o short se cinvierten en int.</li>
+            <li>Las variables del tipo float se convierten en double.</li>
+            <li>Si alguno de los operandos es de mayor precisión que los demás, estos se convierten al tipo de aquel y el resultado es de este tipo.</li>
+            <li>Si no se aplica la regla anterior y un openrando es del tipo unsigned el otro se convierte en unsigned y el resultado es de este tipo.</li>
+        </ul>
+        Las reglas 1 a 3 no presentan problemas, sólo nos dicen que previamente a realizar alguna operación las variables son promovidas a su instancia superior. Esto no implica 
+        que se haya cambiado la cantidad de memoria que las aloja en forma permanente. Otro tipo de regla se aplica para la conversión en las asignaciones. <br>
+        Si definimos los términos de una asignación como "lvalue" a la variable a la izquierda del signo igual y "rvalue" a la expresión a la derecha del mismo, es decir: <br>
+        <blockquote>
+            <code>
+                "lvalue"="rvalue";
+            </code>
+        </blockquote>
+        Posteriormente al cálculo del resultado de "rvalue" (de acuerdo con las reglas antes descritas), el tipo de este se iguala al del "lvalue". El resultado no se verá afectado si 
+        el tipo de "lvalue" es igual o superior al del "rvalue", en caso contrario se efectuará un truncamiento o redondeo, según sea el caso.
+        Por ejemplo, el pasaje de float a int provoca el truncamiento de la parte fraccionaria, en cambio de double a floar se hace por redondeo.
+    </p>
+    <h4>
+        Enclavamiento de conversiones (casting).
+    </h4>
+    <p>
+        Las conversiones automáticas pueden ser controladas a gusto por el programador, imponiendo  el tipo de variables al resultado de una operación. Supongamos por ejemplo tener:
+        <blockquote>
+            <pre>
+                <code>
+                    double d,e,f=1.23;
+                    int i=6;
+                    e=f*i;
+                    d=(int)(f*i);
+                </code>
+            </pre>
+        </blockquote>
+        En la primera sentencia calculamos el valor del p4roducto (f*i), que según lo visto anteriormente nos dará un double de valor 13.98, el que se ha asignado a e. Si en la variable d 
+        quisiéramos reservar sólo el valor entero de dicha operación bastará con anteponer, encerrado entre paréntesis, el tipo deseado. Así, en d, se almacenará el número 13.00. <br>
+        También, es factible aplicar la fijación de tipo a una variable, por ejemplo obtendremos el mismo resultado, si hacemos: 
+        <blockquote>
+            <pre>
+                <code>
+                    d = (int) f*i;
+                </code>
+            </pre>
+        </blockquote>
+        En este caso hemos convertido a f en un entero (truncado sus decimales).
+    </p>
+
+    <h4>
+        Variables de tipo carácter.
+    </h4>
+    <p>
+        El lenguaje C guarda los caracteres como números de 8 bits de acuerdo a la norma ASCII extendida, que asigna a cada caracter un número comprendido entre 0 y 255 (un byte de 8 bits). 
+        Es común entonces que las variables que vayan a alojar caracteres sean definidas como: <strong>char c;</strong>. Sin embargo, también, funciona de manera correcta definirla como: 
+        <strong>int c;</strong>. Ésta desperdicia un poco más de memoria que la anterior, pero en algunos casos particulares presenta
+    </p>
 </body>
 </html>

@@ -36,7 +36,7 @@
         compilar, corregir y ejecutar pequeños programas descriptivos. Analicemos por lo tanto el primer 
         ejemplo: <br>
         Ejemplo 1. 
-        <blockquote>
+        <blockquote id="ejemplo1">
             <code>
             <pre>
         #include &lt;stdio.h&gt;
@@ -48,6 +48,79 @@
             </pre>
             </code>
         </blockquote>
+    </p>
+    <h2>
+        FUNCION main()
+    </h2>
+    <p>
+        La funcion main() indica donde empieza el programa, cuyo cuerpo principal es un conjunto de sentencias delimitadas
+        por dos llaves, una inmediatamente después de la declaración main() "{", y otra que finaliza el listado "}". 
+        Todos los programas C arrancan del mismo punt: la primer sentencia dentro de la dicha función, en este caso
+        printf("..."). <br>
+        En el <a href="#ejemplo1">EJEMPLO 1</a> el programa principal está compuesto por sólo dos sentencias: la primera es un llamado
+        a una función denominada printf(), y la segunda, return, que finaliza el programa retornando al Sistema Operativo. <br>
+        Recuérdese que el lenguaje C no tiene operadores de entrada-salida por lo que para escribir en video es necesario llamar a 
+        una función externa. En este caso se invoca a la función printf(argumento) existente en la Librería y a la cual se le
+        envía como argumento aquellos caracteres que se desean escribir en la pantalla. Los mismos deben estar delimitados por 
+        comillas. La secuencia \n que aparece al final del mensaje es la notación que emplea C para el caracter "nueva línea"
+        que hace avanzar al cursor a la posición extrema izquierda de la línea siguiente. Más adelante analizaremos otras secuencias 
+        de escape habituales. <br>
+        La segunda sentencia (return 0) termina el programa y devuelve un valor al Sistema Operativo, por lo general cero si la ejecución 
+        fué correcta y valores distintos de cero para indicar diversos errores que pudieron ocurrir. Si bien no es obligatorio terminar el 
+        programa con un return, es conveniente indicarle a quien lo haya invocado, sea el Sistema Operativo o algún otro programa, 
+        si la finalización ha sido exitosa, o no. De cualquier manera en este caso, si sacamos esa sentencia el programa correrá 
+        exactamente igual, pero al ser compilado, el compilador nos advertirá de la falta de retorno. <br>
+        Cada sentencia de programa queda finalizada por el terminador ";", el que indica al compilador el fin de la misma.
+        Esto es necesario ya quem sentencias complejas pueden  llegar a tener más de un renglón, y habrá que avisar al compilador 
+        donde terminan. Es perfectamente lícito escribir cualquier sentencia abarcando los renglones que la misma necesite, 
+        por ejemplo podría ser: <br>
+        <blockquote>
+            <code>
+                printf("Bienvenido al lenguaje C. \n");
+            </code>
+        </blockquote>
+    </p>
+    <h2>
+        ENCABEZAMIENTO
+    </h2>
+    <p>
+        Las líneas anteriores a la función main() se denominan ENCABEZAMIENTO (Header) y son informaciones que se le suministran al Compilador.
+        La primera línea del programa está compuesta por una directiva: "#include" que implica la orden de leer un archivo de texto especificado
+        en el nombre que sigue a la misma (&lt;stdio.h&gt;) y reemplazar esta línea por el contenido de dicho archivo. 
+        Este archivo están incluidas declaraciones de las funciones luego llamadas por el programa (por ejemplo printf()) necesarias para que 
+        el compilador las procese. Por ahora no nos preocupemos por el contenido del archivo, se verá más adelante. <br>
+        Hay dos formas distintas de invocar al archivo, a saber, si el archivo invocadooestá delimitado por comillas (por ejemplo "stdio.h") el
+        compilador lo buscará en el directorio activo en el momento de compilar y si en cambio se lo delimita con los signos &lt; ... &gt; lo 
+        buscará en algún  otro directorio, cuyo nombre habitualmente se le suministra en el momento  de la instalación  del compilador en el disco 
+        (por ejemplo C:\TC\INCLUDE). Por lo general estos archivos son guardados en un directorio llamado INCLUDE y el nombre de los mismos está 
+        terminado con la extensión ".h". <br>
+        Nótese que la directiva "#include" no es una sentencia de programa sino una orden  de que se copie literalmente un archivo de texto en el lugar 
+        en que ella está ubicada, por lo que no es necesario terminarla con ";". 
+    </p>
+    <h2>
+        COMENTARIOS.
+    </h2>
+    <p>
+        La inclusión de comentarios en un programa es una saludable práctica, como lo reconocerá cualquiera que haya tratado de leer un listado hecho 
+        por otro programador o por sí mismo, varios meses atrás. Para el compilador, los comentarios son inexistentes, por lo que no generan lineas 
+        de código, permitiendo abundar en ellos tanto como se desee. <br>
+        En el lenguaje C se toma como comentario todo caracter interno a los símbolos: /* */. Los comentarios pueden ocupar uno o más renglones, por 
+        ejemplo:
+        <blockquote>
+            <code>
+            <pre>
+                /* Este es un comentario corto */
+                /* Este es un 
+                 * comentario
+                 * de varias 
+                 * líneas
+                 * igual que el 
+                 * anterior 
+                 */
+            </pre>
+            </code>
+        </blockquote>
+        Todo caracter dentro de los símbolos delimitadores es tomado como comentario incluyendo a "*" o "(", etc.
     </p>
 </body>
 </html>

@@ -320,7 +320,88 @@
         </blockquote>
         Es decir que si delimitamos un caracter con comillas simples, el compilador entenderá que debe suplantarlo por su correspondiente código numérico.
         Lamentablemente existen una serie de caracteres que no son imprimibles, en otras palabras que cuando editemos nuestro  programa fuente (archivo de texto ) nos resultará defícil de asignarlas a 
-        una variable ya que el editor las toma como un comando y no como un caracter. Un caso típico sería el de "nueva línea" o ENTER.
+        una variable ya que el editor las toma como un comando y no como un caracter. Un caso típico sería el de "nueva línea" o ENTER. <br>
+        Con el fin de tener acceso a los mismos es que aparecen ciertas secuencias de escape convencionales. Las mismas estan listadas en la tabla 3 y su uso es 
+        idéntico al de los caracteres normales, así para resolver el caso de una asignación de "nueva línea" se escribirá:
+        <blockquote>
+            <pre>
+                <code>
+                    char c='\n'; /* secuencia de escape */
+                </code>
+            </pre>
+        </blockquote>
+
+        tabla 3 - Secuencia de escape.
+        <table>
+            <tr>
+                <td> _CÓDIGO _</td>
+                <td> _SIGNIFICADO_ </td>
+                <td> _VALOR ASCII (decimal)_</td>
+                <td> _VALOR ASCII (hexadecimal)_</td>
+            </tr>
+            <tr>
+                <td>\n</td>
+                <td>nueva linea</td>
+                <td>10</td>
+                <td>0x0A</td>
+            </tr>
+            <tr>
+                <td>\r</td>
+                <td>retorno de carro</td>
+                <td>13</td>
+                <td>0x0D</td>
+            </tr>
+            <tr>
+                <td>\f</td>
+                <td>nueva página</td>
+                <td>2</td>
+                <td>0x0C</td>
+            </tr>
+            <tr>
+                <td>\t</td>
+                <td>tabulador horizontal</td>
+                <td>9</td>
+                <td>0x09</td>
+            </tr>
+            <tr>
+                <td>\b</td>
+                <td>retroceso (backspace)</td>
+                <td>8</td>
+                <td>0x08</td>
+            </tr>
+            <tr>
+                <td>\'</td>
+                <td>comilla simple</td>
+                <td>39</td>
+                <td>0x27</td>
+            </tr>
+            <tr>
+                <td>\"</td>
+                <td>comillas</td>
+                <td>4</td>
+                <td>0x22</td>
+            </tr>
+            <tr>
+                <td>\\</td>
+                <td>barra</td>
+                <td>92</td>
+                <td>0x5C</td>
+            </tr>
+            <tr>
+                <td>\?</td>
+                <td>interrogación</td>
+                <td>63</td>
+                <td>0x3F</td>
+            </tr>
+            <tr>
+                <td>\nnn</td>
+                <td>cualquier caracter (donde nnn es el código ASCII expresado en octal)</td>
+            </tr>
+            <tr>
+                <td>\xnn</td>
+                <td>cualquier caracter (donde nn es el código ASCII expresado en hexadecimal)</td>
+            </tr>
+        </table>
     </p>
 </body>
 </html>

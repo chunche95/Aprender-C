@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Capítulo 2</title>
+</head>
+<body>
+    <h1>
+        Variables y constantes.
+    </h1>
+    <h2>
+        Definición de variables.
+    </h2>
+    <p>
+        Si deseo imprimir los resultados de multiplicar un número fijo por otro que adopta valores entre 0 y 9,
+        la forma normal de programar esto sería crear una constante para el primer número y un par de variables para 
+        el segundo y para el resultado del producto. Una variable, en realidad, no es más que un nombre para identificar 
+        una (o varias) posiciones de memoria donde el programa guarda los distintos valores de una misma entidad. 
+        Un programa debe definir a todas las variables que utilizará, antes de comenzar a usarlas, a fin de indicarle al 
+        compilador de que tipo serán, y por lo tanto cuanta memoria debe destinar para albergar a cada una de ellas. 
+        Veamos el EJEMPLO 2. <br>
+        Ejemplo 2:
+        <blockquote id="Ejemplo2">
+            <code>
+            <pre>
+            #include &lt;stdio.h&gt;
+            main()
+            {
+                int multiplicador;  /* Multiplicador como un entero */
+                int multiplicando;  /* Multiplicando como un entero */
+                int resultado;      /* Resultado como entero */
+                multiplicador=1000; /* Asignación de valores */
+                multiplicando = 2;
+                resultado = multiplicando * multiplicador;
+                printf("Resultado = %d\n", resultado) ; /* Muestro resultado */
+                return 0;
+            }
+            </pre>
+            </code>
+        </blockquote>
+
+    </p>
+</body>
+</html>

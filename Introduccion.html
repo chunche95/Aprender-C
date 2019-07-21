@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Capítulo 1</title>
+</head>
+<body>
+    <h1>
+        Introducción.
+    </h1>
+    <p>
+        El lenguaje de programación C está caracterizado por ser de uso general, con una sintaxis
+        sumamente compacta y de alta portabilidad. <br>
+        Es común leer que se lo caracteriza como un lenguaje de "bajo nivel". No debe confundirse 
+        el término "bajo" con "poco", ya que el significado del mismo es en realidad "profundo", en 
+        el sentido que C maneja los elementos básicos presentes en todas las computadoras: caracteres,
+        números y direcciones. <br>
+        Esta particularidad, junto con el hecho de no poseer operaciones de entrada-salida, manejo de 
+        arreglo de caracteres, de asignación de memoria, etc, puede al principio parecer un grave defecto;
+        sin embargo el hecho de que estas operaciones se realicen por medio de llamadas a Funciones contenidas
+        en Librerías externas al lenguaje en sí, es el que confiere al mismo su alto grado de portabilidad, 
+        independizándolo del "Hardware" sobre el cual corren los programas, como se irá viendo a lo largo de los 
+        sigueintes capítulos. <br>
+        La desciprción del lenguaje se realiza siguiendo las normas del ANSI C, por lo tanto, todo lo expresado
+        será utilizable con cualquier compilador que se adopte; sin embargo, en algunos casos particulares se 
+        utilizaron funciones Compilador o Sistema Operativo dependientes, explicitándose en estos casos la singularidad
+        de las mismas.
+    </p>
+    <h2>
+        ANATOMIA DE UN PROGRAMA C.
+    </h2>
+    <p>
+        Siguiendo la tradición, la mejor forma de aprender a programar en cualquiern lenguaje es editar, 
+        compilar, corregir y ejecutar pequeños programas descriptivos. Analicemos por lo tanto el primer 
+        ejemplo: <br>
+        Ejemplo 1. 
+        <blockquote>
+            <code>
+            <pre>
+        #include &lt;stdio.h&gt;
+        main()
+        {
+            printf("Bienvenido al lenguaje C.\n");
+            return 0;
+        }
+            </pre>
+            </code>
+        </blockquote>
+    </p>
+</body>
+</html>

@@ -515,7 +515,19 @@
     <p>
         Por lo general es una mala práctica de programación colocar en un programa constantes en forma literal (sobre todo si se usan varias veces 
         en el mismo) ya que el texto se hace difícil de comprender y aún más de corregir, si se debe cambiar el valor de dichas constantes. <br>
-        Se puede en cambio asignar un símbolo a cada constante, y reemplazarla a lo largo del programa por el mismo, de forma 
+        Se puede en cambio asignar un símbolo a cada constante, y reemplazarla a lo largo del programa por el mismo, de forma que este sea más legible
+        y además, en caso de querer modificar el valor, en el momento de crear el ejecutable, reemplazará el símbolo por el valor asignado. <br>
+        Para dar un símbolo a una constante bastará, en cualquier lugar del problema ( previo a su uso) poner la directiva: <br>
+        <i><strong> #define</strong></i> <br>
+        Por ejemplo:
+        <blockquote>
+            <pre>
+                <code>
+                    #define valor_constante 300
+                    #define PI 3.1415926
+                </code>
+            </pre>
+        </blockquote>
     </p>
 
 </body>

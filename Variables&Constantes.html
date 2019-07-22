@@ -403,5 +403,120 @@
             </tr>
         </table>
     </p>
+    <h4>
+        TAMAÑO DE LAS VARIABLES (sizeof).
+    </h4>
+    <p>
+        En muchos programas es necesario conocer el tamaño (cantidad de bytes) que ocupa una variable, por ejemplo en el 
+        caso de querer reservar memoria para un conjutno de ellas. El tamaño es dependiente del compilador que se use, lo 
+        que producirña, si definimos rigidamente (con un número dado de bytes) es espacio requerido para almacenarlas, un 
+        problema serio si luego se quiere compilar el programa con un compilador distinto del original. <br>
+        Para salvar este programa y mantener la portabilidad, es conveniente que cada vez que haya que referirse al 
+        tamaño en bytes de las variables, se lo haga mediante un operador llamado 'sizeof' que calcula sus requerimientos 
+        de almacenaje. Está también permitido el uso de sizeof con un tipo de variable, es decir:
+        <blockquote>
+            <pre>
+                <code>
+                    sizeof(int)
+                    sizeof(char)
+                    sizeof(long double), etc.
+                </code>
+            </pre>
+        </blockquote>
+    </p>
+    <h4>
+        Definición de nuevos tipos (typedef).
+    </h4>
+    <p>
+        A veces resulta conveniente crear otros tipos de variables o redefinir con otro nombre las existentes, esto se puede 
+        realizar mediante la palabra clave 'typedef', por ejemplo:
+        <blockquote>
+            <pre>
+                <code>
+                    typedef unsigned long double nomb_var ;
+                </code>
+            </pre>
+        </blockquote>
+        A partir de este momento, las definiciones siguientes tienen idéntico siginificado:
+        <blockquote>
+            <pre>
+                <code>
+                    unsigned long double nombre_variable;
+                    nomb_var  nombre_variable ;
+                </code>
+            </pre>
+        </blockquote>
+    </p>
+
+    <h4>CONSTANTES</h4>
+    <p>
+        Aquellos valores que, una vez  compilado el programa no pueden ser cambiados, como por ejemplo los valores literales que 
+        hemos usado hasta ahora en las inicializaciones de las variables (1000, 2, 'a', '\n', etc), suelen denominarse CONSTANTES.
+        <br>
+        Como dichas constantes son guardadas en memoria de la manera que al compilador le resulta más eficiente suelen aparecer ciertos
+        efectos secundarios, a veces desconcertantes, ya que las mismas son afectadas por las reglas de RECONVERSION AUTOMÁTICA DE TIPO 
+        vista previamente. <br>
+        A fin de tener control sobre el tipo de las constantes, se aplican las siguientes reglas: 
+        <ul>
+            <li>
+                Una variable expresada como entera (sin parte decimal) es tomada como tal salvo que se siga con 'F' o 'L', ejemplos:
+                <blockquote>
+                    <pre>
+                        <code>
+                            1: Entero
+                            1F: Float 
+                            1L: Long Double
+                        </code>
+                    </pre>
+                </blockquote>
+            </li>
+            <li>
+                Una variable con parte decimal es tomada siempre como DOUBLE, salvo que se siga con 'F' o 'L'.
+                <blockquote>
+                    <pre>
+                        <code>
+                            1.0: Double 
+                            1.0F: Float 
+                            1.0L: Long Float
+                        </code>
+                    </pre>
+                </blockquote>
+            </li>
+            <li>
+                Si en cualquiera de los casos anteriores agregamos la leta 'U' o 'u', la constante queda definida como UNSIGNED (consiguiendo 
+                mayor alcance).
+                <blockquote>
+                    <pre>
+                        <code>
+                            1.0UL: Unsigned Int
+                        </code>
+                    </pre>
+                </blockquote>
+            </li>
+            <li>
+                Una variable numérica que comienza con '0' es de tipo Octal, entonces : 012 equivale a 10 unidades decimales. 
+            </li>
+            <li>
+                Una variable numérica que comienza con '0x' o '0X' es tomada como hexadecimal.
+                <blockquote>
+                    <pre>
+                        <code>
+                        <strong> Hex    Dec </strong>
+                        0x16 = 22
+                        0X1A = 26 
+                        </code>
+                    </pre>
+                </blockquote>
+            </li>
+        </ul>
+    </p>
+
+    <h4>Constantes simbólicas</h4>
+    <p>
+        Por lo general es una mala práctica de programación colocar en un programa constantes en forma literal (sobre todo si se usan varias veces 
+        en el mismo) ya que el texto se hace difícil de comprender y aún más de corregir, si se debe cambiar el valor de dichas constantes. <br>
+        Se puede en cambio asignar un símbolo a cada constante, y reemplazarla a lo largo del programa por el mismo, de forma 
+    </p>
+
 </body>
 </html>

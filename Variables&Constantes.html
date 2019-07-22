@@ -41,22 +41,23 @@
                                 Veamos el EJEMPLO 2. <br>
                                 Ejemplo 2:
                                 <blockquote id="Ejemplo2">
-                                    <code>
                                     <pre>
-                                    #include &lt;stdio.h&gt;
-                                    main()
-                                    {
-                                        int multiplicador;  /* Multiplicador como un entero */
-                                        int multiplicando;  /* Multiplicando como un entero */
-                                        int resultado;      /* Resultado como entero */
-                                        multiplicador=1000; /* Asignación de valores */
-                                        multiplicando = 2;
-                                        resultado = multiplicando * multiplicador;
-                                        printf("Resultado = %d\n", resultado) ; /* Muestro resultado */
-                                        return 0;
-                                    }
-                                    </pre>
+                                    <code>
+                                    
+                #include &lt;stdio.h&gt;
+                main()
+                {
+                    int multiplicador;  /* Multiplicador como un entero */
+                    int multiplicando;  /* Multiplicando como un entero */
+                    int resultado;      /* Resultado como entero */
+                    multiplicador=1000; /* Asignación de valores */
+                    multiplicando = 2;
+                    resultado = multiplicando * multiplicador;
+                    printf("Resultado = %d\n", resultado) ; /* Muestro resultado */
+                    return 0;
+                }
                                     </code>
+                                </pre>
                                 </blockquote>
                                 En las primeras líneas de texto dentro de main() defino mis variables como números enteros, es decir, del tipo
                                 "int" seguido de un identificador (nombre) de la misma. Este identificador puede tener la cantidad de caracteres 
@@ -111,15 +112,15 @@
                                 <blockquote>
                                     <pre>
                                     <code>
-                                    
-                                        #include &lt;stdio.h&gt;
-                                        main()
-                                        {
-                                            int multiplicador=1000, multiplicando=2;
-                                            printf("Resultado: %d\n", multiplicando*multiplicador);
-                                            return 0;
-                                        }
-                                    
+            
+                #include &lt;stdio.h&gt;
+                main()
+                {
+                    int multiplicador=1000, multiplicando=2;
+                    printf("Resultado: %d\n", multiplicando*multiplicador);
+                    return 0;
+                }
+            
                                     </code>
                                     </pre>
                                 </blockquote>
@@ -287,10 +288,10 @@
                                 <blockquote>
                                     <pre>
                                         <code>
-                                            double d,e,f=1.23;
-                                            int i=6;
-                                            e=f*i;
-                                            d=(int)(f*i);
+                    double d,e,f=1.23;
+                    int i=6;
+                    e=f*i;
+                    d=(int)(f*i);
                                         </code>
                                     </pre>
                                 </blockquote>
@@ -300,7 +301,7 @@
                                 <blockquote>
                                     <pre>
                                         <code>
-                                            d = (int) f*i;
+                    d = (int) f*i;
                                         </code>
                                     </pre>
                                 </blockquote>
@@ -322,7 +323,7 @@
                                 <blockquote>
                                     <pre>
                                         <code>
-                                            char c=97;
+                            char c=97;
                                         </code>
                                     </pre>
                                 </blockquote>
@@ -331,7 +332,7 @@
                                 <blockquote>
                                     <pre>
                                         <code>
-                                            char c='a';
+                            char c='a';
                                         </code>
                                     </pre>
                                 </blockquote>
@@ -343,7 +344,7 @@
                                 <blockquote>
                                     <pre>
                                         <code>
-                                            char c='\n'; /* secuencia de escape */
+                            char c='\n'; /* secuencia de escape */
                                         </code>
                                     </pre>
                                 </blockquote>
@@ -434,9 +435,9 @@
                                 <blockquote>
                                     <pre>
                                         <code>
-                                            sizeof(int)
-                                            sizeof(char)
-                                            sizeof(long double), etc.
+                        sizeof(int)
+                        sizeof(char)
+                        sizeof(long double), etc.
                                         </code>
                                     </pre>
                                 </blockquote>
@@ -450,7 +451,7 @@
                                 <blockquote>
                                     <pre>
                                         <code>
-                                            typedef unsigned long double nomb_var ;
+                        typedef unsigned long double nomb_var ;
                                         </code>
                                     </pre>
                                 </blockquote>
@@ -458,8 +459,8 @@
                                 <blockquote>
                                     <pre>
                                         <code>
-                                            unsigned long double nombre_variable;
-                                            nomb_var  nombre_variable ;
+                        unsigned long double nombre_variable;
+                        nomb_var  nombre_variable ;
                                         </code>
                                     </pre>
                                 </blockquote>
@@ -480,9 +481,9 @@
                                         <blockquote>
                                             <pre>
                                                 <code>
-                                                    1: Entero
-                                                    1F: Float 
-                                                    1L: Long Double
+                            1: Entero
+                            1F: Float 
+                            1L: Long Double
                                                 </code>
                                             </pre>
                                         </blockquote>
@@ -492,9 +493,9 @@
                                         <blockquote>
                                             <pre>
                                                 <code>
-                                                    1.0: Double 
-                                                    1.0F: Float 
-                                                    1.0L: Long Float
+                            1.0: Double 
+                            1.0F: Float 
+                            1.0L: Long Float
                                                 </code>
                                             </pre>
                                         </blockquote>
@@ -505,7 +506,7 @@
                                         <blockquote>
                                             <pre>
                                                 <code>
-                                                    1.0UL: Unsigned Int
+                            1.0UL: Unsigned Int
                                                 </code>
                                             </pre>
                                         </blockquote>
@@ -518,9 +519,9 @@
                                         <blockquote>
                                             <pre>
                                                 <code>
-                                                <strong> Hex    Dec </strong>
-                                                0x16 = 22
-                                                0X1A = 26 
+                            <strong> Hex    Dec </strong>
+                            0x16 = 22
+                            0X1A = 26 
                                                 </code>
                                             </pre>
                                         </blockquote>
@@ -540,8 +541,8 @@
                                 <blockquote>
                                     <pre>
                                         <code>
-                                            #define valor_constante 300
-                                            #define PI 3.1415926
+                            #define valor_constante 300
+                            #define PI 3.1415926
                                         </code>
                                     </pre>
                                 </blockquote>

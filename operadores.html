@@ -56,7 +56,7 @@
                         <p>
                             Tal como era de esperarse los operadores aritméticos, mostrados en la tabla 4, comprenden las cuatro operaciones básicas: 
                             suma,resta,multiplicación y división, con un agregado, el módulo.
-                            <table>
+                            <table id="tabla4">
                                 <tr>
                                     <td>Símbolo</td>
                                     <td>Descripción</td>
@@ -105,8 +105,24 @@
                             Si bien la precedencia (orden en el que son ejecutados los operadores) se analizarán más adelante, 
                             en este capítulo, podemos adelantar algo sobre el orden en el que se realizan las operaciones aritméticas.
                             <br>
-                            
+                            En la <a href="#tabla4">Tabla 4</a>, la última columna, se da el orden de evaluación de un operador dado. 
+                            Cuanto más bajo sea dicho número mayor será su prioridad de ejecución. Si en una operación existen varios 
+                            operadores, primero se evaluarán los de multiplicación, división y módulo y luego los de suma y resta. <br>
+                            La precedencia de los tres primeros es la misma, por lo que si hay varios de ellos, se comenzará a evaluar a 
+                            aquel que quede más a la izquieda. Lo mismo ocurre con la suma y la resta. <br> <br>
+                            Para evitar errores en los cálculos  se pueden usar paréntesis, sin limitación de anidamieno, los que fuerzan 
+                            a realizar primero las operaciones incluidas en ellos. Los paréntesis no disminuyen la velocidad a la que se 
+                            ejecuta el programa sino que tan sólo obligan al compilador a realizar las operaciones en un orden dado, por 
+                            lo que es una buena costumbre utilizarlos ampliamente. <br>
+                            Los paréntesis tienen un orden de precendecia 0, es decir, que antes que nada se evalúa lo que ellos  encierran. 
+                            Se puede observar que no existen operadores de potenciación, radicación, logaritmicos, etc, ya que en C todas 
+                            estas operaciones ( y muchas otras) se realizan por medio de llamadas a Funciones. <br>
+                            El último de los operadores aritméticos es el de <b>signo</b>. No debe confundirse con el de resta, ya que este
+                            es un operador unitario que opera sobre una única variable cambiando el signo de su contenido numérico. Obviamente 
+                            no existe el operador '+' unitario, ya que su operación será dejar el signo de la variable, lo que se consigue 
+                            simplemente por omisión del signo.
                         </p>
+                        
                     </article>
                 </div> 
                 

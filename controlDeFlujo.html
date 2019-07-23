@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Capítulo 4</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+</head>
+<body class="single is-preload">
+    <div id="wrapper">
+        <!-- Header -->
+                <header id="header">
+                    <h1><a href="index.html">Indice</a></h1>
+                </header>
+            <!-- Main -->
+                <div id="main">
+                    <!-- Post -->
+                    <article class="post">
+                        <header>
+                            <div class="title">
+                                <h2><a href="#">Proposiciones para el control de flujo de programa.</a></h2>
+                                <p>Bloques de sentencias.</p>
+                            </div>
+                            <div class="meta">
+                                <time class="published" datetime="2019-07-23">Julio, 23, 2019</time>
+                                <a href="https://github.com/chunche95" class="author"><span class="name">Chunche95</span><img src="images/avatar.jpg" alt="" /></a>
+                            </div>
+                        </header>
+                        <p>
+                            En este capítulo, denominaremos BLOQUE DE SENTENCIAS al conjunto de sentencias individuales incluidas dentro 
+                            de un par de llaves. Por ejemplo:
+                            <blockquote>
+                                <pre>
+                                <code>
+{
+    sentencia 1; 
+    sentencia 2;
+    ...
+    sentencia n;
+}
+                                </code>
+                                </pre>
+                            </blockquote>
+                            Este conjunto se comportará sintácticamente como una sentencia simple y la llave de cierre del bloque no debe ir seguida de punto y coma.
+                            Un ejemplo de bloque ya visto, es el cuerpo del programa principal de la función main().
+                            <blockquote>
+                                <pre>
+                                    <code>
+main()
+{
+    bloque de sentencias
+}                                        
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            En las proposiciones de control de flujo de programa, trabajaremos alternativamente con sentencias simples y bloques de ellas.
+                        </p>
+                        <h4>
+                            Proposición IF-ELSE.
+                        </h4>
+                        <p>
+                            Sirve para ejecutar ciertas sentencias de programa, si una expresión resulta cierta u otro grupo de sentencias, 
+                            si aquella resulta falsa. Su interpretación literal sería:
+                            <cite>
+                                "Sí es cierta tal cosa, hago tal acción, sino lo es, salta la condición.""
+                            </cite>
+                            El caso más sencillo sería:
+                            <blockquote>
+                                <pre>
+                                    <code>
+if (expresión) sentencia;
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            La sentencia sólo se ejecutará si el resultado de "expresión" es distinto de cero (cierto), en caso contrario el programa 
+                            salta dicha sentencia, realizando la siguiente en su flujo.
+                        </p>
+                        <h4>
+                            Proposición switch.
+                        </h4>
+                        <p>
+                            El switch es una forma sencilla de evitar largos, tediosos y confusos anidamientos de if-else if. <br>
+                            Supongamos que estamos implementando un menu, con varias elecciones posibles. El esqueleto de una posible solución al problema 
+                            usando if-else podía ser el siguiente:
+                            <hr>
+                            <blockquote>
+                                <pre>
+                                    <code>
+#include &lt;stdio.h&gt; 
+main()
+{
+    int c;
+    printf("\n MENÚ");
+    printf("\n       A = ADICIONAR A LA LISTA ") ;
+    printf("\n       B = BORRAR DE LA LISTA   ") ; 
+    printf("\n       O = ORDENAR LA LISTA     ") ; 
+    printf("\n       I = IMPRIMIR LA LISTA    ") ; 
+    printf("\n\n ESCRIBA SU SELECCION , Y LUEGO ENTER : ") ;
+    if( (c = getchar()) != '\n' )  {
+        if( c == 'A')     
+            printf("\nUD. SELECCIONO AGREGAR") ;
+        else     
+            if( c == 'B')      
+                printf("\nUD. SELECCIONO BORRAR") ;
+            else   
+                if( c == 'O' )
+                    printf("\nUD. SELECCIONO ORDENAR") ;
+                else
+                    if( c == 'I' )
+                        printf("\nUD. SELECCIONO IMPRIMIR") ;
+                    else
+                        printf("\n\a\aUD. APRETO UN CARACTER ILEGAL" ) ;
+    }
+    else   printf("\n¡ NO HA SELECCIONADO NADA !" ) ; 
+}                                        
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Como es fácil de ver, cuando las opciones son muchas, el texto comienza a hacerse 
+                            difícil de entender y engorroso de escribir. <br>
+                            El mismo progrma, usando la sentencia switch, quedaría: 
+                            <blockquote>
+                                <pre>
+                                    <code>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+main()
+{
+    int c  ;
+    
+    printf("\nMENU :") ;
+    printf("\n       A = ADICIONAR A LA LISTA ") ; 
+    printf("\n       B = BORRAR DE LA LISTA   ") ; 
+    printf("\n       O = ORDENAR LA LISTA     ") ; 
+    printf("\n       I = IMPRIMIR LA LISTA    ") ; 
+    printf("\n\nESCRIBA SU SELECCION , Y LUEGO ENTER : ") ; 
+    c = getchar() ; 
+    
+    switch (c)  {   
+        case 'A' :    
+            printf("\nUD. SELECCIONO AGREGAR") ;     
+            break ;   
+        case 'B' :     
+            printf("\nUD. SELECCIONO BORRAR") ;
+            break ; 
+        case 'O' :     
+            printf("\nUD. SELECCIONO ORDENAR") ;
+            break ;   
+        case 'I' :     
+            printf("\nUD. SELECCIONO IMPRIMIR") ;
+            break ;   
+        case '\n':     
+            printf("\n¡ UD. NO HA SELECCIONADO NADA !" ) ;
+            break ;
+        default  :     
+            printf("\n\a\aUD. APRETO UN CARACTER ILEGAL" ) ;     
+            break ;  
+    }
+}                                     
+                                    </code>
+                                </pre>
+                            </blockquote>
+                        </p>
+                    </article>
+            </div> 
+            
+    <!-- Footer -->
+    <section id="footer">
+            <ul class="icons">
+                <li><a href="fab fa-twitter" class="fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+                <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+                <li>
+                    <i class="fab fa-twitter-square"></i>
+                </li>
+            </ul>
+    </section>
+
+
+<footer>
+    <p>
+        Posted by: Pauchino <br>
+        HumanComputing 3.0 &copy; <br>
+        Contact info: <a href="mailto:humancomputing3@gmail.com">Enviar Correo.</a>
+    </p>
+</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="js/browser.min.js"></script>
+<script src="js/breakpoints.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/main.js"></script>
+
+
+</body>
+</html>

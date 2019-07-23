@@ -122,7 +122,134 @@
                             no existe el operador '+' unitario, ya que su operación será dejar el signo de la variable, lo que se consigue 
                             simplemente por omisión del signo.
                         </p>
-                        
+                        <h4>Operadores relacionales.</h4>
+                        <p>
+                            Todas las operaciones relacionales dan sólo dos posibles resultados: VERDADERO o FALSO. En el lenguaje C, Falso queda 
+                            representado por un valor entero nulo (cero) y Verdadero por cualquier número distinto de cero. En la tabla 5 se encuentra
+                            la descripción de los mismos.
+                            <table>
+                                <tr>
+                                    <td>SIMBOLO</td>
+                                    <td>DESCRIPCIÓN</td>
+                                    <td>EJEMPLO</td>
+                                    <td>ORDEN DE EVALUACIÓN</td>
+                                </tr>
+                                <tr>
+                                    <td>&lt;</td>
+                                    <td>menor que</td>
+                                    <td>(a &lt; b)</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>&gt;</td>
+                                    <td>mayor que</td>
+                                    <td>(a &gt; b)</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>&le;</td>
+                                    <td>menor o igual que</td>
+                                    <td>(a &le; b)</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>&ge;</td>
+                                    <td>mayor o igual que</td>
+                                    <td>(a &ge; b)</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>==</td>
+                                    <td>igual que</td>
+                                    <td>(a == b)</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>!=</td>
+                                    <td>distinto de</td>
+                                    <td>(a != b)</td>
+                                    <td>6</td>
+                                </tr>
+                            </table>
+                            Uno de los errores más comúnes es confundir el operador relacional '==' con el de asignación
+                            '='. La expresión 'a=b' copia el valor de b en a, mientras que 'a==b' retorna cero, si 'a' es 
+                            distinto de 'b' o un número distinto de cero si son iguales. <br>
+                            Los operadores relacionales tiene menor precedencia que los aritméticos, de forma que:
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    a &lt; b + c 
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Se interpreta como: 
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    a &lt; ( b + c )
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Pero es recomendable el uso de los paréntesis a fin de aumentar la legitibilidad del texto. <br>
+                            Cuando se comparan dos variables tipo char el resultado de la operación dependerá de la 
+                            comparación de los valores ASCII de los caracteres contenidos en ellas. Así el carácter 'a' (ASCII 97)
+                            será mayor que el A (ASCII 65) o que el 9 (ASCII 57).
+                        </p>
+
+                        <h4>Operadores lógicos.</h4>
+                        <p>
+                            Hay tres operadores que se usan para la conectividad lógica, descritas en la tabla 6:
+                            <table>
+                                <tr>
+                                    <td>SÍMBOLO</td>
+                                    <td>DESCRIPCIÓN</td>
+                                    <td>EJEMLO</td>
+                                    <td>ORDEN DE EVALUACIÓN</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &&
+                                    </td>
+                                    <td>
+                                        Y (AND)
+                                    </td>
+                                    <td>
+                                        (a &lt; b) && (c &gt; d)
+                                    </td>
+                                    <td>
+                                        10
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        ||
+                                    </td>
+                                    <td>
+                                        O (OR)
+                                    </td>
+                                    <td>
+                                        (a &lt; b) || (c &gt; d)
+                                    </td>
+                                    <td>
+                                        11
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        !
+                                    </td>
+                                    <td>
+                                        NEGACIÓN (NOT)
+                                    </td>
+                                    <td>
+                                        !(a &lt; b)
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
                     </article>
                 </div> 
                 

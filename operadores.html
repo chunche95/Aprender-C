@@ -400,6 +400,103 @@
                                     </code>
                                 </pre>
                             </blockquote>
+                            Los operadores de asignación están resumidos en la tabla 8.
+                            <table>
+                                <tr>
+                                    <td>SÍMBOLO</td>
+                                    <td>DESCRIPCIÓN</td>
+                                    <td>EJEMPLO</td>
+                                    <td>ORDEN DE EVALUACIÓN</td>
+                                </tr>
+                                <tr>
+                                    <td>=</td>
+                                    <td>igual a</td>
+                                    <td>a = b</td>
+                                    <td>13</td>
+                                </tr>
+                                <tr>
+                                    <td>op=</td>
+                                    <td>pseudocódigo</td>
+                                    <td>a+=b</td>
+                                    <td>13</td>
+                                </tr>
+                                <tr>
+                                    <td>=?:</td>
+                                    <td>asignación condicional</td>
+                                    <td>a = (c &gt; b)?d:e</td>
+                                    <td>12</td>
+                                </tr>
+                            </table>
+                            Vemos de la tabla anterior que aparece otro operador denominado asignación condicional. 
+                            El significado del mismo es el siguiente: <br>
+                            <blockquote>
+                                <code>
+                                    rvalue 1 ó 2. Si aquella es cierta sera lvalue=rvalue 1 y si diera falso, lvalue=
+                                    rvalue 2.
+                                </code>
+                            </blockquote>
+                            Por ejemplo, si quisiéramos asignar a 'c' el menor de los valores a o b, bastará con escribir:
+                            <blockquote>
+                                <code>
+                                    c = ( a &lt; b )?a:b;
+                                </code>
+                            </blockquote>
+                        </p>
+                        <h4>
+                            Operadores de manejo de bits.
+                        </h4>
+                        <p>
+                            Estos operadores muestran una de las armas más potentes del lengiaje C, la de poder manipular 
+                            internamente, es decir, bit a bit, las variables. <br>
+                            Debemos anticipar que estos operadores sólo se aplican a variables de tipo char, short, int y long. 
+                            No pueden ser usados con float o double. <br>
+                            Sabemos que los computadores guardan los datos organizados en forma digital, en bytesm formado por 
+                            números binarios de 8 bits, mientras que los short e int se forman con dos bytes ( 16 bits) y los long 
+                            por cuatro bytes ( 32 bits). Para el manejo de los bits tenemos:
+                            <table>
+                                <tr>
+                                    <td>SÍMBOLO</td>
+                                    <td>DESCRIPCIÓN</td>
+                                    <td>EJEMPLO</td>
+                                    <td>ORDEN DE EVALUACIÓN</td>
+                                </tr>
+                                <tr>
+                                    <td>&</td>
+                                    <td>Y o AND (bit a bit)</td>
+                                    <td> a & b </td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td>|</td>
+                                    <td>O u OR inclusiva</td>
+                                    <td>a|b</td>
+                                    <td>9</td>
+                                </tr>
+                                <tr>
+                                    <td>^</td>
+                                    <td>O u OR exclusiva</td>
+                                    <td>a^b</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>&lt;&lt;</td>
+                                    <td>Rotación a la izquierda.</td>
+                                    <td>a&lt;&lt;b</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>&gt;&gt;</td>
+                                    <td>Rotación a la derecha</td>
+                                    <td>a&gt;&gt;b</td>
+                                    <td>4</td>
+                                <tr>
+                                    <td>~</td>
+                                    <td>Complemento a uno </td>
+                                    <td>~a</td>
+                                    <td>1</td>
+                                </tr>
+                                </tr>
+                            </table>
                         </p>
                     </article>
                 </div> 

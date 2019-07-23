@@ -358,6 +358,48 @@
                                     </code>
                                 </pre>
                             </blockquote>
+                            Debido a que las asignaciones se evalúan de derecha a izquierda, los paréntesis son superfluos, y podrá escribirse entonces:
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    c=a=b=17;
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Con lo que las tres variables resultarán iguales al valor de la constante. <br>
+                            El hecho de que estas operaciones se realicen de derecha a izquierda también permite realizar instrucciones del tipo:
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    a+=17;
+                    a=a+17;                                        
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Significando esto que al valor que tenia anteriormente 'a', se le suma la constante y luego se copia el resultado en la variable.
+                            <br>
+                            Como este último tipo de operaciones es por demás común, existe en C un pseudocódigo, con el fin  de abreviarlas. <br>
+                            Así una operación aritmética o de bit cualquiera ( simboliza por OP). 
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    a = (a) OP (b); 
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            puede escribirse en forma abreviada como: <i>a OP= b;</i> <br>
+                            Por ejemplo:
+                            <blockquote>
+                                <pre>
+                                    <code>
+            a += b; &rarr; a = a + b;
+            a -= b; &rarr; a = a - b;
+            a *= b; &rarr; a = a * b;
+            a /= b; &rarr; a = a / b;
+            a %= b; &rarr; a = a % b;
+                                    </code>
+                                </pre>
+                            </blockquote>
                         </p>
                     </article>
                 </div> 

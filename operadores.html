@@ -249,6 +249,115 @@
                                     </td>
                                 </tr>
                             </table>
+                        Los resultados  de las operaciones lógicas siempre adoptan los valores CIERTO o FALSO. br
+                        La evaluación de las operaciones lógicas se realiza de izquierda a derecha y se interrumpe 
+                        cuando se ha asegurado el resultado. <br>
+                        El operador NEGACIÓN invierte el sentido lógico de las operaciones, así será:
+                        <blockquote>
+                            <pre>
+                                <code>
+            !( a &gt; b ) equivale a ( a &lt; b )
+            !( a == b ) equivale a  ( a != b )
+            etc.
+                                </code>
+                            </pre>
+                        </blockquote>
+                        En algunas operaciones suele usárse de una manera que se presta a confusión, por ejemplo: 
+                        <blockquote>
+                            <code>
+                                (!i)
+                            </code>
+                        </blockquote>
+                        donde i es un entero. Esto dará un resultado CIERTO si 'i' tiene un valor 0 y un resultado FALSO 
+                        si 'i' es distinto de cero.
+                        </p>
+                        <h4>Operadores de incremento y decremento.</h4>
+                        <p>
+                            Los operadores de incremento y decremento son sólo dos y están descritos en la tabla 7:
+                            <table>
+                                <tr>
+                                    <td>SÍMBOLO</td>
+                                    <td>DESCRIPCIÓN</td>
+                                    <td>EJMEPLO</td>
+                                    <td>ORDEN DE EVALUACIÓN</td>
+                                </tr>
+                                <tr>
+                                    <td>++</td>
+                                    <td>Incremento</td>
+                                    <td>++i o i++</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>--</td>
+                                    <td>Decremento</td>
+                                    <td>--i o i--</td>
+                                    <td>1</td>
+                                </tr>
+                            </table>
+                            Para visualizar rápidamente la función de los operadores antedichos, digamos que las sentencias: 
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    a = a+1;
+                    a++;
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Tiene una acción idéntica, de la misma forma que:
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    a = a-1;
+                    a--;
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Son absolutamente equivalentes, en la maoria de los casos la ubicación de los operadores de incremento 
+                            o decremento indica CUANDO se realiza la operación. Ejemplo: 
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    int = 1, j,k;
+                    j = i++;
+                    k = ++i;
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            En estos casos 'j' es igualado al valor de 'i' y posteriormente a la asignación de i es incrementado por lo 
+                            que j será igual a 1 e i igual a 2. <br>
+                            Luego de ejecutada la sentencia. En la siguiente instrucción i se incrementa antes de efectuarse la asignación
+                            tomando el valor de 3, él que luego es copiado en k.
+                        </p>
+                        <h4>Operaciones de asignación.</h4>
+                        <p>
+                            En principio puede resultar algo con poca utilidad , gastar papel en describir al operador igual a (=), sin embargo,
+                            es necesario remarcar ciertas características del mismo. <br>
+                            Anteriormente, definimos a una asignación como la copia del resultado de una expresión (rvalue) sobre otra (lvalue),
+                            esto implica que dicho lvalue debe tener lugar (es decir poseer una posición de memoria) para alojar dicho valor. 
+                            Es por tanto válido escribir:
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    a = 17;
+                                    </code>
+                    pero NO:
+                                    <code>
+                    17 = a ; 
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Ya que la constante numérica 17 no posee una ubicación de memoria donde alojar al valor de 'a'. <br>
+                            Aunque parezca un poco extraño al principio las asignaciones, al igual que las otras operaciones, dan un resultado 
+                            qu puede asignarse a su vez a otra expresión. 
+                            De la misma forma <i>( a + b )</i> es evaluada y su resultado puede copiarlo en otra variable: 
+                            <i> c = (a + b);</i> una asignación <i>(a=b)</i> da como resultado el valor de b, por lo que es lícito escribir:
+                            <blockquote>
+                                <pre>
+                                    <code>
+                    c = ( a = b )
+                                    </code>
+                                </pre>
+                            </blockquote>
                         </p>
                     </article>
                 </div> 

@@ -275,6 +275,39 @@ main(){
                                 </pre>
                             </blockquote>
                         </p>
+                        <h4>Sentencia continue.</h4>
+                        <p>
+                            La sentencia CONTINUE es similar al break con la diferencia que en vez de terminar violentamente el loop, 
+                            termina con la realización de una iteración particular y permitiendo al programa continuar con la siguiente.
+                        </p>
+                        <h4>La función exit()</h4>
+                        <p>
+                            La función exit() tiene una operación mucho más drástica que las anteriores, en vez de saltear una iteración o abandonar 
+                            un lazo de programa, esta abandona directamente al programa mismo dándolo por terminado. Realiza también una serie de 
+                            operaciones útiles como ser, el cerrado de cualquier archivo que el programa hubiera abierto, el vaciado de los buffers de 
+                            salida, etc. <br>
+                            Normalmente se la utiliza para abortar los programas en caso de que se esté por cometer un error fatal e inevitable. Mediante 
+                            el valor que se le ponga en su argumento se le puede informar a quien haya llamado al programa (Sistema Operativo, archivo .bat 
+                            u otro programa) el tipo que se cometio.
+                        </p>
+                        <h4>La sentencia GOTO</h4>
+                        <p>
+                            GOTO implica un salto incondicional de un lugar a otro del programa. Esta práctica hace que los programas sean difíciles de 
+                            corregir o mantener. Si no quedará más remedio que usarlo, (y en programación estructurada siempre hay remedio) debe marcarse 
+                            el destino del salto mediante un nombre seguido por dos puntos. <br>
+                            <blockquote>
+                                <pre>
+                                    <code>
+if ( c== 0 ) goto <b>OtroLado</b>;
+... 
+<b>OtroLado:</b>
+printf(...)
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            En este caso si C es cero se salta todas las sentencias entre el if y el destino, continuandose con la ejecución del printf(). 
+                            El destino puede ser tanto posterior como anterior al GOTO invocante.
+                        </p>
                     </article>
             </div> 
             

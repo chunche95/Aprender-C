@@ -185,7 +185,95 @@ switch (expresion)
                         </p>
                         <h4>Iteración WHILE.</h4>
                         <p>
-                            
+                            El while es una de las tres iteraciones posibles en C. Su sintaxis podría expresarse de la siguiente forma: 
+                            <blockquote>
+                                <pre>
+                                    <code>
+while (expresion) 
+{
+    proposición_1 ;
+    proposición_2 ;
+    ...
+    proposición_n ;
+}                        
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Esta sintaxis en palabras significaria; mientras (expresión) dé un resultado CIERTO ejecuto la preposición 1, 2 o 'n'.
+                            <br>
+                            Por lo general, dentro de la proposición o del bloque de ellas, se modifican términos de la expresión condicional, 
+                            para controlar la duración de la iteración.
+                        </p>
+                        <h4>La iteración Do-While.</h4>
+                        <p>
+                            Su sintaxis será: 
+                            <blockquote>
+                                <pre>
+                                    <code>
+do{
+    proposición_1;
+    proposición_2;
+    ... 
+ } while (expresion);                                        
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Expresado en palabras es: ejecute las proposiciones, luego repita la ejecución mientras la expresión dé un resultado CIERTO. 
+                            La diferencia fundamental entre esta iteración y la iteración anterior es que ésta se ejecuta siempre almenos una vez, sea cual
+                            sea el resultado de expresión.
+                        </p>
+                        <h4>Iteración FOR.</h4>
+                        <p>
+                            Es simplemente una manera abreviada de expresar un WHILE, su sintaxis es:
+                            <blockquote>
+                                <pre>
+                                    <code>
+for (expresion1; expresion2; expresion3 ){
+    proposicion1;
+    proposicion2;
+    ...
+}                                        
+                                    </code>
+                                </pre>
+                            </blockquote>
+                            Todas estas expresiones, contenidas en el paréntesis del FOR deben estar separadas por punto y coma y NO por comas simples. <br>
+                            No es imprescindible que existan todas las expresiones dentro del paréntesis del FOR, pudiéndose dejar en blanco algunas de ellas.
+                            Por ejemplo: <br>
+                            <blockquote>
+                                <code>
+                                    for (; expr2; expr3)
+                                </code>
+                                <code>
+                                    for (expr1;;)
+                                </code>
+                                <code>
+                                    for (;;)
+                                </code>
+                            </blockquote>
+                            Para salir del bucle en estos dos últimos casos, el programador probablemente lo sacará con un break o un return.
+                        </p>
+                        <h4>La sentencia break.</h4>
+                        <p>
+                            Sirve para terminar loops producidos por while, do-while y for antes que cumpla la condición normal de terminación. 
+                            En el ejmplo siguiente vemos su suo para terminar un while indeterminado.
+                            <blockquote>
+                                <pre>
+                                    <code>
+#include <stdio.h> 
+#include <conio.h> 
+main(){
+    char c ;   
+    printf("ESTE ES UN LOOP INDEFINIDO ") ;   
+    while(1){   
+        printf( "DENTRO DEL LOOP INDEFINIDO (apriete una tecla):" ) ;
+            if( (c = getch()) == 'Q' )     break ;    
+                printf( "\nNO FUE LA TECLA CORRECTA PARA ABANDONAR EL LOOP ") ;
+    }   
+    printf("\nTECLA CORRECTA : FIN DEL WHILE ") ; 
+} 
+                                    </code>
+                                </pre>
+                            </blockquote>
                         </p>
                     </article>
             </div> 

@@ -16,4 +16,16 @@ int getInt(int num){
     scanf("%d", &num);
     return num;
 }
-int getRadio()
+int getRadio(int num){
+    int cuadrado;
+    printf("Ingrese un número: ");
+    scanf("%d", &num);
+    cuadrado=(num*num);
+    return cuadrado;
+}
+int getArea(int num){
+    float area;
+    area=3.14*getRadio(num);
+    printf("\n El área es: %2f", area);
+    return area;
+}

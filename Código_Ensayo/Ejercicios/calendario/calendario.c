@@ -167,6 +167,96 @@ TipoNombresMes_str TipoCalendario::NombreDelMes (TipoNombreMes mes){
     return cadena;
 }
 
+void TipoCalendario::ImprimirLineaSimbolos (int longitud, TipoSimbolo_str simbolo){
+    TipoFila_str fila = "";
+    for (int i=1; i <= longitud; i++){
+        strcat(fila, simbolo);
+    }
+    printf("%s", fila);
+}
+
+void TipoCalendario::ImprimirSeparador (int &columna, int &fila, int semanas){
+    if (columna == 7){
+        if (fila < semanas){
+            printf("\n");
+        };
+        columna = 1;
+        fila++;
+    }else if  (columna == 5){
+        printf(" | ");
+        columna++;
+    }else{
+        printf(" ");
+        columna++;
+    };
+}
+
 void TipoCalendario::ImprimirCalendario (int unidad, int mes, int anyo, TipoVectorVenta vectorVenta){
-    TipoNombreMes nombreTipoMes
+    TipoNombreMes nombreTipoMes;
+    TipoDiaSemana primerDia;
+    TipoNombreMes_str nombreMes;
+    TipoNumSemanaDelMes numSemanas;
+
+    int dias;
+    int numEspacios;
+    int fila, columna;
+
+    bool hayVenta = false;
+    int ind = 0;
+    {
+        dias = 0;
+        numEspacios = 0;
+        columna = 1;
+        fila = 1;
+    }
+
+    nombreTipoMes = TipoNombreMes(mes-1);
+    primerDia = DiaSemana(mes,anyo);
+    nombreMes = NombreDelMes(nombreTipoMes);
+    dias = DiasDelMes(nombreTipoMes, anyo);
+    numEspacios = longitudFila - strlen(nombreMes.nombre) - 4;
+    numSemanas = CalcularNumSemanas(dias, int(primerDia));
+    {
+        {
+            printf(" \n ");
+            printf("%s", nombreMes.nombre);
+            ImprimirLinesasSimbolos(numEspacios, " ");
+            printf("%4d", anyo);
+            printf("\n");
+            printf(" LU MA MI JU VI | SA DO \n");
+            ImprimirLineaSimbolos(longitudFila, '=');
+            printf("\n");
+        }
+        while(fila <=  numSemanas.semanas){
+            if (fila == 1){
+                for (i=1; i <= primerDia; i++ ){
+                    printf(".");
+                    ImprimirSeparador (columna, fila, numSemanas.semanas);
+                }
+            }
+            for (int i= 1; i <= dias; i++){
+                for (int j=0; j < maxVenta; j++){
+                    if((vectorVenta[j].unidad == unidad) && (vectorVenta[j].fecha.dia == i) && (vectorVenta[j].fecha.anyo == anyo)){
+                        ind = j;
+                        hayVenta = true;
+                    }
+                }
+
+                if (hayVenta){
+                    printf(" X ");
+                }else{
+                    printf("%2d", i);
+                }
+
+                hayVenta = false;
+                ImprimirSeparador (columna,fila,numSemanas.semanas);
+            }
+            if (fila == numSemanas.semanas){
+                for (int i=1; i <= numSemanas.resto; i++){
+                    printf(" . ");
+                    ImprimirSeparador(columna, fila, numSemanas.semanas);
+                }
+            }
+        }
+    }
 }

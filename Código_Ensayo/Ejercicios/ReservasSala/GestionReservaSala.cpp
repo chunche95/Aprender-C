@@ -145,3 +145,96 @@ bool TAD_Gestor_Reservas::esReservable(int dd,int mm,int aa, int hc, int dur){
     }
     return true;
 }
+
+/* 
+ * Función para crear una reserva y almacenarla.
+ */
+
+bool TAD_Gestor_Reservas::crearReserva(no,mbre_t nomb, const int dd, const int mm, const int aa, const int hc, const int dur){
+    bool comprobacion;
+    comprobacion = esReservable(dd,mm,aa,hc,dur);
+    iniciarAuxReserva();
+    if(!comprobacion){
+        SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),199);
+        printf("\n Imposible de reservar! \n");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
+        return false;
+    }
+
+    /*
+     * Crear reserva 
+     */
+    strcpy(auxReserva.nombrecompleto, nomb);
+    auxReserva.dia=dd;
+    auxReserva.mes=mm;
+    auxReserva.anyo=aa;
+    auxReserva.hc=hc;
+    auxReserva.duracion=dur;
+
+    /*
+     * Según el mes almacena la reserva en una de las 4 RMes.
+     */
+
+    guardarReserva(mm, auxReserva);
+    /* Actualiza valor del contador. */
+    cambiarValorDiaMes(dd,mm,1);
+    return true;
+}
+
+/*
+ *  Función para buscar una reserva concreta, devuelve el indice dónde está en el array o 999 si no se encuentra.
+ */
+
+int TAD_Gestor_Reservas::buscarReserva(int dd, int mm, int aa, int hc){
+    int indice2;
+    indice2=999;
+    for(int i=0; i<=contadores[mm]; i++){
+        if((reservasMT[mm][i].dia == dd) && (reservasMT[mm][i].mes == mm) && (reservasMT[mm][i].anyo==aa) && (reservasMT[mm][i].hc==hc)){
+            indice2=i;
+        }
+    }
+    return indice2;
+}
+
+/*
+ * Función para comparar fechas de dos reservas.
+ * TRUE si reserva1 es mayor que reserva2.
+ */
+
+bool TAD_Gestor_Reservas::compararReservas(const TipoReserva reserva1, const TipoReserva reserva2){
+    if((reserva1.dia != reserva2.dia)){
+        return (reserva1.dia > reserva2.dia);
+    }else{
+        return (reserva1.hc > reserva2.hc);
+    }
+}
+
+/* 
+ * Función para borrar una reserva, devuelve TRUE si ha tenido éxito.
+ */
+
+bool TAD_Gestor_Reservas::borrarReserva(nombre_t nomb, int dd, int mm, int aa, int hc){
+    int indice;
+    bool vacio;
+
+    /* Limpiamos el auxiliar de reserva */
+    iniciarAuxReserva();
+    /* Busca la reserva y almacena el indice si se encuentra */
+    indice=buscarReserva(dd,mm,aa,hc);
+
+    if(indice == 999){
+        /* Si devuelve el código de no encontrada, mensaje correspondiente. */
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),199);
+        printf("\n Reserva no encontrada. \n");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
+        return false;
+    }else if((strcmp(reservasMT[mm][indice].nombrecompleto, nomb)==0)){
+        for(int i=indice; i<=(contadores[mm]);i++){
+            reservasMT[mm][i] = reservasMT[mm][i+1];
+        }
+        /* Reestablecer el número de día correspondiente en el calendario. */
+        vacio = cambiarValorDiaMes(dd,mm,0);
+        /* Asegura que no quedarán datos de la reserva reescribiéndola. */
+        reservasMT[mm][contadores[mm]]=auxReserva;
+    }
+}

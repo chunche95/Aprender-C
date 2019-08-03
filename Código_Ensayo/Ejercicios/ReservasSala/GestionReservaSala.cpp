@@ -237,4 +237,151 @@ bool TAD_Gestor_Reservas::borrarReserva(nombre_t nomb, int dd, int mm, int aa, i
         /* Asegura que no quedarán datos de la reserva reescribiéndola. */
         reservasMT[mm][contadores[mm]]=auxReserva;
     }
+
+    /*
+     * Buscamos que no hay mas reservas para ese día comprobando todas las horas.
+     */
+    indice = horasOcupadas(dd,mm);
+    if(indice == 0){
+        SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),144);
+        printf("\n Calendario actualizado, actualmente no hay reservas para la decha %d/%d/%d", dd,mm,aa);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
+    }
+    return true;
+}
+
+/*
+ * Funcion para almacenar ordenadamente las reservas en un array que corresponda al mes correspondiente.
+ */
+
+void TAD_Gestor_Reservas::guardarReserva(int mm, TipoReserva reserv){
+    int izquierda,centro,derecha;
+    izquierda=0;
+    reservasMT[mm][contadores[mm]]=reserv;
+}
+
+/*
+ * Procedimiento para mostrar las RR representantes de las reservas o los espacios en blanco que correspondan.
+ */
+
+void TAD_Gestor_Reservas::dibujarR(int dd, int mm, int contador){
+    int relativo;
+    relativo=8;
+    SetControlTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),105);
+
+    for (int j=0;j<contador;j++){
+        if(reservasMT[mm][j].dia==dd){
+            for (int k=0; k<(reservasMT[mm][k].hc-relativo); k++){
+                printf("  ");
+            }
+            for(int h=(reservasMT[mm][j].hc); h<(reservasMT[mm][j].diracion); h++){
+                printf("RR");
+                relativo=(reservasMT[mm][j].hc+reservasMT[mm][j].duracion);
+            }
+        }
+    }
+
+    /*
+     * Rellena los espacios hasta llegar al final de la barra.
+     */
+    for(int l=relativo; l<21;l++){
+        printf("  ");
+    }
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
+    /* Cierra la barra gráfica de las horas.  */
+    printf("I\n");
+}
+
+/*
+ * función para mostrar las reservas de un día, se pasa por referencia el día que se desea ver y el array con las reservas del mes y su contador.
+ */
+
+void TAD_Gestor_Reservas::verReservasDia(int dd, int mm, int contador){
+    dibujar(dd,mm,contadores[mm]);
+    /*
+     * Imprimir barra inferior de cierre de reservas - grafica
+     */
+    printf("\n I-------------I------------------------I\n");
+
+    dor (int i=0; i<contador;i++){
+        if((reservasMT[mm][i].dia==dd)){
+            if((reservasMT[mm][i].hc<10) && (reservasMT[mm][i].hc+reservasMT[mm][i].hcduracion<10)){
+                printf("\n 0%d a %d reservada por %s", reservasMT[mm][i].hc, (reservasMT[mm][i].hc+reservasMT[mm][i].duracion), reservasMT[mm][i].nombrecompleto);
+            }else if((reservasMT[mm][i].hc<10) && ((reservasMT[mm][i].hc+reservasMT[mm][i].duracion)>10)){
+                printf("\n 0%d a %d reservada por: %s", reservasMT[mm][i].hc , (reservasMT[mm][i].hc + reservasMT[mm][i].duracion), reservasMT[mm][i].nombrecompleto);
+            }else{
+                printf("\n %d a %d reservada por %s", reservasMT[mm][i].hc , (reservasMT[mm][i].hc + reservasMT[mm][i].duracion), reservasMT[mm][i].nombrecompleto);
+            }
+        }
+    }
+}
+
+/*
+ * Función que devuelve la ocupación de un día concreto. Devuelve el número de horas ocupadas.
+ */
+
+int TAD_Gestor_Reservas::horasOcupadas(int dd,int mm){
+    int hOcupadas=0;
+
+    /* Suma la duración de las reservas. */
+    for (int i=0; i<contadores[mm]; i++){
+        if(reservasMT[mm][k].dia==dd){
+            hOcupadas = hOcupadas+ reservasMT[mm][i].duracion;
+        }
+        return hOcupadas;
+    }
+}
+
+/*
+ * Función para marcar el calendario con  TO,PA, devolver día.
+ */
+
+bool TAD_Gestor_Reservas::cambiarValorDiaMes(int dd, int mm, int valor){
+    /* Registrar número de horas ocupadas */
+    int HO;
+    /* Establecer el código del día que corresponda en funciñon de las horas ocupadas.  */
+    switch(valor){
+        case 1:
+            contadores[mm]++;
+            HO=horasOcupadas(dd,mm);
+            if(HO<13){
+                /* Poner 'PA' si el contador no ha llegado a las H. Máx. */
+                mesesTotales[mm].setDia(dd,70);
+            }else{
+                /* 'TO' Para otros casos */
+                mesesTotales[mm].setDia(dd,80);
+            }
+            break;
+        case 0:
+            contadores[mm]--;
+            HO=horasOcuapdas(dd,mm);
+            if( HO >= 1){
+                mesesTotales[mm].setDia(dd,70);
+            }else{
+                mesesTotales[mm].setDia(dd,dd);
+            }
+            break;
+        default:
+            printf("\n No se ha podido marcar en el calendario. \n");
+            return false;
+    }
+
+    printf("\n Horas ocupadas para el día %d: %d", dd, horasOcupadas(dd,mm));
+    return true;
+}
+
+/*
+ * Procedimiento mostrar el calendario de un mes válido.
+ */
+
+void TAD_Gestor_Reservas::mostrarReservasMes(int mm,int aa){
+    mesesTotales[mm].ImprimirDiasCalendario();
+}
+
+/*
+ * Procedimiento intermediario para mostrar reservas de un día.
+ */
+
+void TAD_Gestor_Reservas::mostrarReservasDia(int dd, int mm, int aaaa){
+    verReservasDia(dd,mm,contadores[mm]);
 }

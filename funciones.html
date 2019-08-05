@@ -28,7 +28,38 @@
 									</div>
 								</header>
 								<p>
-                                
+									La forma más razonable de encarar el desarrollo de un programa compilado es aplicar lo que se  ha dado en llamar "programación Top-Down". 
+									Esto implica que, luego de conocer cual es la meta a alcanzar, se dubdivide estas en otras varias tareas concurrentes, por ejemplo: <br>
+									<code>
+										Leer un teclado, procesar datos, mostrar los resultados. 
+									</code> <br>
+									<code>
+										Luego a estas se les vuelve a dividir en otras menores: 
+									</code><br>
+									Y así se continúa hasta llegar a tener un gran conjunto de pequeñas y simples tareas, del tipo de 'leer una tecla' o 'imprimir un carácter'. 
+									Luego sólo resta abocarse a resolver cada una de ellas por separado. <br>
+									De esta forma el programador sólo se tendra que ver con ciminutas piezas de programa, de pocas lineas, cuya escritura y corrección posterior 
+									es una tarea simple. Tal es el criterio con que está estructurado el lenguaje C, donde una de sus herramientas fundamentales son las funciones.
+									Todo compilador comercial trae una gran cantidad de librerias de toda índole, matemáticas, de entrada-salida, de manejo de textos, de manejo de 
+									gráficos, etc. que solucionan ma layor parte de los problemas básicos de programación. <br>
+									Sin emabrgo, será inevitable que en algúm moemnto tenga que crear mis propias funciones, las reglas para ello son las  que desarrollamos en este 
+									capítulo. <br>
+									Convencionalmente en C los nombres de las funciones se escriben en minúsculas y siguen las reglas dadas anteriormente para los de las variables, 
+									pero deben ser seguidos, para diferenciarlas de aquellas por un par de paréntesis. Dentro de estos paréntesis estarán  ubicados los datos 
+									que se les pasan a las funciones. Está permitido pasarles uno, ninguno o una lista de ellos separados por comas, por ejemplo: <br>
+									<code>
+										pow10(a) 
+									</code><br>
+									<code>
+										getch() 
+									</code><br>
+									<code>
+										strcmp(s1,s2)
+									</code><br>
+									Un concepto sumamente importante es que los argumentos que se les envían a las funciones son los valores de las variables y no las varaibles mismas. 
+									En otras palabras, cuando se invoca una función de la forma <code>pow10(a)</code> en realidad se está copiando en el 'stack' de la memoria el valor 
+									que tiene en ese momento la variable a, la función podrá usar este valor para sus cálculos, pero está garantizado que los mismos no afectan en absoluto 
+									a la variable en sí misma. <br>
                                 </p>
 							</article>
 					</div>

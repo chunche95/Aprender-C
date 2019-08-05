@@ -59,7 +59,19 @@
 									Un concepto sumamente importante es que los argumentos que se les envían a las funciones son los valores de las variables y no las varaibles mismas. 
 									En otras palabras, cuando se invoca una función de la forma <code>pow10(a)</code> en realidad se está copiando en el 'stack' de la memoria el valor 
 									que tiene en ese momento la variable a, la función podrá usar este valor para sus cálculos, pero está garantizado que los mismos no afectan en absoluto 
-									a la variable en sí misma. <br>
+									a la variable en sí misma. <br> 
+									Como veremos más adelante, es posible que una función modifique a una variable, pero para ello, será necesario comunicarle la dirección en memoria de dicha 
+									variable. Las funciones pueden o no devolver valores al programa invocante. Hay funciones que tan sólo realizan acciones, como por ejemplo <code>clrscr()</code>
+									que borra la pantalla de video, y por lo tanto no retornan ningun dato de interés, en cambio otras afectan cálsulos, devolviendo los resultados de los mismos. 
+									La invocación a estos dos tipos de funciones difiere algo, por ejemplo escribiremos: <br>
+									<pre>
+										<code>
+clrscr();
+c= getch();
+										</code>
+									</pre>
+									<br>
+									donde en el segundo caso el valor retornado por la función  se asigna a la variable c, obviamente ésta deberá tener el tipo correcto para alojarla.
                                 </p>
 							</article>
 					</div>

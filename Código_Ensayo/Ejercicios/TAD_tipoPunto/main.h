@@ -1,3 +1,7 @@
+/*
+ * Introducción en el uso de las TAD's.
+ */
+
 #include <stdio.h>
 #include <math.h>
 

@@ -37,6 +37,7 @@ int main(){
                     printf(".");
                 }
             }
+        }
             /* Imprimir mitad derecha del triángulo superior. */
             for(int contador=linea; contador>=2; contador--){
                 /* Secuencia de caracteres. */
@@ -76,7 +77,24 @@ int main(){
                         printf(".");
                     }
                 }
+
+                for(int contador=(lado-linea); contador>=2; contador--){
+                    /* Dibujamos los caracteres. */
+                    if(contador%4==1){
+                        printf(".");
+                    }
+                    if(contador%4==2){
+                        printf("@");
+                    }
+                    if (contador%4==3){
+                        printf(".");
+                    }
+                    if(contador%4==0){
+                        printf("o");
+                    }
+                }
+                printf("\n");
             }
         }
-    }
+    return 0;
 }

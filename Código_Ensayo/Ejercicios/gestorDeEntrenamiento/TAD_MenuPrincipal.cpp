@@ -64,6 +64,6 @@ void T_MenuPrincipal::Repetir(){
             scanf("%c",&respuesta);
             /* Evitamos el key sensitive, asi las MAYUSCULAS o minusculas no afectaran a la respuesta. */
             respuesta=toupper(respuesta);
-        }while (respuesta!='S' && respuesta!='N');
+        }while (respuesta!='S' && respuesta!='N'); /* Solo acepta S/N. */
     }
 }

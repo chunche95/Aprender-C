@@ -30,6 +30,31 @@ void T_Actividades::IntroducirPlan(){
             printf("#> ");
             gets(GuardarDatos[i]);
             system("cls");
+            if(strlen(GuardarDatos[i])>1000){
+                system("cls");
+                printf("Warning! Ha superado los 1000 caracteres. \n");
+            }
+        /* Volvemos a pedir datos si nos pasamos de los 1000 caracteres. */            
+        }while(strlen(GuardarDatos[i])>1000);
+
+        /* 
+         * Si los datos introducidos son iguales a "D" 
+         * Guardamos en la variable TipoCD una "D" y además sustituiremos esa 'D' por el texto 
+         *                                'Día de descanso'.
+         * Sino lo guardamos en TipoCD guardamos una 'C'.
+         */
+        if(strcmp(GuardarDatos[i],descanso)==0){
+            TipoCD[i]=D;
+            strcpy(GuardarDatos[i], "Día de descanso");
+        }else{
+            TipoCD[i]=C;
         }
     }
+    /* Como hemos almacenado un plan de entrenamiento PlanGuardado pasa a True */
+    PlanGuardado=true;
+    printf("Todos los datos se han almacenado correctamente. \n");
+}
+
+void T_Actividades::ListarPlan(){
+    
 }

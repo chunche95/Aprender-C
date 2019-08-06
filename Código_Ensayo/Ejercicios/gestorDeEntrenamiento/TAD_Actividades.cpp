@@ -56,5 +56,8 @@ void T_Actividades::IntroducirPlan(){
 }
 
 void T_Actividades::ListarPlan(){
-    
+ for(int j=0; j<10; j++){
+     printf("Entrenamiento del día %2d \n", j+1);
+     printf("%s \n \n ",guardarDatos[j]);
+ }   
 }

@@ -75,7 +75,93 @@ c= getch();
 								
 								<h3>Declaración de funciones.</h3>
 								<p>
+									Antes de escribir una función es necesario informarle al Compilador los tamaños de los valores que se le enviarán en el stack y el tamaño de los valores que ella retorna 
+									al programa invocante. <br>
+									Estas informaciones están contenidas en la declaración de prototipo de la función. Formalmente dicha declaración queda dada por:
+									<code>tipo del valor de retorno  nombre_de_la_funcion(lista de tipos de parámetros)</code> <br>
+									Ejemplo:
+									<pre>
+										<code>
+float miFuncion(int i, double j);
+double otraFuncion(void);
+otraFuncionMas(long p);
+void ultimaFuncion(long double z, char y, int x, unsigned long w);
+										</code>
+									</pre>
+									El primer término del prototipo da, como hemos visto, el tipo del dato retornado por la función, en caso de obviarse el mismo se toma, por omisión, el tipo int. Sin embargo, 
+									aunque la función devuelva este tipo de dato, para evitar malas interpretaciones es conveniente explicitarlo. <br>
+									Ya que el 'default' del tipo de retorno es el int, debemos indicar cuando la función no retorna nada, esto se realiza por medio de la palabra <code>void</code>,sin valor.
+									De la misma manera se actúa, cuando no se le enviarán argumentos. <br>
+									Más adelante se profundizará sobre el tema de los argumentos y sus características. La declaración debe anteceder en el programa a la definición de la función, es normal, por 
+									razones de legibilidad de la documentación, encontrar todas las declaraciones de las funciones usadas en el programa, en el header del mismo, junto con los include de archivos 
+									*.h que tienen los prototipos de las funciones de Librería. <br>
+									Si una o más de nuestras funciones es usada habitualmente, podemos disponer su prototipo en un archivo de texto, e incluirlo las veces que necesitemos, según se vio en capítulos 
+									previos.
+								</p>
 
+								<h3>Definición de las funciones.</h3>
+								<p>
+									La definición de una función puede ubicarse en cualquier lugar del programa, con sólo dos restricciones, 
+									debe hallarse luego de dar su prototiopo, y no pede estar dentro de la definición de otra función (<b>include main()</b>). Es decir, que a diferencia 
+									de Pacal, en C las definiciones ni pueden anidarse. <br>
+									<cite>
+										<b>Nota.</b> No debe confundirse definición con llamada; una función puede llamar a tantas otras como desee. <br>
+										La definición debe comenzar con un encabezamiento, que debe coincidir totalmente con el prototipo declarado para la misma, y a continuación del mismo,
+										encerradas por llaves se escribirán las sentencias que la componen; por ejemplo: <br>
+										<pre>
+											<code>
+#include &lt; stdio.h &gt;
+float miFuncion(int i, double j); /* <b>Declaración</b>, termianda en ';' */
+main(){
+	float k;
+	int p;
+	double z;
+	... 
+	k= miFuncion(p,z); /* Llamada a la funcion */
+	... 
+} /* Fin de la funcion main() */
+
+float miFuncion(int i, double j) /* <b>Definición</b>, sin ';' */
+{
+	float n;
+	... 
+	printf("%d",i); 
+	... 
+	return(2*n);
+}
+											</code>
+										</pre>
+									</cite>
+									Pasamos ahora a describir más profundamente las distintas modalidades que adoptan las funciones.
+								</p>
+
+								<h3>Funciones que no retornan valor ni reciben parámetros.</h3>
+								<p>
+									Veamos como ejemplo la implementación de una función "pausa". 
+									<pre>
+										<code>
+#include &lt; stdio.h &gt;
+void pausa(void);
+main(){
+	int contador=1;
+	printf("Valor del contador dentro del while \n");
+	while(contador&lt;=10);
+	if(contador == 5){
+		pausa();
+		printf("%d\n",contador++);
+	}
+	pausa();
+	printf("Valor del contador al salir del while: %d", contador);
+	return 0;
+}
+
+void pausa(void){
+	char c;
+	printf("\n Pulse enter para continuar. \n");
+	while((c=getchar()!='\n'));
+}
+										</code>
+									</pre>
 								</p>
 							</article>
 					</div>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Indice - Aprendiendo C.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="main.css" />
+		<link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+	</head>
+	<body class="single is-preload">
+    	<div id="wrapper">
+			<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Indice</a></h1>
+					</header>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">Estructuras de agrupaciones de variables en C.</a></h2>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2019-07-26">Agosto, 07, 2019</time>
+										<a href="https://github.com/chunche95" class="author"><span class="name">Chunche95</span><img src="images/avatar.jpg" alt="" /></a>
+									</div>
+                                </header>
+                                <h3>Conjunto ordenado de variables (Arrays).</h3>
+								<p>
+                                   Los arreglos o conjutos de datos ordenados (arrays) recolectan variables del mismo tipo, guardandolas en forma secuencial en la misma memoria. 
+                                   La cantidad máxima de variables que puede albergar está sólo limitada por la cantidad de memoria disponible. El tipo de las variables involucradas
+                                   puede ser cualquiera  de los ya vistos, con la única restricción de que todos los componentes de un array deben ser del mismo tipo. <br>
+                                   La declaración de un array se realiza según la siguiente sintaxis: 
+                                   <pre>
+                                       <code>
+tipo de variables nombre[cantidad de elementos];
+                                       </code>
+                                   </pre>
+                                   Por ejemplo: 
+                                   <blockquote>
+                                       <pre>
+                                           <code>
+in var[10];
+char nombre[50];
+float numeros[200];
+long double cantidades[25];
+                                           </code>
+                                       </pre>
+                                   </blockquote>
+                                   Si tomamos el primer caso, estamos declarando un array de 10 unidades enterasm cada una de ellas quedará individualizada por el subíndice que sigue al nombre 
+                                   del mismo es decir: 
+                                   <pre>
+                                       <code>
+var1[0], var1[1], etc hasta var1[9]
+                                       </code>
+                                   </pre>
+                                   Nótese que la cantidad de elementos es 10, pero su numeración va del 0 al 9, y no del 1 al 10. <br>
+                                   En resumen un array de N elementos tiene subíndices válidos entre 0 y N-1. Cualquier otro número usado como subíndice, traerá datos de otras zonas de memoria, cuyo 
+                                   contenido es impredictible. <br>
+                                   Se puede referenciar a cada elemento, en forma individualm tal como se ha hecho con las variables anteriormente, por ejemplo:
+                                   <pre>
+                                       <code>
+var1[5]=40;
+contador=var1[3]+7;
+if(var1[0] &lt;=37){
+    ...
+}
+                                       </code>
+                                   </pre>
+                                   También es posible usar como subíndice expresiones aritméticas, valores enteros retornando por funciones, etc. Así podríamos escribir: 
+                                   <pre>
+                                       <code>
+printf("%d", var1[++i]);
+var1[8]=var1[i+j];
+... 
+int unaFuncion(void);
+var1[0]=var1[unaFuncion()]*10;
+                                       </code>
+                                   </pre>
+                                   Por supuesto, los subíndices resultantes de las operaciones tienen que estar acotados a aquellos para los que el array fue declarado y ser enteros. 
+                                   La inicialización de los array sigue las mismas reglas que vimos para los otros tipos de variables, es decir, si se declaran como globales (afuera del cuerpo de todas las 
+                                   funciones) cada uno de sus elementos será automáticamente inicializado a cero. Si en cambio, su declaración es local a una función, no se realiza ninguna inicialización,
+                                   quedando a cargo del programa cargar los valores de inicio. La inicialización de un array local, puede realizarse en su declaración, dando una lista de valores iniciales: 
+                                   <code>
+                                       int numero[8]={4,7,0,0,45,9,7,1};
+                                   </code>
+                                   Obsérvese que la lista está delimitada por llaves, otra posibilidad, sólo válida cuando se inicializan todos los elementos del array, es decir: 
+                                   <code>
+                                       int numero[]={1,2,3,4,5,6,70,9,7};
+                                   </code>
+                                   donde se obvia la declaración de la cantidad de elementos, ya que está implícita en la lista de valores constantes. También, se puede incializar parcialmente un array, por 
+                                   ejemplo: 
+                                   <code>
+                                       int numero[10]={1,1,1};
+                                   </code>
+                                   en este caso los tres primeros elementos del mismo valdrán 1, y los restantes cero en el caso que la declaración sea global o cualquier valor impredecible en el caso de que sea local.
+                                </p>
+
+                                
+							</article>
+					</div>
+
+					<footer>
+							<p>
+								Posted by: Pauchino <br>
+								HumanComputing 3.0 &copy; <br>
+								Contact info: <a href="mailto:humancomputing3@gmail.com">Enviar Correo.</a>
+							</p>
+					</footer>
+
+			</div>
+	</body>
+</html>

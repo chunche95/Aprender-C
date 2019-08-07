@@ -241,6 +241,118 @@ scanf("secuencia de control", direccion de la variable);
 										<li>%lf - Leer long float.</li>
 										<li>%Lf - Leer un long double.</li>
 									</ul>
+
+									Encaremos ahora un programa que nos presente primero, un menú para seleccionar la conversión de ºC a ºF o de centímetros 
+									a pulgadas, hecha nuestra elección, nos pregunte el valor a convertir y posteriormente nos de el resultado. <br>
+									Si suponemos que las funciones que usaremos en el programa serán frecuentemente usadas, podemos poner las declaraciones 
+									de las mismas, así como todas las constantes que use, en un archivo de texto, por ejemplo <code><i>convers.h</i></code>. Este podrá ser 
+									guardado en el subdirectorio donde están todos los demás <i>include</i> o dejado en el directorio activo, en el cual se 
+									compila el programa fuente de nuestro problema.Para variar, supongamos que esto último es nuestro caso. <br>
+									<blockquote>
+										<pre>
+											<code>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+#define FALSO 0
+#define CIERTO 1
+#define CENT_POR_INCH 25.4
+
+void pausa(void);
+void mostrarMenu(void);
+int seleccion(void);
+void cmApulgadas(void);
+void centAfahr(void);
+double leerValor(void);
+											</code>
+										</pre>
+									</blockquote>
+									Vemos que un header puede incluir llamadas a otros (en este caso conio.h). Hemos puesto también la definición de todas las constantes 
+									que usaran las funciones abajo declaradas. De dichas declaraciones vemos que usaremos funciones que no retornan nada, otra que retorna 
+									un entero y otra que devuelve un double. <br>
+									Veamos ahora el desarrollo del programa en sí. Observe que la invocación a <code>conversion.h </code>se hace con comillas, por haber
+									decidido dejarlo en el directorio activo. 
+									<pre>
+										<code>
+#include &lt;stdio.h&gt; 
+
+#include "convers.h"
+main(){
+	int fin=FALSO;
+	while(!fin){
+		mostrarMenu();
+		switch(seleccion()){
+			case 1:
+				cmApulgadas();
+				break;
+			case 2:
+				centAfahr();
+				break;
+			case 3: 
+				fin=CIERTO;
+				break;
+			default:
+				printf("\n Error, la opción seleccionada no es válida. \a\a\n");
+				pausa();
+		}
+	}
+	return 0;
+}
+
+/* Funciones */
+
+void pausa(void){
+	char c=0;
+	printf("\n\n Pulse ENTER para continuar. \n");
+	while((c=getch() != '\r'));
+}
+
+void mostrarMenu(void){
+	clrscr();
+	printf("\n Menú.  \n");
+	printf(" 1. Centímetros a pulgadas. \n");
+	printf(" 2. Celsius a Farhenheit. \n");
+	printf(" 3. Salir. \n");
+}
+
+int seleccion(void){
+	printf("\n Seleccione una de las opciones del menú: ");
+	return(getch()-'0');
+}
+
+void cmApulgadas(void){
+	double centimetros; /* Guarda el valor pasado por leerValor() */
+	double pulgadas;    /* Guarda el valor calculado */
+	printf("\n Escriba los centímetros a convertir: ");
+	centimetros=leerValor();
+	pulgadas=centimetros*CENT_POR_INCH;
+	printf("%3f Centimetros= %3f pulgadas. \n",centimetros,pulgadas);
+	pausa();
+}
+
+void centAfahr(void){
+	double centigrados; /* Guardará el valor pasado por leerValor() */
+	double Farhenheit;  /* Guardará el valor calculado. */
+
+	printf("\n Escriba los grados Centigrados a convertir: ");
+	centigrados=leerValor();
+	Farhenheit=(((centigrados*9.0)/5.0)+32);
+	printf("%3f grados centigrados = $3f Farhenheit", centigrados, Farhenheit);
+	pausa();
+}
+
+double leerValor(void){
+	double valor; /* Variable para guardar lo leido del teclado */
+	scanf("%1f", &valor);
+	return valor;
+}
+										</code>
+									</pre>
+								</p>
+
+								<h3>Ambito de las variables (Scope).</h3>
+								<p>
+									
 								</p>
 							</article>
 					</div>

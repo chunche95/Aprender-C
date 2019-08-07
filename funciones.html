@@ -352,7 +352,39 @@ double leerValor(void){
 
 								<h3>Ambito de las variables (Scope).</h3>
 								<p>
-									
+									<h4>Variables globales.</h4>
+									<p>
+										Hasta ahora hemos diferenciado a las variables según su tipo (int, char, double, etc.), el cual se refería,
+										en última instancia, a la cantidad de bytes que la conformaban. Veremos ahora que hay otra diferenciación de 
+										las mismas, de acuerdo a la clase de memoria en la que residen. <br>
+										Si definimos una variable AFUERA de cualquier función (incluyendo esto a main()), estaremos frente a lo denominado 
+										<i>variable global</i>. Este tipo de variable será ubicada en el segmento de datos de la memoria utilizada por el 
+										programa, y existirá todo el tiempo que esté ejecutandose este. <br>
+										Este tipo de variables son automáticamente iniciazadas a cero cuando el programa comienza a ejecutarse. <br>
+										Son accesibles a todas las funciones que estan declaradas en el mismo, por lo que cualquiera de ellas podrá actuar
+										sobre el valor de las mismas. Por ejemplo:
+										<pre>
+											<code>
+#include &lt;stdio.h&gt;
+double una_funcion(void);
+double variable_global ;
+main() {
+	double i ;
+	printf("%f", variable_global );       /* se imprimirá 0 */
+	i = una_funcion() ;
+	printf("%f", i );                     /* se imprimirá 1 */ 
+	printf("%f", variable_global );       /* se imprimirá 1 */ 
+	variable_global += 1 ; 
+	printf("%f", variable_global );       /* se imprimirá 2 */ 
+	return 0 ; 
+} 
+
+double una_funcion(void) { 
+	return( variable_global  += 1) ; 
+} 
+											</code>
+										</pre>
+									</p>
 								</p>
 							</article>
 					</div>

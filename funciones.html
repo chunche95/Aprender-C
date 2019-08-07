@@ -217,6 +217,30 @@ int leer_char(void){
 }
 										</code>
 									</pre>
+									<b>Nota:</b>Preste atención a que en la función <code>finalizar()</code> se ha usado un do-while. 
+									En la función <code>leer_char</code> se ha usado dos returns, de tal forma que ella sale por uno u otro. 
+									De esta manera si luego de finalizado el else se hubiera agregado otra sentencia, esta jamás sería ejecutada. <br>
+									En el siguiente ejemplo veremos funciones que retornan datos de tipo distindo al int. Debemos presentar antes, 
+									otra dunción muy común de entrada de datos: <code>scanf()</code>, que nos permitirá leer datos completos enviados 
+									desde el teclado, su expresión formal es algo similar a la del <code>printf()</code>. <br>
+									<blockquote>
+										<pre>
+											<code>
+scanf("secuencia de control", direccion de la variable);
+											</code>
+										</pre>
+									</blockquote>
+									Donde la secuencia de control se indicará que tipo de variable se espera leer, por ejemplo:
+									<ul>
+										<li>%d - Leer entero decimal (int).</li>
+										<li>%o - Leer octal.</li>
+										<li>%x - Leer hexadecimal.</li>
+										<li>%c - Leer caracter.</li>
+										<li>%f - Leer float</li>
+										<li>%ld - Leer long int.</li>
+										<li>%lf - Leer long float.</li>
+										<li>%Lf - Leer un long double.</li>
+									</ul>
 								</p>
 							</article>
 					</div>

@@ -162,6 +162,61 @@ void pausa(void){
 }
 										</code>
 									</pre>
+
+									En cada llamada, el programa transfiere el comando a la función, ejecutandose, hasta que esta finalice, 
+									su propia secuencia de instrucciones. Al finalizar la función esta retorna el comando al programa principal, 
+									continuandose la ejecución por la instrucción que sucede al llamado. Si bien las funciones aceptan cualquier nombre,
+									es una buena practica de programación nombrarlas con términos que represente su operación. Se puede salir prematuramente 
+									de una función void mediante el uso de <code>return</code>, sin que este sea seguido de ningun parámetro o valor.
+								</p>
+
+								<h3>Funciones que retornan valor.</h3>
+								<p>
+									Analicemos por medio de un ejemplo dichas funciones.
+									<pre>
+										<code>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+#define FALSO 0
+#define CIERTO 1 
+
+int finalizar(void);
+int leer_char(void);
+
+main(){
+	int i=0;
+	int fin=FALSO;
+	printf("Ejemplo de funciones que retornan valor.\n");
+	while(fin=FALSO){
+		i++;
+		printf("i==%d \n",i);
+		fin=finalizar();
+	}
+
+	printf("\n \n Fin del programa. \n");
+	return 0;
+}
+
+int finalizar(void){
+	int c;
+	printf("¿Otro número?(S/N)");
+	do{
+		c=leer_char();
+	}while((c!='N') && (c!='S'));
+	return (c=='N');
+}
+
+int leer_char(void){
+	int j;
+	if((j=getch()) &gt;&gt;='A' && j&lt;&lt;='Z'){
+		return(j+('a'-'A'));
+	}else{
+		return j;
+	}
+}
+										</code>
+									</pre>
 								</p>
 							</article>
 					</div>

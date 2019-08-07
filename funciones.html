@@ -385,7 +385,84 @@ double una_funcion(void) {
 											</code>
 										</pre>
 									</p>
+									
+									<h4>Variables locales</h4>
+									<p>
+										A diferencia de las anteriores, las variables definidas dentro de una función, son denominadas variables locales a la misma, 
+										a veces se les llama también como automaticas, ya que son creadas y destruídas automáticamente por la llamada y el retorno de 
+										una función, respectivamente. <br>
+										Estas variables se ubican en la pila dinámica (stack) de memoria, destinandose un espacio en la misma  cuando se las define dentro 
+										de una función, y borrándose cuando la misma devuelve el control del programa, a quein la haya invocado. <br>
+										Este método permite que, aunque se haya definido un gran número de variables en un programa, estas no ocupen memoria simultaneamente
+										en el tiempo, y solo vayan incrementando el stack cuando se les necesita, para luego, una vex usadas desaparecer, dejando al stack 
+										en su estado original. <br>
+										El identificador o nombre que se le haya dado a una variable es solo relevante entonces, para la función que la haya definido, 
+										pudiendo existir  entonces variables que tengan el mismo nombre, pero definidas en funciones distintas, sin que haya peligro de confusión. 
+										La ubicación de estas variables locales, se crea en el momento de correr el programa, por lo que no poseen una dirección prefijada, esto 
+										impide que el compilador las pueda inicializar previamente. recuerdese entonces que, si no se les inicializa expresamente en el momento de 
+										su definición, su valor será indeterminado.
+									</p>
+									
+									<h4>Variables locales estáticas.</h4>
+									<p>
+										Las variables locales vistas hasta ahora, ancen y mueren con cada llamada y finalización de una función, sin embargo, muchas veces sería útil 
+										que mantuvieran su valor, entre una y otra llamada a la función sin por ello perder su ámbito de existencia, es decir, seguir siendo locales sólo 
+										a la función que las defina. En el siguiente ejemplo veremos que esto se consigue definiendo a la variable con el prefacio <code>static</code>.
+									</p>
+
+									<h4>Variables de registro.</h4>
+									<p>
+										Otra posibilidad de almacenamiento de las variables locales es, que en vez de ser mantenidas en posiciones de la memoria de la computadora, se guarden 
+										en registros internos del Microprocesador que conforma la CPU de la misma. <br>
+										De esta manera el acceso a ellas es mucho más directo y rápido, aumentando la velocidad de ejecución del programa. Se suelen usar registros para almacenar 
+										a los contadores de los for,while, etc. <br>
+										Lamentablemente, en este caso no se puede imponer al compilador, este tipo de variables, ya que no tenemos control sobre los registros libres en un momento 
+										dado del programa, por lo tanto se sugiere, que de ser posiblem ubique la variable del modo descrito. El prefacio en éste caso será: <code>register int var_reg;</code>
+										<br>
+										Hay que racalcar que esto es solo válido para variables locales, siendo imposible definir en un registro a una global. Por otra parte las variables de registro no son 
+										accesibles por dirección.
+									</p>
+
+									<h4>Variables externas.</h4>
+									<p>
+										Al definir una variable, como lo hemos estado haciendo hasta ahora, indicamos al compilador que reserve para la misma una determinada cantidad de memoria, 
+										sea en el segmento de memoria de datos, si es gloabal o en el stack, si es local, pero debido a que en C es normal la compilación por separado de pequeños módulos,
+										que componen el programa completo, piede darse el caso que una función escrita en un archivo dado, deba usar una variable global definida en otro archivo. Bastará 
+										para poder hacerlo, que se ldeclare especificado que es externa a dicho moçódulo, lo que implica que está definida en otro lado. Supongamos que nuestro programa está 
+										compuesto por sólo dos módulos: <b>mod_principal.c</b> y <b>mod_secundario.c</b> los cuales se compilarán y enlazarán juntos, por medio del compilador y el linker.
+									</p>
+
+									<h4>Argumentos y parametros de las funciones.</h4>
+									<p>
+										Supongamos que en un determinado programa debemos calcular repetidamente el valor medio de dos variables, una solución razonable sería crear una función que realice dicho 
+										cálculo, y llamarla cada vez que se necesite. Para ello será necesario, en cada llamada, pasarle los valores de las variables para que calcule su valor medio. Esto se define 
+										en la declaración de la función especificando, no solo su valor de retorno sino también el tipo de argumentos que recibe: <br>
+										<code>souble valor_medio(double x, double y);</code> 
+										<br>
+										de esta declaración vemos que la función <code>valor_medio</code> recibe dos argumentos, x e y, del tipo double y devuelve un resultado de ese mismo tipo. Cuando definamos 
+										a la función en sí, deberemos incluir parámetros para que alberguen los valores recibidos, así escribiremos: <br>
+										<code>
+											double valor_medio(double x, double y){
+												return ((x+y)/2.0)
+											}
+										</code>
+										<br>
+										<strong>Nota:</strong> No es necesario que los nombres de los parámetros coincidan don los declarados previamente, es decir, que hubiera sido equivalente escribir 
+										<i>double valor_medio(double a, double b)</i>etc, sin embargo, es una buena práctica mantenerlos igual. En realidad en la declaración de la función, no es necesario incluir el 
+										nombre de los parámetros a fin de hacer más legible el programa. <br>
+										Aquí estamos utilizando la sintaxis moderna del lenguaje C, pudiendose encontrar en versiones arcaicas, definiciones equivalentes como:
+										<blockquote>
+											<pre>
+double valor_medio()  o  double valor_medio(double, double) 
+double x;   double x; 
+double y;   double y; 
+{           {
+...         ... 	
+}           }	                             </pre>
+										</blockquote>
+									</p>
 								</p>
+
 							</article>
 					</div>
 

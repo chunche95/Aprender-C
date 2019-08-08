@@ -295,6 +295,63 @@ finRecta.ejeZ = inicioRecta.ejeZ;
 if((finRecta.ejeX &lt= inicioRecta.ejeX) && (finRecta.ejeY &lt;= inicioRecta.ejeY) 
 && (finRecta.ejeZ &lt= inicioRecta.ejeZ))
                                     </code></pre>
+                                    Las estructuras pueden anidarse, es decir, que una o más de ellas pueden ser miembros de otra. Las estructuras también pueden ser pasadas a las funciones 
+                                    como parámetros y ser retornadas por éstas, como resultado.
+                                </p>
+                                <h3>Array de estructuras.</h3>
+                                <p>
+                                    Cuando hablamos de array dijimos que podían agruparse, para formarlos, cualquier tipo de variables, esto es extensible a las estructuras y podemos entonces agruparlas 
+                                    ordenadamente, como elementos de un array. Ejemplo:
+                                    <pre>
+                                        <code>
+typedef struct{
+    char material[50];
+    int existencias;
+    double costoUnitario;
+}Item;
+Item stock[100];
+                                        </code>
+                                    </pre>
+                                    Hemos definido un array de 100 elementos, donde cada uno de ellos es una estructura de tipo Item compuesta por tres variables, un int, un double y un string o array de 
+                                    50 caracteres. <br>
+                                    Los arrays de estrucuturas pueden inicializarse de la manera habitual, así en una definición de stock, podríamos haber escrito: 
+                                    <pre>
+                                        <code>
+Item stock1[100]={
+    "tornillos" , 120 , 15 ,
+    "tuercas"   , 200 , 0.90 ,
+    "arandelas" , 90  , 0.10 
+};
+Item stock2[]={
+    { 'i','t','e','m','1','\0' } , 10 , 1.5 ,
+    { 'i','t','e','m','2','\0' } , 20 , 1.0 ,
+    { 'i','t','e','m','3','\0' } , 60 , 2.5 ,                         
+    { 'i','t','e','m','4','\0' } , 40 , 4.6 ,                         
+    { 'i','t','e','m','5','\0' } , 10 , 1.2 ,                        
+};
+                                        </code>
+                                    </pre>
+                                    Para evitar la saturación del stack por el pasaje o retorno desde funciones, es necesario conocer el tamaño o espacio en bytes ocupados por ella. 
+                                    Podemos aplicar el operador <code>sizeof</code>, de la siguiente manera:
+                                    <pre>
+                                        <code>
+longDeDatos = sizeof(stock1);
+longDeDatos = sizeof(Item);
+cantDeDatos = sizeof(stock1) / sizeof(Item);               
+                                        </code>
+                                    </pre>
+                                    Con la primera calculamos el tamaño necesario de memoria para albergar todos los datos, en la segunda la longitud de un solo elemento (record) y por supuesto dividiendo ambas,
+                                    se obtiene la cantidad de records. 
+                                </p>
+                                <h3>Uniones.</h3>
+                                <p>
+                                    Las uniones son a primera vista, entidades muy similares a las estructuras, estan formadas por un número cualquiera de miembros, al igual que aquellas, pero en este caso no existen 
+                                    simultaneamente todos los miembros, y solo uno de ellos tendrá un valor válido. <br>
+                                    Supongamos por caso, que queremos guardar datos para un stock de materiales, pero los miembros pueden ser identificados, en un caso con el número de artículo (entero) y en otro por 
+                                    su nombre (string de 10 letras). No tendría sentido definir dos variables, un int y un string, para cada artículo, ya que voy a usar una modalidad o la otra, pero no las dos a la vez.
+                                    Las uniones resuelven esta caso, ya que si declaro una que contegna dos miembros, un entero y un string, sólo se reservará lugar para el mayor de ellos, en este caso el string, de tal 
+                                    forma que si asigno un valor a éste, se llenará ese lugar de la memoria con los caracteres correspondientes, pero si en cambio asigno un valor al miembro declarado como int, éste se 
+                                    guardará en los dos primeros bytes del mismo lugar de memoria. Por supuesto, en una unión, sólo uno de los miembros tendrá entonces un valor correcto.
                                 </p>
 							</article>
 					</div>

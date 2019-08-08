@@ -100,7 +100,133 @@ var1[0]=var1[unaFuncion()]*10;
 
                                 <h3>Conjunto ordenado de caracteres (Strings)</h3>
                                 <p>
+                                    Los strings son simplemente arrays de caracteres, tal como los cimos hasta ahoram con el agregado de un último elemento constante: el caracter NULL (ASCII = 0,
+                                    simbolizado por la secuencia de escape \0). Este agregado permite a las funciones que procesan a los mismos, determinar facilmente la finalización de los datos. 
+                                    Podemos generar un string, declarando: 
+                                    <blockquote>
+                                        <code>
+                                            char car_str[]={'J','A','G','U','A','R',0};
+                                        </code>
+                                        <code>
+                                            char car_str[]={'J','A','G','U','A','R','\0'};
+                                        </code>
+                                    </blockquote>
+                                    Ambas maneras son equivalentes, sin embargo, hay, en el lenguaje C,una forma más compacta de declararlos.
+                                    <blockquote>
+                                        <code>
+                                            char car_str[]="JAGUAR";
+                                        </code>
+                                        <code>
+                                            char car_str[7]="JAGUAR";
+                                        </code> 
+                                    </blockquote>
+                                        <br>
+                                        <strong><i>ERROR al declarar el string.</i></strong>
+                                        <br>
+                                        <code>
+                                            int text[]= "line1 \n line2 \n";    /* ERROR */
+                                        </code>
+                                        &rarr;
+                                        <code>
+                                            unsigned char text[]="line1 \n line2 \n";
+                                        </code>
+                                   <br>
+                                   Simplemente en la declaración del mismo se encierran los caracteres que lo componen entre comillas. Obsérvese que en la segunda declaración, se ha explicitado ( no es necesario), 
+                                   la cantidad de elementos que tiene el string,  y es uno más que la cantidad de caracteres con que se le inicializa, para dejar lugar al NULL. 
+                                   Todas estas declaraciones agregan automáticamente el NULL como último elemento del array. Un caso interesante es el de la tercer línea (comentada como ERROR), con el fin de poder 
+                                   albergar el caracter "\n" &rarr; 20 (ASCII 179) se interesanteo asignar el string a un array de enteros, esto no es permitido por el compilador, que lo rechaza como asignación inválida. 
+                                   La razón de ello se cerá más adelante cuando analicemos punteros, ya que el string constante usado como rvalue es un puntero a char, y no a int. La solución más común para este caso es, 
+                                   declarar el array como unsigned char, con lo que llevamos el alcance de sus elementos a 255. Si tuvieramos el caso de tener que albergar en un string el caracter EOF(-1) y al mismo tiempo 
+                                   caracteres con ASCII mayor que 127, se podría definir el array como int, pero su inicialización se tendrá que hacer obligatoriamente usando llaves, como vimos anteriormente. <br>
+                                   Se deduce entonces, de lo antedicho  que un string sigue siendo un array de caracteres, con la salvedad del agregado de un terminador, por lo que las propiedades que veremos a continuación, 
+                                   se aplicaran indistintamente a ambos. 
+                                </p>
+                                <h3>Array y strings como argumentos de funciones.</h3>
+                                <p>
+                                    Los arrays, como todos los otros tipos de variables, pueden ser pasados como argumentos a las funciones. Veamos esquemáticamente como sería su sintaxis.
+                                    <blockquote>
+                                        <pre>
+                                        <code>
+double funcion1(float numeros[10], char palabra[]); /* Línea 1 */
+... 
+main()                                              /* línea 2 */
+{
+    float numeros[10]={1.1,2.2,3.3};                /* línea 3 */
+    char palabra[]="Lenguaje C";                    /* línea 4 */
+    double c;                                       /* línea 5 */
+    ... 
+    c=funcion1(numeros,palabra);                    /* línea 6 */
+    ... 
+}
+
+double funcion1(float numeros[10], char palabra[])  /* línea 7 */
+{
+    ...
+}
+                                        </code>
+                                        </pre>
+                                    </blockquote>
+                                    Es necesario analizar con mucho detenimiento,este ejemplo. <br>
+                                    En la primera línea declaramos el prototipo de funcion1() que recibe como argumento dos arrays, uno de 10 elementos del tipo float, y otro de caracteres de longitud 
+                                    indeterminada. En el primer caso la función necesitará saber de alguuna manera cual es la longitud del array numérico recibido, mientras que el segundo, no hace falta, 
+                                    ya que la funcion puede ser construída para que, por sí misma, detecte la finalización del string por la presencia del caracter NULL. Se podría generalizar más el 
+                                    programa declarando: <br>
+                                    <code>
+                                        double funcion1(double numeros[], int longitud_array, char palabra[]);
+                                    </code>
+                                    <br>
+                                    en donde, en la variable longitud_array se enviaría la cantidad de elementos de numero[]. En la tercer línea se declara el array numérico, inicializandose sólo los tres primeros 
+                                    elementos, y en la cuarta línea se declara el string. En la séptima línea, se da la definición  de la función, de acurdo al prototipo escrito anteriormente. En la sexta línea, el 
+                                    llamado a la funcion, vemos que los argumentos pasados sólo tienen el nombre de ambos arrays. Esta es la diferencia más importante entre este tipo de estructura de datos y las variables 
+                                    simples vistas anteriormente, ya que los arrays son pasados a las funciones por dirección y no por valor. <br>
+                                    A fin de evitar errores muy comúnes, en los primeros intentos de programación en C. Otra característica importante de los arrays es que, su nombre o dirección del primer elemento, es 
+                                    una constante y no una variable. El nombre de los arrays implican para el compilador el lugar de memoria donde empieza la estructura de datos por lo que, intentar cambiar su valor es 
+                                    tomado como un error, así si escribieramos, por ejemplo: <br>
+                                    <blockquote>
+                                        char titulo[]="Primer título"; <br>
+                                        ... <br> 
+                                        titulo="subtitulo"; <br>
+                                    </blockquote>
+                                    La primera sentencia es correcta, ya que estamos inicializando al string, pero la segunda produciría un error del tipo <b><i>LVALUE REQUERIDO</i></b>, es decir que el compilador espera 
+                                    ver, del lado izquierdo de una expresión, a una variable y en cambio se ha encontrado con una constante <b>titulo</b>, que almacena "Primer título", esto al compilador le suena similar 
+                                    a una expresión de la clase: <code>124=j</code> y se niega rotundamente a compilarla.
+                                </p>
+                                <h3>Arrays multidimensionales.</h3>
+                                <p>
+                                    Las estructuras de datos del tipo array pueden tener más de una dimensión, es bastante común el uso de arrays "planos" o matriciales de dos dimensiones, 
+                                    por ejemplo: 
                                     
+                                    <blockquote>
+                                    <pre>
+                                        <code>
+int matriz[numero total de filas][numero total de columnas];
+<cite><strong>Si declaramos:</strong></cite>
+int matriz[3][4];
+                                        </code>
+                                    </pre>
+                                    </blockquote>
+                                    Esquemáticamente la disposición "espacial" de los elementos sería: 
+                                    <blockquote>
+                                        <pre>
+columnas:       0       1       2       3
+filas:     0  [0][0]   [0][1]   [0][2]   [0][3]  matriz[0][]  
+
+           1  [1][0]   [1][1]   [1][2]   [1][3]  matriz[1][]  
+
+           2  [2][0]   [2][1]   [2][2]   [2][3]  matriz[2][]  
+                                        </pre>
+                                    </blockquote>
+                                    Por supuesto, aunque menos usados, se pueden generar arrays de cualquier número de dimensiones. <br>
+                                    Para inicializar un array multidimensional, se escribe:
+                                    <pre>
+                                        <code>
+char diaDeLaSemana[7][8]={
+    "lunes","martes",",miércoles",
+    "jueves","viernes","sábado",
+    "domingo"
+};                                                
+                                        </code>
+                                    </pre>
                                 </p>
 
 							</article>

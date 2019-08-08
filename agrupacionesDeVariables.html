@@ -228,7 +228,74 @@ char diaDeLaSemana[7][8]={
                                         </code>
                                     </pre>
                                 </p>
+                                <h3>Declaración de estructuras.</h3>
+                                <p>
+                                    Así como los arrays son organizaciones secuenciales de variables simples, de un mismo tipo cualquiera dado, resulta necesario en multiples aplicaciones, agrupar variables de 
+                                    tipo cualquiera dado, resulta necesario en múltiples aplicaciones, agrupar variables de distintos tipos, en una solaentidad. Este sería el caso, si quisieramos generar la 
+                                    variable "chunche personal", en ella tendríamos que incluir variables del tipo strong, para el nombre, apellido, nombre de la calle donde vive, etc, enteros para la edad, número 
+                                    de código postal, float o double para salario, ... Existe en C en tipo de variable compuesta, para manejar esta situación tíìca de las Bases de Datos, llamada estructura. No hay 
+                                    limitaciones en el tipo ni cantidad de variables que pueda contener una estructura, mientras si máquina posea memoria suficiente como para alojarla, con una sola salvedad: una 
+                                    estructura no puede contenerse a sí misma como miembro. <br>
+                                    Para usarlas, se deben seguir dos pasos. Hay que, primero declarar la estructura en sí, esto es, darle un nombre y describir a sus miembros, para finalmente declarar a una o más 
+                                    variables, del tipo de la estructura antedicha, veamos un ejemplo: 
+                                    <pre>
+                                        <code>
+struct chunche{
+    int edad;
+    char nombre[50];
+    float sueldo;
+};
+struct chunche chunche_mantenimiento, chunche_desarrollo;
+                                        </code>
+                                    </pre>
+                                    En la primer sentencia se crea un tipo de estructura, mediante el declarador <code>struct</code>, luego se le da un nombre <code>chunche</code> y finalmente, entre llaves se declaran 
+                                    cada uno de sus miembros, pudiendo estos ser de cualquier tipo de variable, incluyendo a los arrays o atra estructura. La única restricción es que no haya dos miembros con el mismo 
+                                    nombre, aunque si pueden coincidir con el nombre de otra variable simple o de un miembro de otra estructura, declaradas en otro lugar del programa. Esta sentencia es solo una declaración, 
+                                    es decir, que no asigna lugar en la memoria para la estructura, solo le avisa al compilador como tendrá que manejar a dicha memoria para alojar variables del tipo struct chunche. <br>
+                                    En la segunda sentencia, se definen dos variables del tipo  de la estructura anterior y se reserva memoria para ambas, las dos sentencias pueden combinarse en una sola, dando la 
+                                    definición a continuación de la declaración.
+                                </p>
+                                <h3>Reglas para el uso de estructuras.</h3>
+                                <p>
+                                    Lo primero que debemos estudair es el método para dirigirnos a un miembro particular de una estructura. Para ello, existe un operador que 
+                                    relaciona al nombre de ella con el de un miembro, este operador se representa con el punto (.), así se podrá referenciar a cada uno de los 
+                                    miembros como variables individuales, con las particularidades que les otorgan sus propias declaraciones, internas a la estructura. 
+                                    La sintaxis para realizar esta referencia es: <br>
+                                    <code>
+                                        nombreDeLaEstructura.nombreDelMiembro
+                                    </code>
+                                    <br>
+                                    Así podremos escribir por ejemplo: 
+                                    <pre><code>
+struct posicionDeEjes{
+    float ejeX;
+    float ejeY;
+    float ejeZ;
+} finRecta, inicioRecta={1.0,2.0,3.0};
+finRecta.ejeX=10.0;
+finRecta.ejeY=50.0;
+finRecta.ejeZ=90.0;
+if(finRecta.ejeX == inicioRecta.ejex)
+...
+                                    </code></pre>
+                                    Es muy importante recalcar que, dos estructuras, aunque sean del mismo tipo, no pueden ser asignadas o comparadas la una con la otra, de forma 
+                                    directa, sino asignando o comparandolas miembro a miembro. Esto se ve claramente explicitado en las líneas siguientes, basadas en las 
+                                    declaraciones anteriores:
+                                    <br>
+                                    <pre><code>
+                                        
+finRecta = inicioRecta;               /* Error */
+if (finRecta &lt;=inicioRecta);          /* Error */
 
+finRecta.ejeX = inicioRecta.ejeX;     /* Forma correcta de asignar */
+finRecta.ejeY = inicioRecta.ejeY;     /* una estructura a otra.    */
+finRecta.ejeZ = inicioRecta.ejeZ;
+
+/* Forma correcta de comparar una estructura con otra. */
+if((finRecta.ejeX &lt= inicioRecta.ejeX) && (finRecta.ejeY &lt;= inicioRecta.ejeY) 
+&& (finRecta.ejeZ &lt= inicioRecta.ejeZ))
+                                    </code></pre>
+                                </p>
 							</article>
 					</div>
 

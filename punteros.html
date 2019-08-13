@@ -262,6 +262,75 @@ ptrconj=(conj *)malloc(sizeof(conj));
 										</code>
 									</pre>
 								</p>
+								<h3>Punteros y funciones.</h3>
+								<p>
+									La relación entre los punteros y las funcioens, pueden verse en tres casos diferentes, podemos pasarle a una función un puntero como argumento ( por supuesto si su 
+									parámetro es un puntero del mismo tipo), pueden devolver un puntero de cualquier tipo, como ya hemos visto con malloc() y calloc(), y es posible también apuntar a la 
+									dirección de la funcion, en otras palabras, al código en vex de a un dato.
+								</p>
+								<h3>Punteros como parámetros de funciones.</h3>
+								<p>
+									Supongamos que hemos declarado una estructura, se puede pasar a una función como argumento, de la manera que ya vimos anteriormente:
+									<pre>
+										<code>
+struct conjunto{
+	int a;
+	double b;
+	char c[5];
+}
+datos;
+void unaFuncion(struct conjunto datos);
+										</code>
+									</pre>
+									hicimos notar, en su momento, que en este caso la estructura se copiaba en el stack y así era pasada a la función, con el peligro que esto implicaba, si ella era muy masiva, de agotarlo.
+									Otra forma equivalente es usar un puntero a la estructura: 
+									<pre>
+										<code>
+struct conjunto{
+	int a;
+	double b;
+	char c[5];
+}
+*pdatos;
+void unaFuncion(struct conjunto *pdatos);
+										</code>
+									</pre>
+									Con lo que sólo ocupo lugar en el stack para pasarle la dirección de la misma. Luego en la función, como todos los miembros de la estructura son accesibles por medio del puntero, tengo pleno control de la 
+									misma. Un ejemplo de funciones ya usadas que poseen como parámetro a punteros son:
+									<pre>
+										<code>
+scanf(puntero_a_string_de_control , punteros_a_variables) 
+printf(puntero_a_string_de_control , variables )
+										</code>
+									</pre>
+									En ambos vemos que los strings de control son, como no podría ser de otro modo, punteros, es decir, que los podríamos  definir de la función y luego pasarselos a ellas: 
+									<pre>
+									<code>
+p_control="valor: %d";
+printf(p_control,var);										
+									</code>
+									</pre>
+								</p>
+								<h3>Punteros como resultado de una función.</h3>
+								<p>
+									Las funciones que retornan punteros son por lo general aquellas que modifican un argumento, que les ha sido pasado por dirección (por medio de un puntero), devolviendo un puntero a dicho argumento modificado, 
+									o las que reservan lugar en el <a href="http://" target="_blank" rel="noopener noreferrer">heap</a> para las variables dinámicas, retornando un puntero a dicho bloque de memoria. 
+									Así podremos declarar funciones del tipo de: 
+									<pre>
+										<code>
+char *funcion1(char * var1);
+double *funcion2(int i, double j, char *k);
+struct item *funcion3(struct stock *puntst);
+										</code>
+									</pre>
+									El retorno de las mismas puede inicializar punteros del mismo tipo al devuelto, o distinto, por medio del uso del casting. Algunas funciones, tales como malloc() y calloc() definen su retorno como punteros a void. <br>
+									<code>void *malloc(int tamano);</code>
+									<br>
+									de esta forma al invocarlas, debemos indicar el tipo de puntero deseado. <br>
+									<code>
+										p=(double *)malloc(64);
+									</code>
+								</p>
 
 							</article>
 					</div>

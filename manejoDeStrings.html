@@ -53,21 +53,19 @@ scanf("%s", nombre);
                                     este string mediante un puntero declarado, pero al que no se le ha reservado memoria. <br>
                                     <pre><code>
 char *p;
-scanf("%s", p) /* incorrecto*/
-                                    </code></pre>
+scanf("%s", p)  /* Incorrecto. */
+</code></pre>
                                     ya que la dirección contenida por 'p' no ha sido inicializada aún con ningun valor válido. Lo correcto en este caso es: 
-                                    <pre>
-                                        <code>
+                                    <pre><code>
 char *p;
-p=(char *)malloc(128 * sizeof(char))                                            ;
-scanf("%s",p) /*correcto*/
-                                        </code>
-                                    </pre>
+p=(char *)malloc(128 * sizeof(char));
+scanf("%s",p)  /* Correcto. */
+</code></pre>
                                     reservando memoria previamente a cargar el string.
                                 </p>
                                 <h3>Funciones de impresión de strings.</h3>
                                 <p>
-                                    
+
                                 </p>
 
 							</article>

@@ -41,6 +41,29 @@
                                     con un NULL (código 0 ). <br>
                                     A los efectos prácticos, para las funciones de manejo de los mismos, es como si en realidad hubieramos memorizados directamente los caracteres:  <br>
                                         <img src="images/string-capitulo9.PNG" alt=""> <br>
+                                    El código ASCII de los carácteres imprimibles va entre el 31 y 127, reservándose los códigos entre 0 y 30 para los caracteres de control (retorno de carro, 
+                                    avance de línea, tabulador, etc.). <br>
+                                    Si estuvieramos en el caso de ingresar un string variable, por ejemplo, leyendolo desde el teclado, podríamos utilizar un array, de la siguiente forma:  <br>
+                                    <pre><code>
+char nombre[128];
+scanf("%s", nombre);
+                                    </code></pre>
+                                    En este caso la única precaución es que, el array tenga suficiente longitud para albergar a cualquier string escrito. No sucede nada si la longitud de un string 
+                                    es mayor que la del texto válido contenido, ya que este termina donde se encuentra el NULL, quedando los bytes sobrantes desaprovechados, sería incorrecto leer 
+                                    este string mediante un puntero declarado, pero al que no se le ha reservado memoria. <br>
+                                    <pre><code>
+char *p;
+scanf("%s", p) /* incorrecto*/
+                                    </code></pre>
+                                    ya que la dirección contenida por 'p' no ha sido inicializada aún con ningun valor válido. Lo correcto en este caso es: 
+                                    <pre>
+                                        <code>
+char *p;
+p=(char *)malloc(128 * sizeof(char))                                            ;
+scanf("%s",p) /*correcto*/
+                                        </code>
+                                    </pre>
+
                                 </p>
 
 							</article>

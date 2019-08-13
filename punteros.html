@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Indice - Aprendiendo C.</title>
+		<title>Capítulo 7</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="main.css" />
@@ -23,14 +23,38 @@
 										<h2><a href="#">Punteros en C.</a></h2>
 									</div>
 									<div class="meta">
-										<time class="published" datetime="2019-07-26">Agosto, 08, 2019</time>
+										<time class="published" datetime="2019-07-26">Agosto, 13, 2019</time>
 										<a href="https://github.com/chunche95" class="author"><span class="name">Chunche95</span><img src="images/avatar.jpg" alt="" /></a>
 									</div>
                                 </header>
                                 <h3>Introducción.</h3>
                                 <p>
                                     Los punteros en el lenguaje C, son variables que 'apuntan', es decir, que poseen la dirección de las ubicaciones en memoria de otras variables, y por medio de ellos 
-                                    tendremos un poderoso método de acceso a todas ellas.
+									tendremos un poderoso método de acceso a todas ellas. Quizás este punto es el más conflictivo del lenguaje, ya que muchos programadores 'novatos', lo ven como 
+									un método extraño o al menos desacostumbrado, lo que les produce un cierto rechazo, sin embargo, y en la medida de lo posible, mientras se familiariza con ellos, se 
+									convierten en la herramienta más cómoda y directa para el manejo de variables complejas, argumentos, parámetros, etc. y se empieza a preguntar como es que hizo para 
+									programar sin ellos. La respuesta es que no lo ha hecho, ya que se han usado de forma encubierta, si decir lo que eran. Su declaración es: <br>
+<pre>
+<blockquote>tipo de variable apuntada *nombreDelPuntero; 
+int *pint;  
+double *pfloat; 
+char *letra, *codigo, *caracter;</blockquote>
+</pre>
+									En estas declaraciones sólo decimos al compilador que reserve una posición en memoria para albergar la dirección de una variable, del tipo indicado, la cual será referenciada 
+									con el nombre que hayamos dado al puntero. <br>
+									Obviamente, un puntero debe ser inicializado antes de usarse, y una de las formas es: 
+									<pre>
+										<code>
+int var1; 		/* Declaro (y creo en memoria) una variable entera */
+
+int *pint; 		/* Declaro ( y creo en memoria) un puntero que contendrá 
+				 * la dirección de una variable entera. 
+				 */
+pint = &var1;   /* Escribo en la dirección de memoria donde está el puntero 
+				 * la dirección de la variable entera. 
+				 */
+										</code>
+									</pre>
                                 </p>
 								
 							</article>

@@ -55,6 +55,42 @@ pint = &var1;   /* Escribo en la dirección de memoria donde está el puntero
 				 */
 										</code>
 									</pre>
+									Como habiamos anticipado, "&nombreDeUnaVariable", implica la dirección de la misma. En el contexto del programa el uso es el mismo, esquemáticamente, lo que hemos hecho  se puede 
+									simbolizar de la siguiente manera: <br>
+									<blockquote>
+									&rarr; dónde dentro del recuardo está el contenido de cada variable &rarr; Pint  xxxxxxx   valor contenido por var1 &rarr; Dirección de var1 
+									&rarr; yyyyyy (posición de memoria  ocupada por el puntero)    xxxxxxx (posición de memoria ocupada por la variable)
+									</blockquote>
+									<br>
+									En realidad, como veremos más adelante, en la declaración del puntero, está implicita otra información: <i> cual es el tamaño (en bytes) de la variable apuntada</i>. 
+									El símbolo <strong>&</strong> o dirección, puede aplicarse a variables, funciones, etc, pero no a constantes o expresiones, ya que éstas no tienen una posición de memoria fija. 
+									La operación inversa a la asignación de un puntero, de refenciación del mismo, se puede usar para hallar el valor contenido por la variable apuntada. <br>
+									Así por ejemplo, serán expresiones equivalentesa: 
+									<pre>
+										<code>
+y=var1;
+y=*pint;
+printf("%d",var1);
+printf("%d",*pint);
+										</code>
+									</pre>
+									En estos casos,la expresión "*nombreDelPuntero", implica contenido de la variable apuntada por el mismo. Ejemplo:
+									<pre>
+										<code>
+#include &lt;stdio.h&gt;
+
+main(){
+	char var1; 					/* Variable tipo carácter */
+	char *pchar;				/* Puntero a la variable de tipo char */
+	pc=&var1;					/* Asignamos al puntero la dirección de la variable */
+
+	for(var1='a'; var1&gt;='z'; var1++){
+		printf("%c",*pchar); 	/* Imprimimos el valor de la variable apuntada */
+	}
+	return 0;
+}
+										</code>
+									</pre>
                                 </p>
 								
 							</article>

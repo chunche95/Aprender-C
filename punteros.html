@@ -144,7 +144,27 @@ pdou++ ;                 /* pdou apunta a arreglo_dou[2] */
 										</code>
 									</pre>
 								</p>
-								
+								<h3>Aritmética de punteros.</h3>
+								<p>
+									La aritmética más frecuentemente usada con punteros son las sencillas operaciones de asignación, incremento o decremento y referenciación. Todo otro tipo de aritmética 
+									con ellos está prohibida o es peligrosa o poco transportable. Por ejemplo, no esta permitido, simar,restar,dividir, multiplicar,etc. dos punteros entre sí. Otra operación 
+									permitida es la comparación  de dos punteros, por ejemplo (punt1==punt2) o (punt1&lt;punt2) sin embargo, este tipo de operaciones son potencialmente peligrosas, ya que con 
+									algunos modelos de pointers pueden funcionar correctamente y con otros no.
+								</p>
+								<h3>Punteros y variables dinámicas.</h3>
+								<p>
+									Si no estamos seguros de cuantos datos van a ingresar a nuestro programa, pondremos alguna limitación, suficientemente grande a los efectos de la precisión requerida por el problema,
+									digamos 1000 valores como máximo, debemos definir entonces un array de double capaz de albergar a mil de ellos, por lo que el mismo ocupará del orden de los 10k de memoria. <br>
+									Si definimos este array en el <code>main()</code>, ese espacio de memoria permanecerá ocupado hasta el fin del programa, aunque luego de aplicarle el algoritmo de cálculo ya no lo 
+									necesitemos más, comprometiendo seriamente nuestra disponibilidad de memoria para albergar a otras variables. Una solución sería definirlo en una función llamada por main() que se 
+									ocupará  de llenar el array con los datos, procesarlo y finalmente devolver algún tipo de resultado, borrando con su retorno a la masiva variable de la memoria. <br>
+									Sin embargo, en C, existe una forma más racional de usar nuestros recursos de memoria de manera conservadora. Los programas ejecutables creados con estos compiladores dividen la memoria 
+									disponible en varios segmentos, uno para el código (lenguaje máquina), otro para guardar variables globales, otro para el stack ( a través del cual se pasan argumentos y donde residen las 
+									variables locales) y finalmente, un último segmento llamado memoria de apliamiento o amontonamiento (heap). <br>
+									El heap, es una zona destinada a albergar a las variables dinámicas, es decir, aquellas que crecen (en sentido de ocupación de memoria) y decrecen a lo largo del programa, pudiendose crear 
+									y desaparecer (desalojando la memoria que ocupaban) en cualquier momento de la ejecución. <br>
+									
+								</p>
 							</article>
 					</div>
 

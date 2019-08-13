@@ -162,9 +162,107 @@ pdou++ ;                 /* pdou apunta a arreglo_dou[2] */
 									disponible en varios segmentos, uno para el código (lenguaje máquina), otro para guardar variables globales, otro para el stack ( a través del cual se pasan argumentos y donde residen las 
 									variables locales) y finalmente, un último segmento llamado memoria de apliamiento o amontonamiento (heap). <br>
 									El heap, es una zona destinada a albergar a las variables dinámicas, es decir, aquellas que crecen (en sentido de ocupación de memoria) y decrecen a lo largo del programa, pudiendose crear 
-									y desaparecer (desalojando la memoria que ocupaban) en cualquier momento de la ejecución. <br>
-									
+									y desaparecer (desalojando la memoria que ocupaban) en cualquier momento de la ejecución.
 								</p>
+								<h3>Punteros a strings.</h3>
+								<p>
+									No hay gran diferencia entre el trato de punteros a arrays, y a strings, ya que estos dos últimos son entidades de la misma clase, sin embargo, analicemos algunas particularidades. Así, como 
+									inicializamos un string con un grupo de caracteres terminales en '\0', podemos asignar al mismo puntero: <br>
+									p="Esto es un string constante";
+									<br>
+									Esta operación no implica haber copiado el texto, sino que a p se le asigno la dirección de memoria donde reside la 'E' del texto. A partit de ello podemos manejar a p como lo hemos hecho hasta ahora. 
+									Ejemplo:
+									<pre>
+										<code>
+#include &lt;stdio.h&gt;
+
+#define texto1 "Hola! ¿Cómo"
+#define texto2 "esta hoy?"
+
+main(){
+	char palabra[20], *p;
+	int i; 
+	p=texto1;
+
+	for(i=0; (palabra[i]=*p++)!='\0'; i++);
+	p=texto2;
+
+	printf("%s", palabra);
+	printf("%s", p);
+
+	return 0;
+}
+										</code>
+<strong>Ejemplo 2:</strong>
+<code>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+main(){
+	char *p , palabra[20] ;
+
+	p = (char *)malloc(sizeof(char)128) ; 
+	printf("Escriba su nombre : ") ; 
+	scanf("%s" , p ) ; 
+
+	strcpy(palabra , "¿ Como le va " ) ;
+	printf("%s%s" , palabra , p ) ; 
+} 
+</code>
+									</pre>
+								</p>
+
+								<h3>Punteros a estructuras.</h3>
+								<p>
+									Los punteros pueden también servir para el manejo de estructuras, y su alojamiento dinámico, pero tienen además la propiedad de poder 
+									direccionar a los miembros de las mismas utilizando un operador particular, el <code>-&gt;</code>.  <br>
+									Supongamos crear una estrucutra y luego asignar valores a sus miembros, por los métodos ya descritos anteriormente.
+									<pre>
+										<code>
+struct conjunto{
+	int a;
+	double b;
+	char c[5];
+}
+
+stconj;
+stconj.a=10;
+stconj.b=1.15;
+stconj.c[0]='A';
+										</code>
+<strong>Con punteros sería:</strong>
+										<code>
+struct conjunto{
+	int a;
+	double b;
+	char c[5];
+}
+
+*ptrconj;
+ptrconj=(struct conjunto *)malloc(sizeof(struct conjunto));
+ptrconj-&gt;a = 10;
+ptrconj-&gt;b = 1.15;
+ptrconj-&gt;c[0] = 'A';
+
+										</code>
+									</pre>
+									La ventaja del uso de <b>typedef</b>, para ahorrar tediosas repeticiones de texto, y mejorar la legilibilidad de los listados, 
+									podríamos escribir:
+									<pre>
+										<code>
+typedef struct{
+	int a;
+	double b;
+	char c[5];
+}
+conj;
+conj *ptrconj;
+ptrconj=(conj *)malloc(sizeof(conj));
+										</code>
+									</pre>
+								</p>
+
 							</article>
 					</div>
 

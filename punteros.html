@@ -80,9 +80,9 @@ printf("%d",*pint);
 #include &lt;stdio.h&gt;
 
 main(){
-	char var1; 					/* Variable tipo carácter */
-	char *pchar;				/* Puntero a la variable de tipo char */
-	pc=&var1;					/* Asignamos al puntero la dirección de la variable */
+	char var1; 		/* Variable tipo carácter */
+	char *pchar;		/* Puntero a la variable de tipo char */
+	pc=&var1;		/* Asignamos al puntero la dirección de la variable */
 
 	for(var1='a'; var1&gt;='z'; var1++){
 		printf("%c",*pchar); 	/* Imprimimos el valor de la variable apuntada */
@@ -91,7 +91,59 @@ main(){
 }
 										</code>
 									</pre>
-                                </p>
+									Resumiendo, las variables o constantes por refenciación de un puntero, deben coincidir en tipo con la declaración de aquel, la asignación de una constante a un pointer y 
+									no a la variable apuntada por él, es un serio error, ya que debe ser el compilador, el encargado de poner en él el valor de la dirección,  aquel  asó lo declara dando un mensaje 
+									de "conversión de puntero no transportable". Si bien lo compila, ejecutar un programa que ha tenido esta advertencia, es similar a jugar a la ruleta rusa, puede 'colgarse' la máquina 
+									o lo que es peor, destruirse la información de manera involuntaria de un disco, etc. <br>
+									Hay un sólo caso en el que esta asignación de una constante a un puntero es permitida, muchas funciones para indicar que no pueden realizar una acción o que se ha producido un error de 
+									algún tipo, devuelven un puntero llamado <i>"Null Pointer"</i>, lo que significa que no apunta a ningún lado válido, dicho puntero ha sido cargado con la dirección NULL, así la asignación: 
+									pint=NULL; es válida y permite luego operaciones relacionadas del tipo <code>if(pint)</code> ... o <code>if(pint != NULL)</code> para convalidar la validez del resultado devuelto por una función. 
+									Una advertencia: Debemos desde ahora tener en cuenta que los punteros no son enteros, como parecería a primera vista, ya que el número que representa a una posición en memoria, "sí lo es". 
+									Debido al corto alcance de este tipo de variable, algunos compiladores pueden, para apuntar a una variable muy lejana, uasr cualquier otro tipo, con mayor alcance que el antedicho.
+								</p>
+								<h3>Punteros y arrays.</h3>
+								<p>
+									Hay una relación muy cercana entre los punteros y los arrays. Ya vimos previamente que el designador ( o nombre de un array) era equivalente a 
+									la dirección del elemento [0] del mismo. La explicación de esto es ahora sencilla, el nombre de un array, para el compilador C, es un puntero 
+									inicializado con la dirección del primer elemento del array, sin embargo, hay una importante diferencia entre ambos, que haremos notar más adelante.
+									Sintaxis permitida entre punteros:
+									<pre>
+										<code>
+float var1 , conjunto[] = { 9.0 , 8.0 , 7.0 , 6.0 , 5.0 ); 
+float *punt ; 
+punt = conjunto ;    /* equivalente a hacer : punt = &conjunto [0] */ 
+var1 = *punt ; 
+*punt = 25.1;
+										</code>
+									</pre>
+									Es perfectamente válido asignar a un puntero el calor de otro, el resultado de esta operación es cargar en el puntero punt la dirección del elemento [0] 
+									del array conjunto, y posteriormente en la variable var1 el valor del mismo (9.0) y para luego cambiar el valor de dicho primer elemento a 25.1. <br>
+									Veamos cual es la diferencia entre un puntero y el denominador de un array: el primero es una variable, es decir, que puedo asignarlo, incrementarlo, etc. 
+									en cambio el segundo es una constante, que apunta siempre al primer elemento del array con que fue declarado, por lo que su contenido no puede ser variado. 
+									Ejemplo:
+									<pre>
+										<code>
+int conjunto[5] , lista[] = { 5 , 6 , 7 , 8 , 0 ) ; 
+int *apuntador ; apuntador = lista ;      /* correcto */ 
+conjunto = apuntador;    /* ERROR ( se requiere en Lvalue no constante ) */ 
+lista = conjunto ;       /* ERROR  ( idem ) */ 
+apuntador = &conjunto    /* ERROR no se puede aplicar el operador & (dirección) a una constante */
+										</code>
+									</pre>
+									Veamos las distintas modalidades del incremento de un puntero: Incremento o decremento de un puntero.
+									<pre>
+										<code>
+int *pint , arreglo_int[5] ; 
+double *pdou , arreglo_dou[6] ; 
+pint = arreglo_int ;     /* pint apunta a arreglo_int[0] */ 
+pdou = arreglo_dou ;     /* pdou apunta a arreglo_dou[0] */  
+pint += 1 ;              /* pint apunta a arreglo_int[1]  */
+pdou += 1 ;              /* pdou apunta a arreglo_dou[1]  */  
+pint++ ;                 /* pint apunta a arreglo_int[2] */ 
+pdou++ ;                 /* pdou apunta a arreglo_dou[2] */
+										</code>
+									</pre>
+								</p>
 								
 							</article>
 					</div>

@@ -470,10 +470,120 @@ main(){
 										memoria ( abarca el caso anterior , como situación particular). 
 										<h4>Strcmp()</h4>
 										<p>
-											
+											Header: &lt;string.h&gt; <br>
+											Prototipo: <br>
+											<code>
+												int strcmp(const char *sl, const char *s2)
+											</code> <br>
+											Comentario: Retorna un entero, cuyo valor depende del resultado de la comparación. 
+											<blockquote>
+												&lt; 0 si s1 es menor que s2. <br>
+												== 0   si s1 es igual a s2. <br>
+												&gt; 0 si s1 es mayor que s2. 
+											</blockquote>
+											La comparación se realiza caracter a caracter, y devuelve el resultado de la realizada entre los primeros dos que sean distintos.
+											La misma se efectua tomando en cuenta el código ASCII de los caracteres así será por ejemplo '9' &lt; 'A', 'A'&lt;'Z' y 'Z'&lt;'a'.
+										</p>
+										<h4>Strcmpi()</h4>
+										<p>
+											Header: &lt;string.h&gt; <br>
+											Prototipo: <br>
+											<code>
+												int strcmpi(const char *s1, const char *s2)
+											</code><br>
+											Comentario: Retorna un entorno, de una manera similar a la anterior pero no es sensible a la diferencia entre mayúsculas y minúsculas, 
+											es decir, que en este caso 'a'=='A' y 'Z'&gt;'a'.
+										</p>
+										<h4>Strncmp(),strncmpi().</h4>
+										<p>
+											Header: &lt;string.h&gt; <br>
+											Prototipo: 
+											<br><code>
+												int strcmpi(const char *s1, const char *s2, size_t cant)
+											</code><br>
+											Comentario: Retornan un entero, con características similares a las de las funciones hermanas, descritas arriba, pero solo comparan los 
+											primeros "cant" caracteres.
 										</p>
 									</p>
+									<h3>Búsqueda dentro de un string.</h3>
+									<p>
+										Muchas veces dentro de un programa, se necesita ubicar dentro de un string, a un determinado caracter o conjunto ordenado de ellos. Para 
+										simplificarnos la tarea existen una serie de funciones de Librería, que toman por su cuenta la resolución de este problema: 
+										<h4>Strchr() y strrchr().</h4>
+										<p>
+											Header: &lt;string.h&gt; <br>
+											Prototipo: <br>
+											<code>
+												char *strchr(const char *s1, int c)
+											</code> <br>
+											<code>
+												char *strrchr(const char *s1, int c)
+											</code> <br>
+											Comentario:Retornan un puntero, a la posición del caracter dentro del string, si es que lo encuentrann, o en su defecto, null. Strchr() 
+											barre el string desde el comienzo, por lo que marcará la primer aparición del caracter en él, en cambio, strrchr() lo barre desde el final, 
+											es decir, que buscará la última aparición del mismo. El terminador NULL es considerado como parte del string.
+										</p>
+										<h4>Strbrk()</h4>
+										<p>
+											Header: &lt;string.h&gt; <br>
+											Prototipo: <br>
+											<code>
+												char *strbrk(const char *s1, const char *s2)
+											</code> <br>
+											Comentario: Similar a las anteriores, pero ubicando la primer aparición de cualquier caracter contenido en s2 dentro de s1.
+										</p>
+										<h4>Strstr()</h4>
+										<p>
+											Header: &lt;string.h&gt; <br>
+											Prototipo: <br>
+											<code>
+												char *strstr(const char *s1, const char *s2)
+											</code><br>
+											Comentario: Busca dentro de s1 un substring igual a s2, devolviendo un puntero al primer caracter del substring, cualquier caracter contenido en s2, 
+											dentro de s1.
+										</p>
+										<h4>strtok()</h4>
+										<p>
+											Header: &lt;string.h&gt; <br>
+											Prototipo: <br>
+											<code>
+												char *strtok(const char *s1, const char *s2)
+											</code><br>
+											Comentario: Busca dentro de s1 un substring igual a s2, si lo encuentra modifica a s1 reemplazado el substring por NULL, devolviendo la dirección de s1.
+											Si se lo vuelve a invocar con NULL en lugar del parámetro s1, continua buscando en el string original una nueva aparición de s2. Cuando no encuentra el 
+											substring, retorna NULL. Sirve para descomponer un string en "palabra de una frase" cuando éstas están separadas por un mismo caracter/es. <br>
+											Ejemplo: <br>
+											<pre><blockquote><code>
+puts("Escriba una frase, separando las palabras con espacios")
 
+gets(s);
+
+p=strtok(s," ");
+
+while(p){
+	puts(p);
+	p=strtok(NULL," ");
+}
+											</code></blockquote></pre>
+										</p>
+									</p>
+									<h3>Funciones de modificación de string.</h3>
+									<p>
+										Resulta conveniente a veces uniformizar los string leidos de teclado, antes de usarlos, un caso típico es tratar de independizarse de la posibilidad de 
+										que el operador escriba, algunas veces con mayúscula y otras con minúscula.
+										<h4>Strlwr() y strupr().</h4>
+										<p>
+											Header: &lt;string.h&gt; <br>
+											Prototipo: <br>
+											<code>
+												char *strlwr(char *s1)
+											</code> <br>
+											<code>
+												char *strupr(char *s1)
+											</code><br>
+											Comentario:Convierten respectivamente los caracteres comprendidos entre a y z minúsculas o mayúsculas, los restantes quedan como estaban.
+										</p>
+									</p>
 								</p>
 							</article>
 					</div>

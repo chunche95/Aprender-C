@@ -140,10 +140,175 @@ for(i=0; palabra[i] != NULL; i++){
 	if( isalnum(palabra[i])){
 		... 
 	}
-	is ... ()
 }
 											</code></pre>
 										</p>
+										<h4>Is ... ()</h4>
+										<p>
+											Header: &lt;ctype&gt; <br>
+											Prototipo:  <br>
+												<strong>
+												int isalnum(int c) <br>
+												int isalpha(int c) <br>
+												int isascii(int c) <br>
+												int iscntrl(int c) <br>
+												int isdigit(int c) <br>
+												int islower(int c) <br>
+												int isupper(int c) <br>
+												int ispunct(int c) <br>
+												int isspace(int c) <br>
+												int isxdigit(int c) <br>
+												</strong>
+											Portabilidad: Definida en ASCII. <br>
+											Comentario: Retornarán un valor CIERTO (distinto de cero) si el caracter enviado como argumento car dentro de la categoría fijada para comparación y FALSO o cero en caso contrario. 
+											Las categorías para cada función son las siguientes: <br>
+											<table>
+												<tr>
+													<td>
+														<strong>La función:</strong>
+													</td>
+													<td>
+														<strong>Retorna CIERTO si 'c' es:</strong>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														isalnum(c)
+													</td>
+													<td>	
+														Alfanumérico (letras o números).
+													</td>
+												</tr>
+												<tr>
+													<td>
+														isalpha(c)
+													</td>
+													<td>
+														Alfabeto, mayúsculas o minúsculas.
+													</td>
+												</tr>
+												<tr>
+													<td>
+														isascii(c)
+													</td>
+													<td>
+														Si su valor está entre 0 y 126.
+													</td>
+												</tr>
+												<tr>
+													<td>
+														iscntrl(c)
+													</td>
+													<td>
+														Si es un caracter de control cuyo ASCII está comprendido entre 0 y 31 o si es el código de "delete", 127.
+													</td>
+												</tr>
+												<tr>
+													<td>
+														islower(c)
+													</td>
+													<td>
+														Si es un caracter alfabético minuscula.
+													</td>
+												</tr>
+												<tr>
+													<td>
+														isupper(c)
+													</td>
+													<td>
+														Si es un caracter alfabético mayúsculas.
+													</td>
+												</tr>
+												<tr>
+													<td>
+														isdigit(c)
+													</td>
+													<td>
+														Si es un número comprendido entre 0 y 9.
+													</td>
+												</tr>
+												<tr>
+													<td>
+														ispunct(c)
+													</td>
+													<td>
+														Si es un caracter de puntuación.
+													</td>
+												</tr>
+												<tr>
+													<td>
+														isspace(c)
+													</td>
+													<td>
+														Si es el caracter espacio,tabulador, avance de línea, retorno de caroo, etc.
+													</td>
+												</tr>
+												<tr>
+													<td>
+														isxdigit(c)
+													</td>
+													<td>
+														Si es código correspondiente a un número hexadecimal, es decir, entre 0-9 o A-F o a-f.
+													</td>
+												</tr>
+											</table>
+											Una vez que sabemos que un string está compuesto por números, podemos convertirlo en una variable numérica, de cualquier tipo, para poder realizar  con ella los cálculos 
+											que correspondan. 
+										</p>
+										<h4>ATOI(), ATOL(), ATOF().</h4>
+										<p>
+											Header: &lt;stdlib.h&gt; <br>
+											Prototipo:  <br>
+												<code>int atoi(const char s*)</code> <br>
+												<code>long atol(const char s*)</code> <br>
+												<code>double atof(const char *s)</code> <br>
+											Portabilidad: Definida en ASCI C. <br>
+											Comentario: Convierten el string apuntando por s a un número. Atoi() retorna un entero, atol() un long y aotf() un double. El string puede tener la siguiente configuración: <br>
+											<code>[ espacios, blancos, tabulador, etc ][signo]xxx </code><br>
+											Donde xxx son caracteres entre 0 y 9, para atoi() y atol(). Para atof() en cambio, se aceptan: <br>
+											<code>[espacios, etc][signo]xxx[.][xxx]</code> o 
+											<code>[espacios, etc][signo]xxx[.][e o E [signo]xxx]</code>
+											<br>
+											Según se desee usar la conversión de punto flotante o científica. <br>
+											Es posible también, aunque menos frecuente, realizar operación inversa, es decir, convertir un número en un string. 
+										</p>
+										<h4>ITOA(), ULTOA().</h4>
+										<p>
+											Header: &lt;stdlib.h&gt; <br>
+											Prototipo: <br>
+											<code>char *itoa(int numero, char *s, int base)</code> <br>
+											<code>char *ultoa(unsigned long numero, char *s, in base)</code> <br>
+											Comentario: <br>
+												Retornan un puntero a un string formado por caracteres que representan los dígitos del número enviado como argumento . 
+												Por base se entiende la de la numeración en la que se quiere expresar el string , 10 para decimal , 8 para octal , 16 para 
+												hexadecimal, etc. Itoa() convertirá un entero , mientras ultoa() lo hará con un unsigned long.  
+										</p>
+									</p>
+									<h3>Determinación de la longitud de un string.</h3>
+									<p>
+										Hemos aplicado anteriormente esta funcón, damos aquí entonces, sólo una ampliación de sus características.
+										<h4>Strlen(), fstrlen().</h4>
+										<p>
+											Header: &lt;string.h&gt; <br>
+											Prototipo: <br>
+											<code>size_t strlen(const char *s)</code> 
+											<code>size_t far_fstrlen(const char *s)</code> <br>
+											Portabilidad: Definidas en ANSI C.  <br>
+											Comentario: Retornan un entero con la cantidad de caracteres del string. No toma en cuenta al terminador NULL. Por lo que la memoria real 
+											necesaria para albergar al string <code>1+strlen(s)</code>. _fstrlen() da idéntico resultado, pero acepta como argumento un puntero "far". <br>
+											Ejemplo: 
+											<pre><blockquote><code>
+char s[128];
+gets(s);
+
+p=(char *)malloc(sizeof(strlen(s)+1));
+											</code></blockquote></pre>
+										</p>
+									</p>
+
+									<h3>Copia y duplicación de strings.</h3>
+									<p>
+										
 									</p>
 								</p>
 

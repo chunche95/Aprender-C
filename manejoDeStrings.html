@@ -308,11 +308,165 @@ p=(char *)malloc(sizeof(strlen(s)+1));
 
 									<h3>Copia y duplicación de strings.</h3>
 									<p>
-										
+										Vimos que el operador de asignación no está definido para strings, es decir, que hacer <code>p=q</code>, donde 'p' y 'q' son dos arrays, 
+										np produce la copia de q en p y directamente la expresión no es compilada. Si en cambio p y q son dos punteros a caracteres, la expresión 
+										es compilada, pero no produce el efecto de copia, simplemente, cambia el valor de 'p', haciendo que apunte al mismo string que 'q', es decir, 
+										que no se genere uno nuevo, por lo que todo lo operado sobre 'p' afectará al original, apuntado por 'q'. <br>
+										Para generar entonces, una copia de un string en otro lugar de la memoria, se deben utilizar algunas de las funciones abajo descritas. Hay que 
+										diferenciar la copia de la duplicación: la pirmera copia un string sobre un lugar  previamente reservado de memoria (mediante malloc(), calloc()
+										o alguna otra función de alocación), en cambio la duplicación genera el espacio para guardar al nuevo string así creado.
+									</p>
+									<h4>Strcpy()</h4>
+									<p>
+										Header: &lt;string.h&gt; <br>
+										Prototipo: <br>
+										<code>
+											char *strcpy(char *destino, const char *origen)
+										</code> <br>
+										Comentario: Copia los caracteres del string "origen", incluyendo el NULL, a partir de la dirección apuntada por "destino". No verifica que haya suficiente 
+										memoria reservada para tal efecto, por lo que es responsabilidad del programador ubicar previamente suficiente memoria como para albergar a una copia de 
+										"origen". Aunque es superfluo, su retorno es el puntero "destino". <br>
+										Existe también una función para realizar la copia parcial. Por lo general las funciones que realizan acciones sobre una parte solamente, de los strings, llevan 
+										el mismo nombre de las que los afectan totalmente, pero con la adición de la letra "n".
+									</p>
+									<h4>Strncpy()</h4>
+									<p>
+										Header: &lt;string.h&gt; <br>
+										Prototipo:  <br>
+										<code>
+											char *strncpy(char *destino, const char *origen, size_t n_char)
+										</code> <br>
+										Portabilidad: Definidas en ANSI C. <br>
+										Comentario: Copia n_char caracteres del string "origen", NO incluyendo el NULL, si la cantidad de caracteres copiada es menor que strlen(origen)+1, en la dirección 
+										apuntada por "destino". <strong>n_char</strong> es un número entero y deberá ser menor que la memoria reservada apuntada por destino. <br>  
+										Ejemplo: 
+										<pre><blockquote><code>
+#include &lt;string.h&gt; 
+
+main(){
+	char strvacio[11];
+	char strorigen[]="0123456789";
+	char strdestino[]="ABCDEFGHIJ";
+
+	... 
+
+	strncpy( strdestino, strorigen, 5 );
+	strncpy( strvacio, strorigen, 5 );
+	strvacio[5]='\0';
+
+	... 
+}
+										</code></blockquote></pre>
+										Los strings quedarían, luego de la copia: <br>
+										<code>
+											strdestino[]==0,1,2,3,4,F,G,H,I,J,\0
+										</code> <br>
+										<code>
+											strvacio[]==0,1,2,3,4,\0, indefinidos
+										</code> <br>
+										Note que en el caso de strdestino no hizo falta agregar el NULL, ya que éste se generó en la inicialización del mismo, en cambio <b>strvacio</b> no fue inicializado, por lo 
+										qie para terminar el string, luego de la copiam se deberá forzosamente agregar al final del mismo.
+									</p>
+									<h4>Strdup()</h4>
+									<p>
+										Header: &lt;string.h&gt; <br>
+										Prototipo: <br>
+										<code>
+											char *strdup(const char *origen)
+										</code> <br>
+										Comentario: Duplica el contenido de "origen" en una zona de memoria por ella reservada y retorna un pintero a dicha zona. <br>
+										Ejemplo:
+										<pre><blockquote><code>
+#include &lt;string.h&gt; 
+
+main(){
+	char *p; 
+	char q[]="Duplicación de strings";
+
+	p=strdup(q);
+	... 
+}
+										</code></blockquote></pre>
+										Note que el retorno de la función debe ser siempre asignación a un dato puntero.
+									</p>
+
+									<h4>Concatenación de strings.</h4>
+									<p>
+										Se puede, mediante la concatenación de dos o más strings, crear otro, cuyo contenido es el agregado del de todos los anteriores. <br>
+										La concatenación de varios strings puede anidarse, de la siguiente manera: <br>
+										<code>
+											srtcat(strcat(x,w),z);
+										</code> <br>
+										En la cual 'x' se le agrega a continuación el 'w', y luego el 'z'. Por supuesto, 'x' tiene que tener suficiente longitud como albergarlos.
+									</p>
+									<h3>Strcat()</h3>
+									<p>
+										Header:&lt;string.h&gt; <br>
+										Prototipo: <br>
+										<code>
+											char *strcat(char *destino, const char *origen)
+										</code> <br>
+										Comentario: Agrega el contenido de "origen" al final del string inicializado "destino", retornando un puntero a este. <br>
+										Ejemplo: 
+										<pre><blockquote><code>
+#include <string.h>               
+	
+char z[20] ;               
+
+main(){
+	char p[20] ;
+	char q[] =   "123456789" ;
+	char w[] =   "AB" ;
+	char y[20] = "AB" ;
+	strcat( y , q ) ;      /* 
+						* Correcto , el contenido de y[] será:
+						* y[] == A,B,1,2,3,4,5,6,7,8,9,\0  
+						*/
+
+	strcat( z , q ) ;      /*
+						* Correcto , por ser global z[] quedó
+						* inicializado con 20 NULLS por lo que
+						* luego de la operación quedará:
+						* z[] == 1,2,3,4,5,6,7,8,9,\0 
+						*/
+
+	strcat( p , q ) ;      /*
+						* Error ! p no ha sido inicializado por
+						* lo que la función no encuentra el NULL
+						* para empezar a agregar , por lo que
+						* barre la memoria hasta encontrar
+						* alguno, y ahí escribe con resultados,
+						* generalmente catastróficos.
+						*/ 
+
+	strcat( w , q ) ;      /*
+						* Error ! w solo tiene 3 caracteres,
+						* por lo el resultado final será:
+						* w[] == A,B,1  sin la terminación
+						* del NULL por lo que cualquier
+						* próxima operación que se haga
+						* utilizando este array, como string,
+						* fallará rotundamente .
+						*/
+}
+										</code></blockquote></pre>
+									</p>
+
+									<h4>Strncat()</h4>
+									<p>
+										Header: &lt;string.h&gt; <br>
+										Prototipo: <br>
+										<code>
+											char *strncat (char *destino, const char *origen, size_t cant )
+										</code>	<br>
+										Comentario: Similar al anterior, pero solo contatena cant caracteres del string "origen" en "destino".
+									</p>
+
+									<h3>Comparación de strings.</h3>
+									<p>
+										No debe confundirse la comparación de strings, con la de punteros, es decir, <code> if(p==q){...}</code>. <br>
 									</p>
 								</p>
-
-
 							</article>
 					</div>
 

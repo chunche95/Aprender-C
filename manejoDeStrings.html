@@ -65,8 +65,66 @@ scanf("%s",p)  /* Correcto. */
                                 </p>
                                 <h3>Funciones de impresión de strings.</h3>
                                 <p>
+									Daremos un análisis de las funciones que permiten la impresión en pantalla de strings, muchas de ellas pueden obviamente, utilizarse para imprimir otro tipo de variable, 
+									pero aquí sólo describiremos su aplicación particular sobre el tema de nuestro interés.
+									<h4>Printf()</h4>
+									<p>
+										Header: &lt;stdio.h&gt; <br>
+										Prototipo: int printf( const char *formato, argumento, ... ) <br>
+										Ejemplos: En los ejemplos siguientes se ha colocado el caracter | adelante y atrás de la secuencia  de comando, para mostrar donde empieza y donde termina la impresión 
+										del string. <br>
+										<pre><blockquote><code>
+p="Lenguaje C"; /* 10 caracteres */
 
-                                </p>
+printf("|%15s|"    , p )   ;    /* imprime : |     Lenguaje C|  */
+printf("|%15.8s|"  , p )   ;    /*    "    : |       Lenguaje|  */
+printf("|%-15s|"   , p )   ;    /*    "    : |Lenguaje C     |  */ 
+printf("|%-15.8s|" , p )   ;    /*    "    : |Lenguaje       |  */ 
+printf("|%.6s|"    , p )   ;    /*    "    : |Lengua|           */
+
+ancho = printf("|%15s|" , p ); /* imprime : |     Lenguaje C|  */
+printf("|%*.8s|" , p , ancho); /*    "    : |       Lenguaje|  */ 
+										</code></blockquote></pre>
+									</p>
+									Existe otra forma más específica que la anterior, aunque más restringida, puts(). <br><br>
+									<h4>Puts()</h4>
+									<p>
+										Header: &lt;stdio.h&gt; <br>
+										Prototipo: int puts(const char *s) <br>
+										Comentario: Copia un string terminado con un NULL y apuntado por 's' en la salida estandar, normalmente stdout o vídeo. Si la salida fue exitosa retorna un valor positivo, 
+										caso contrario EOF. Luego de impreso el string agrega automáticamente un \n o avance de línea. Es más rápida que la anterior, ya que escribe directamente el buffer de vídeo. 
+										Solo es aplicable a variables del tipo string. <br>
+										Ejemplo:
+										<pre><blockquote><code>
+#include &lt;stdio.h&gt;
+main(){
+	char p[]="Uno", s[]="Dos";
+
+	puts(p);		/* Imprime: Uno
+	puts(s);		Dos */
+}
+										</code></blockquote></pre>
+									</p>
+									<h4>Funciones de adquisición de string.</h4>
+									<p>
+										Cuando se necesita leer un string enviando desde el teclado, se utilizará algunas de las funciones abajo citadas, debiendose tener los recaudos descritos antes, ya que la 
+										longitud del mismo es desconocida. <br><br>
+										<h4>Scanf()</h4>
+										<p>
+											Header: &lt;stdio.h&gt; <br>
+											Prototipo: int scanf(const char *formato, direccion, ...) <br>
+											Comentario: Esta función es la inversa a printf() y valen para ella los mismos comentarios respecto a su generalidad. <br>
+											Ejemplo:
+											<pre><blockquote><code>
+scanf("%20s" \n "%[0-9A-F]s",p,q);
+											</code></blockquote></pre>
+											En este caso se leerá un primer string de no más de 20 caracteres, y se enviará a la dirección contenida por el puntero 'p', luego se esperará un ENTER y se enviarán a la 
+											dirección  de 'q' todos aquellos caracteres leídos que correspondad a los números o letras comprendidas entre la A y F.
+										</p>
+										De la misma manera que para printf(), hay funciones menos generales, dedicadas ecpresamente a la lectura de strings, como gets(), que veremos a continuación.
+									</p>
+								</p>
+
 
 							</article>
 					</div>

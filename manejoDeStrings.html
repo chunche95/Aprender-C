@@ -121,7 +121,29 @@ scanf("%20s" \n "%[0-9A-F]s",p,q);
 											En este caso se leerá un primer string de no más de 20 caracteres, y se enviará a la dirección contenida por el puntero 'p', luego se esperará un ENTER y se enviarán a la 
 											dirección  de 'q' todos aquellos caracteres leídos que correspondad a los números o letras comprendidas entre la A y F.
 										</p>
-										De la misma manera que para printf(), hay funciones menos generales, dedicadas ecpresamente a la lectura de strings, como gets(), que veremos a continuación.
+										De la misma manera que para printf(), hay funciones menos generales, dedicadas ecpresamente a la lectura de strings, como gets(), que veremos a continuación. <br><br>
+										<h4>Gets()</h4>
+										<p>
+											Header: &lt;stdio.h&gt; <br>
+											Prototipo: char *gets(char *s) <br>
+											Comentario: Lee caracteres desde la entrada estandar, incluyendo los espacios hasta que encuentra un avance  de línea (ENTER), este es reemplzado por un NULL, y el string 
+											resultante cargado en la dirección indicada por 's'. Retorna 's' o NULL en caso de error. Es responsabilidad del programador, que 's' tenga  suficiente longitud como para albergar 
+											lo leído. 
+										</p>
+										<h4>Funciones de conversión entre string y variables numéricas.</h4>
+										<p>
+											Puede darse el caso que la información a ingresarse a un programa ejecutable, por él. Para evaluar si un string car dentro  de una categoría dada, es decir, si está compuesto exclusivamente 
+											por números, letras mayúsculas, minúsculas, carácteres alfanuméricos, etc. existe una serie de funciones, algunas de las cuales ya se han usado. Estas deben ser usadas con los strings, analizando 
+											caracter a caracter de los mismos, dentro de un foe o un while. <br>
+											<pre><code>
+for(i=0; palabra[i] != NULL; i++){
+	if( isalnum(palabra[i])){
+		... 
+	}
+	is ... ()
+}
+											</code></pre>
+										</p>
 									</p>
 								</p>
 

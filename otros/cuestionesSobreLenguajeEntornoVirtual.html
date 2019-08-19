@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Cuestiones sobre el lenguaje en entornos virtuales.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../main.css" />
+		<link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
+	</head>
+	<body class="single is-preload">
+    	<div id="wrapper">
+			<!-- Header -->
+					<header id="header">
+						<h1><a href="../index.html">Indice</a></h1>
+					</header>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">Sobre el lenguaje y a la cuestión.</a></h2>
+										<p></p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2019-07-22">Agosto, 19, 2019</time>
+										<a href="https://github.com/chunche95" class="author"><span class="name">Chunche95</span><img src="../images/avatar.jpg" alt="" /></a>
+									</div>
+								</header>
+								<p>
+                                    <h2>¿Cómo usar caracteres por encima del ASCII 127: la 'ñ', acentos, '¿', ...?</h2>
+                                    <p>
+                                        Sobre las tablas de caracteres (página 38 y 39 del libro básico de la asignatura). Hay dos partes a comentar: 
+                                        La codificación del archivo de código y la codificación de la salida usada en un programa. El primer punto es la 
+                                        codificación del archivo de código. En el caso del entorno que distribuimos la tenemos fijada a la codificación 
+                                        a Windows-1252  (conocida también como CP-1252) que es una codificación para el alfabeto latino. Esta codificación
+                                        puede cambiarse si se desea en el entorno en la opción del menú <code>Edición&rarr;Codificación del fichero.</code>
+                                        El otro tema es la codificación que se usa en la emulación "ConsoleRunner" de la consola que se usa para dirigir la salida 
+                                        estándar. Esta emulación puede usar la misma configuración que el entorno y entonces podrá ver la salida directamente con los
+                                        caracteres que maneja. <br>
+                                        Si en su sistema operativo tiene una configuración diferente entonces para imprimir los caracteres que comenta podrá usar 
+                                        la secuencia de escape para mostrar el carácter deseado. Esto es si usa una configuración de ASCII-Extendido con código 437 
+                                        (que es lo más frecuente) la 'ñ' tendrá el código 164 y la 'Ñ' el código 165. Por lo que escribir la palabra niño tenemos que hacer:
+                                        <br>
+                                            <code>
+                                                printf("ni\164o");
+                                            </code>
+                                        <br>
+                                        Ver comentario en: http://www.issi.uned.es/fp/faq_material.html
+                                    </p>
+                                    <h2>Sobre el entorno virtual.</h2>
+                                    <p>
+                                        En relación
+                                    </p>
+								</p>
+							</article>
+							
+							<span class="image right img"><img src="../images/nextStep.jpg" alt="" style="max-width: 100%;"/></span>
+					</div>
+
+					<footer>
+							<p>
+								Posted by: Pauchino <br>
+								HumanComputing 3.0 &copy; <br>
+								Contact info: <a href="mailto:humancomputing3@gmail.com">Enviar Correo.</a>
+							</p>
+					</footer>
+
+			</div>
+	</body>
+</html>

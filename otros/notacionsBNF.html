@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Notación BNF en C&#177;.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../main.css" />
+		<link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
+	</head>
+	<body class="single is-preload">
+    	<div id="wrapper">
+			<!-- Header -->
+					<header id="header">
+						<h1><a href="../index.html">Indice</a></h1>
+					</header>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">Notación BNF en C&#177;.</a></h2>
+                                    
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2019-07-22">Agosto, 20, 2019</time>
+										<a href="https://github.com/chunche95" class="author"><span class="name">Chunche95</span><img src="../images/avatar.jpg" alt="" /></a>
+									</div>
+								</header>
+								<p>
+                                 La notación BNF es la siguiente: 
+                                 <ul>
+                                    <li>::= Indica que el elemento a su izquierda puede desarrollarse según el esquema de la derecha.</li>
+                                    <li>| Indica que puede elegirse uno y sólo uno de los elementos separados por este metasímbolo.</li>
+                                    <li>{} Indica que los elementos incluidos dentro de ellos se pueden repetir cero o más veces.</li>
+                                    <li>[] Indica que los elementos incluidos pueden ser utilizados o no.</li>
+                                    <li>() Agrupa los elementos incluidos en su interior.</li>
+                                </ul>
+                                42.- Los metasímbolos son:
+                                <ol type="a">
+                                    <li>a- Elementos de la notación BNF</li>
+                                    <li>b- Elementos de la programación lógica</li>
+                                    <li>c- Elementos de la programación funcional</li>
+                                    <li>d- Parte del modelo de flujo de datos</li>
+                                </ol>
+                                <blockquote>
+                                    En la definición de notación BNF  encontramos: estas reglas de cómo han de escribirse los elementos del lenguaje en forma de símbolos utilizan a su vez otros símbolos, 
+                                    que se denominan <i>metasímbolos</i>. Por lo tanto la respuesta correcta es la <strong>A</strong>.
+                                </blockquote>
+                                68.- Marque la expresión válida según la gramática. <br>
+                                <cite>
+                                    A::= B[C][D] <br>
+                                    B::=E{E} <br>
+                                    C::=eB <br>
+                                    D::=(f|g)B <br>
+                                    E::=a|b|c
+                                </cite>
+                                <ol type="A">
+                                    <li><strong>a- bbaeaac</strong></li>
+                                    <li>b- eabcabc</li>
+                                    <li>c- fababcc</li>
+                                    <li>d- abgaeab</li>
+                                </ol>
+                                <blockquote>
+                                    Si vamos desarrollando, vemos que A es obligatoriamente un B, seguido opcionalmente de un C, seguido opcionalmente de un D. 
+                                    Como B es una serie de uno o varios E, y E es un 'a','b' o 'c', toda la secuencia válida comienza por un conjunto de 'a','b','c'. 
+                                    Lo que descarta B) y C). Tras la secuencia B, en C usamos una letra 'e', seguida de una B, que es una serie de E, que son letras 'a',
+                                    'b' o 'c', por lo que descartamos D), al seguir una 'g' a la 'ab'.
+                                </blockquote>
+                                72.- Dada la siguiente gramática BNF: <br>
+                                <cite>
+                                    Y::= xA <br>
+                                    A::={z}|pA <br>
+                                    ¿Qué cadenas son generadas por la misma?
+                                </cite>
+                                <ol>
+                                    <li>a) xppzz y xxppzz</li>
+                                    <li>b) xppx y xzzx</li>
+                                    <li>c) xpz y xzp</li>
+                                    <li>d) xppzz y xpppz </li>                                       
+                                </ol>
+                                <blockquote>
+                                    La opción a) es incorrecta ya que la segunda no cumple con las condiciones al tener dos xx. <br>
+                                    La opción b) es incorrecta ya que la segunda no es posible al tener una x al final. <br>
+                                    La opción c) es incorrecta ya que la xzp no es posible formarla ya que no se acabaría ahí al tenerse que empezar otra A. <br>
+                                    <strong>La opción d) es la correcta, ya que se llamaría cuatro veces a A para formar: 1ºp,2ºp,3ºp y 4ºz, como es lógico la primera es x 
+                                    en ambos casos.</strong>
+                                </blockquote>
+                                130.- Dadas las siguientes reglas de producción: <br>
+                                <cite>
+                                        Letra::={a|b} <br>
+                                        Numero::={1|2} <br>
+                                        Cadena::=[Letra|Numero] <br>                                        
+                                </cite>
+                                Cadenas correctas del lenguaje generado por esta gramática serán:
+                                <ol>
+                                    <li>a- aab y 121</li>
+                                    <li>b- a1 y b1</li>
+                                    <li>c- 2aa y b22</li>
+                                    <li>d- ab12 y bb22</li>
+                                </ol>
+                                <blockquote>
+                                    La regla de la Cadena dice que debe de ser opcionalmente o una Letra o un Numero, por tantom quedan eliminadas ya todas las respuestas en las 
+                                    que se mezclen los dos tipos como son la 'b','c' y 'd'. <br>
+                                    La <b>a)</b> es correcta ya que la regla de Letra dice que se puede repetir tantas veces la 'a' o la 'b' como se quiera, y la de Numero lo mismo 
+                                    pero con 1 ó 2.
+                                </blockquote>
+                                152.- Cuál de las siguientes notaciones BNF generará la cadena 'ab'.
+                                <ol>
+                                    <li>a) {a}|{b} </li>
+                                    <li>b) [a]|[b] </li>
+                                    <li>c) {b}|{a} </li>
+                                    <li>d) {a|b}   </li>
+                                </ol>
+                                <blockquote>
+                                    Claramente es la <strong>D</strong> ya que en la opción a) no podemos sólo podemos repetir o la 'a' o la 'b' pero no puede haber 'a' y 'b' mezcladas,
+                                    como ocurre en la c), la b) implica que tiene que haber o 'a' o 'b', pero pasa lo mismo que en las opciones a) y c). La opción d) dice que se puede 
+                                    repetir varias veces a o b como ocurre con ab.
+                                </blockquote>
+                            <!--------------------------------------------------------------------------------------->
+                                </p>
+                                
+							</article>
+							
+							<span class="image right img"><img src="../images/specialChar.jpg" alt="" style="max-width: 100%;"/></span>
+					</div>
+
+					<footer>
+							<p>
+								Posted by: Pauchino <br>
+								HumanComputing 3.0 &copy; <br>
+								Contact info: <a href="mailto:humancomputing3@gmail.com">Enviar Correo.</a>
+							</p>
+					</footer>
+
+			</div>
+	</body>
+</html>

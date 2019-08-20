@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Uso de scanf.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../main.css" />
+		<link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
+	</head>
+	<body class="single is-preload">
+    	<div id="wrapper">
+			<!-- Header -->
+					<header id="header">
+						<h1><a href="../index.html">Indice</a></h1>
+					</header>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">Uso de scanf en C&#177;.</a></h2>
+                                    
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2019-08-20">Agosto, 20, 2019</time>
+										<a href="https://github.com/chunche95" class="author"><span class="name">Chunche95</span><img src="../images/avatar.jpg" alt="" /></a>
+									</div>
+								</header>
+								<p>
+                                    En relación a distintas cuestiones sobre ejemplos que no funcionan o no se detienen como se espera en el uso del procedimiento <i>scanf()</i> es necesario conocer
+                                    el siguiente comentario relacionado con la forma de funcionar de este procedimiento: 
+                                    <cite>
+                                        Cuando usamos la función <i>scanf()</i>, no leemos directamente desde el teclado, sino que lo hacemos en una memoria intermedia (lo que se llama un buffer). <br>
+                                        En determinadas operaciones de lectura este buffer queda con restos y por lo tanto los datos se quedan en el buffer y son procesados inmediatamente por el siguiente. <br>
+                                        La solución es usar la función <strong>fflush</strong> antes del scanf(), pertenece al mismo módulo stdio.h. Esta función limpia el buffer y así evita que los restos 
+                                        provoquen errores no esperados. <br>
+                                        Por ejemplo: 
+                                        <pre>
+                                            <blockquote><code>
+int mes;
+char propiedad;
+
+printf("Di el mes de la construcción: ");
+scanf("%d",&mes);
+printf("¿Es propiedad? (S/N) ");
+scanf("%c", &propiedad);
+                                            </code></blockquote>
+                                        </pre>
+                                        Podemos observar que el segundo "scanf" que debería detenerse para esperar un SI (S) o un NO (N), no lo hace. El carácter "intro" del scanf de leer el valor mes se queda 
+                                        en el buffer y se vacía sobre el segundo scanf(). <br>
+                                        Para evitar esto podemos forzar el vaciado del buffer.
+                                        <pre>
+                                                <blockquote><code>
+    int mes;
+    char propiedad;
+    
+    printf("Di el mes de la construcción: ");
+    scanf("%d",&mes);
+    <strong>fflush(stdin);</strong>
+    printf("¿Es propiedad? (S/N) ");
+    scanf("%c", &propiedad);
+                                                </code></blockquote>
+                                            </pre>
+                                    </cite>
+                            <!--------------------------------------------------------------------------------------->
+                                </p>
+                                
+							</article>
+							
+							<span class="image right img"><img src="../images/scanf.jpg" alt="" style="max-width: 100%;"/></span>
+					</div>
+
+					<footer>
+							<p>
+								Posted by: Pauchino <br>
+								HumanComputing 3.0 &copy; <br>
+								Contact info: <a href="mailto:humancomputing3@gmail.com">Enviar Correo.</a>
+							</p>
+					</footer>
+
+			</div>
+	</body>
+</html>

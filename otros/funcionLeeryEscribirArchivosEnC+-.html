@@ -21,7 +21,7 @@
 								<header>
 									<div class="title">
 										<h2><a href="#">Función para leer y escribir archivos en C&#177;.</a></h2>
-										<p></p>
+                                    
 									</div>
 									<div class="meta">
 										<time class="published" datetime="2019-07-22">Agosto, 20, 2019</time>
@@ -29,7 +29,39 @@
 									</div>
 								</header>
 								<p>
+                                        <pre><blockquote><code>
+#include &lt;stdio.h&gt;
+typedef FILE *F; 
+typedef char *string;
 
+/* Función completa para el programa. */
+int LeeYEscribe(string nombreArchivo, string datos, int funcion){
+    F archivo_;
+    string leo;
+    if(funcion == 1){
+        /* 1 Escribe */
+        try{
+            archivo_=fopen(nombreArchivo,"a+");
+        }catch(int s){
+            archivo_ = fopen(nombreArchivo,"w");
+        }
+        fprintf(archivo_,"%s",datos);
+    }else if(funcion == 2 ){
+        /* 2 Lee */
+        try{
+            archivo_ = fopen(nombreArchivo, "r");
+        }catch(int s){
+            printf("Error %d",s);
+        }
+
+        while(!feof(archivo_)){
+            fscanf(archivo_,"%c",&leo);
+            printf("%c", leo);
+        }
+    }
+    fclose(archivo_);
+}
+                                                </code></blockquote></pre>
 								</p>
 							</article>
 							

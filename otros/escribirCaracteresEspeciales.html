@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Escribir carácteres especiales en C+-.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../main.css" />
+		<link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
+	</head>
+	<body class="single is-preload">
+    	<div id="wrapper">
+			<!-- Header -->
+					<header id="header">
+						<h1><a href="../index.html">Indice</a></h1>
+					</header>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">Escribir carácteres especiales.</a></h2>
+										<p></p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2019-07-22">Agosto, 20, 2019</time>
+										<a href="https://github.com/chunche95" class="author"><span class="name">Chunche95</span><img src="../images/avatar.jpg" alt="" /></a>
+									</div>
+								</header>
+								<p>
+                                    Instale el CodeBlock, sin problema y logro compilar los programas que aparecen en el libro sin problema. Pero no se me imprime los acentos y algunos caracteres especiales 
+                                    correctamente. 
+                                    <hr>
+                                    El conjunto de caracteres por defecto de C es ASCII 8 bits,para poner caracteres especiales que usar las secuencuas de escape. Los caracteres especiales están a partir del número 128.
+                                    <code>\ddd</code>.
+                                    <blockquote>
+                                        character ddd where ddd is an ASCII code given in octal or base 8 (See Appendix C)
+                                    </blockquote>
+                                    Una forma de ver los códigos es buscarlo en Google. Otra puede ser probando en el entorno con este pequeño programa que los imprime: 
+                                    <pre>
+                                        <blockquote>
+                                            <code>
+#include &lt;stdio.h&gt; 
+int main(){
+    for(int i=1; i&lt;255; i++){
+        printf("%d %c\t",i,i);
+        if(i%8==0){
+            printf("\n");
+        }
+    }
+    return 0;
+}                                                
+                                            </code>
+                                        </blockquote>
+                                    </pre>
+                                    Es recomendable añadir la libreria 'locate.h', agregamos al programa:
+                                    <pre><blockquote>
+                                        <code>
+#include &lt;locate.h&gt;
+... 
+setlocate(LC_ALL,"spanish");
+                                        </code>
+                                    </blockquote></pre>
+
+                                    Otra solución es en el Code::Blocks, en la opción "Configuración"&rarr;Editor... donde indica "codificación por defecto al abrir los archivos:" escogemos 
+                                    Windows-437.
+								</p>
+							</article>
+							
+							<span class="image right img"><img src="../images/specialChar.jpg" alt="" style="max-width: 100%;"/></span>
+					</div>
+
+					<footer>
+							<p>
+								Posted by: Pauchino <br>
+								HumanComputing 3.0 &copy; <br>
+								Contact info: <a href="mailto:humancomputing3@gmail.com">Enviar Correo.</a>
+							</p>
+					</footer>
+
+			</div>
+	</body>
+</html>

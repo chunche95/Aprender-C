@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Resumen de C.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../main.css" />
+		<link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
+	</head>
+	<body class="single is-preload">
+    	<div id="wrapper">
+			<!-- Header -->
+					<header id="header">
+						<h1><a href="../index.html">Indice</a></h1>
+					</header>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">Resumen de contenidos de C.</a></h2>
+                                    
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2019-08-29">Agosto, 29, 2019</time>
+										<a href="https://github.com/chunche95" class="author"><span class="name">Chunche95</span><img src="../images/avatar.jpg" alt="" /></a>
+									</div>
+								</header>
+								<p>
+                                    <strong>C:</strong> Es un lenguaje de programación imperativo, además de tener la característica de ser un lenguaje procedimental. <br>
+                                    <h3>Antes de nada:</h3>
+                                    <p>
+                                        Instrucciones:
+                                        <ul>
+                                            <li>
+                                                <b>Asignación:</b> Guarda un valor en la memoria temporal.
+                                            </li>
+                                            <li>
+                                                <b>Condicionales:</b> A partir de una condición ejecuta uas instrucciones o no.
+                                            </li>
+                                            <li>
+                                                <b>Bucles:</b> El programa repite uan serie de instrucciones un número de veces o hasta que una condición se cumpla.
+                                            </li>
+                                            <li>
+                                                <b>Llamadas:</b> Una función invoca a otra función. El flujo de instrucciones pasa a otra zona del código.
+                                            </li>
+                                        </ul>
+                                    </p>
+                                    <h2>Funciones.</h2>
+                                    <p>
+                                        Conjunto de instrucciones que hace una operación. Tiene entradas y salidas. <br>
+                                        IMPORTANTE: La función más importante <b>main()</b>: Las instrucciones, funciones y procedimientos dentro de la función <b>main()</b> son la función que 
+                                        el compilador buscará para ejecutar el programa creado.
+                                            <code><pre>
+#include &lt;stdio.h&gt; /* Archivo de cabecera para cargar la definición de 'printf()'. */
+int main(){
+    printf("Hola chunche95!");
+    return 0;
+}
+                                            </code></pre>
+                                    </p>
+                                    <h2>Tipos</h2>
+                                    <p>
+                                        <h3>Int - Tipos de enteros.</h3>
+                                        <table>
+                                            <tr>
+                                                <td>short</td>
+                                                <td>16 bits</td>
+                                            </tr>
+                                            <tr>
+                                                <td>int</td>
+                                                <td>32 bits</td>
+                                            </tr>
+                                            <tr>
+                                                <td>long</td>
+                                                <td>64 bits</td>
+                                            </tr>
+                                            <tr>
+                                                <td>unsigned</td>
+                                                <td>Variable sin signo</td>
+                                            </tr>
+                                        </table>
+                                        Otros tipos de datos definidos son:
+                                        <ul>
+                                            <li>char - Para los de tipo carácter.</li>
+                                        </ul>
+                                        <ul>
+                                            <li>float - Son números con coma flotante, es decir, los decimales, se indican con el símbolo '.' para indicar su 'coma flotante'. </li>
+                                        </ul>
+                                        <ul>
+                                            <li>string - Indican cadenas de caracteres. </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                Procedimiento: Ejecuta código. <br>
+                                                <b>void</b> Se ejecuta sin devolver  valor.
+                                            </li>
+                                        </ul>
+                                            <pre><code>
+#include &lt;stdio.h&gt;
+int main(){
+    /* Declaración de las variables */
+    char x;
+    int y;
+    /* Asignación de valores a las variables definidas */
+    x='c'; /* Al ser de tipo char se indican con comillas simples. */
+    y=20;
+    /* Definición de variable 'z' y expresión que realiza dicha variable */
+    int z= y*2;
+    
+    /* ******************************************** */
+    /* RESULTADOS                                   */
+    /* ******************************************** */
+    printf("Hola %c , su número es: %d .", x,y); // Imprime 'Hola c, su número es: 20 .'
+    return 0;
+}
+                                            </code></pre>
+                                    </p>
+                                    <h2>Procedimiento void.</h2>
+                                    <p>
+                                        Ejemplo:
+                                        <pre><code>
+#include &lt;stdio.h&gt;
+
+/* Procedimiento  imprimir_datos() */
+void imprimir_datos(int edad, char* nombre){
+    printf("Hola %s , tiene %d",nombre,edad);
+}
+/* Funcion principal */
+int main(){
+    imprimir_datos(20,"Pepe");
+    return 0;
+}
+                                        </code></pre>
+                                    </p>
+                            <!--------------------------------------------------------------------------------------->
+                                </p>
+                                
+							</article>
+							
+							<span class="image right img"><img src="../images/logo.jpg" alt="" style="max-width: 100%;"/></span>
+					</div>
+
+					<footer>
+							<p>
+								Posted by: Pauchino <br>
+								HumanComputing 3.0 &copy; <br>
+								Contact info: <a href="mailto:humancomputing3@gmail.com">Enviar Correo.</a>
+							</p>
+					</footer>
+
+			</div>
+	</body>
+</html>

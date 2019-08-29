@@ -135,6 +135,74 @@ int main(){
 }
                                         </code></pre>
                                     </p>
+                                    <h2>Condicionales y operadores lógicos.</h2>
+                                    <p>
+                                        <h3>Condicionales.</h3>
+                                        <p>
+                                            Tenemos dos tipos: 
+                                            <ul>
+                                                <strong>if-else o el if-else if-else</strong>. Para condicionales simples
+                                            </ul>
+                                            <ul>
+                                                <strong>switch-case</strong>. Para condicionales con varias condiciones.
+                                            </ul>
+                                        </p>
+                                        <h3>Operadores lógicos.</h3>
+                                        <table>
+                                            <tr>
+                                                <td>&&</td>
+                                                <td>'Y'</td>
+                                            </tr>
+                                            <tr>
+                                                <td>||</td>
+                                                <td>'Ó'</td>
+                                            </tr>
+                                            <tr>
+                                                <td>()</td>
+                                                <td>Crear expresiones</td>
+                                            </tr>
+                                            <tr>
+                                                <td>!</td>
+                                                <td>Negación de una expresión o valor - Significaría un 'falso' o el inverso de un valor.</td>
+                                            </tr>
+                                        </table>
+                                    </p>
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+int main(){
+    int numero=20;
+    if(numero==10){
+        printf("El número es: %d", numero);
+    }else if( numero == 20){
+        printf("El número es: %d", numero);
+    }else{
+        printf("El número es: %d", numero);
+    }
+    return 0;
+}
+                                    </code></pre>
+                                Ejemplo de switch-case:
+                                <pre><code>
+#include &lt;stdio.h&gt;
+
+void imprimir_datos(int numero_dia){
+    switch(numero_dia){
+        case 1: printf("Lunes"); break;
+        case 2: printf("Martes"); break;
+        case 3: printf("Miercoles"); break;
+        case 4: printf("Jueves"); break;
+        case 5: printf("Viernes"); break;
+        case 6: printf("Sabado"); break;
+        case 7: printf("Domingo"); break;
+        default: printf("Valor inválido! \n"); break;
+    }
+}
+
+int main(){
+    imprimir_dia(2); // Valor asignado a Martes
+    return 0;
+}
+                                </code></pre>
                             <!--------------------------------------------------------------------------------------->
                                 </p>
                                 

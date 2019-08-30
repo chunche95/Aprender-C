@@ -300,6 +300,31 @@ int main(){
 }
                                     </code></pre>
                                 </p>
+                                <h2>Punteros.</h2>
+                                <p>
+                                    Cuando almacenamos en memoria una variable, la celda de la memoria, necesitaremos saber  la dirección de esa posición de variable. 
+                                    Los punteros nos ayudan a recuperar el número de celda y escribir sobre ella. <br>
+                                    Para crear un puntero debemos indicar el tipo de dato seguido de un '*' y el nombre del puntero y asignacion de la direccion de memoria de 'x' con '&x'.
+                                    Ejemplo: 
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+int main(){
+    int x = 10;
+    prinf("x = %d \n", x);
+
+    int* dirX = &x; // Creamos un puntero con el valor de la variable de 'x'.
+    
+    /* Para indicar la posición en memoria de la variable 'x' tenemos que: */
+    printf("Dirección de memoria de x = %u \n", &x); // Placeolder de direccion de la variable 'x'.
+
+    // Con los de tipo float sería:
+    float y=0.5;
+    float* dirY = &y;
+}                 
+                                    </code></pre>
+
+                                    Usos de punteros: (7:35)
+                                </p>
 							</article>
 							
 							<span class="image right img"><img src="../images/logo.jpg" alt="" style="max-width: 100%;"/></span>

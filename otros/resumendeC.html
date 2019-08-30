@@ -205,7 +205,101 @@ int main(){
                                 </code></pre>
                             <!--------------------------------------------------------------------------------------->
                                 </p>
-                                
+                                <h2>Bucles</h2>
+                                <p>
+                                    Tenemos los bucles:
+                                    <ul>
+                                        <li>while</li>
+                                        <li>do-while</li>
+                                        <li>for</li>
+                                    </ul>
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+int main(){
+    int k = 10;
+    while ( k < 20 ){
+        printf("k vale %d \n",k);
+        k++;
+    }
+    printf("Salimos del bucle.");
+    return 0;
+}
+                                    </code></pre>
+                                    do-while &rarr; la condición se ejecuta al final. Primero ejecuta las sentencias dentro del 'do'. 
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+int main(){
+    int k = 10;
+    do{
+        printf("k vale: %d ", k);
+        k++;
+    }while(k < 20);
+    printf("Salimos del bucle.");
+    return 0;
+}                                        
+                                    </code></pre>
+                                    La diferencia entre <b>while</b> y <strong>do-while</strong> es que la condición del primer bucle es determinante 
+                                    se realizará la ejecución del código sólo si se da una condición idónea. En el caso del segundo bucle, do-while, siempre tendremos 
+                                    una primera ejecución del código que tenemos dentro de las llaves. <br>
+                                    Ejemplo:
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+
+// While
+void probarBucleWhile(){
+    int k = 20;
+    printf("- Inicio \n");
+    while(k < 20 ){ //ESTA CONDICION NUNCA ES VERDAD
+        printf("- Iteración del bucle while. \n");
+    }
+    printf(" - Fin \n");
+}
+
+// Do-While
+void probarBucleDoWhile(){
+    int j=20;
+    printf("- Inicio \n");
+    do{
+        printf("- Iteraición del bucle do-while \n");
+    }while(j < 20); //ESTA CONDICION NUNCA ES VERDAD
+    printf("- Fin \n");
+}
+
+int main(){
+    printf("While");
+    probarBucleWhile();
+    printf("Do-While");
+    probarBucleDoWhile();
+    printf("Salimos del programa.");
+    return 0;                                        
+}
+                                    </code></pre>
+                                    Por último, tenemos el bucle for que se caracteriza por tener la siguiente estructura:
+                                    <blockquote>
+                                        for (inicialización; condición; Iteración){ /* Código */ }
+                                    </blockquote>
+                                    La parte del código se ejecuta sólo si se realizan los siguientes pasos:
+                                    <ul>
+                                        <li>Ejecutar "inicialización"</li>
+                                        <li>Evaluar "condición". Si no se cumple &rarr; Fin.</li>
+                                        <li>Ejecutar el código del bucle.</li>
+                                        <li>Ejecutar "iteración".</li>
+                                        <li>Volver al paso 2.</li>
+                                    </ul>
+                                    Ejemplo: 
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+
+int main(){
+    int i;
+    for( i=0; i < 5 ; i++){
+        printf("Vuelta: %d \n", i);
+    }
+    printf("Salimos del bucle");
+    return 0;
+}
+                                    </code></pre>
+                                </p>
 							</article>
 							
 							<span class="image right img"><img src="../images/logo.jpg" alt="" style="max-width: 100%;"/></span>

@@ -322,9 +322,101 @@ int main(){
     float* dirY = &y;
 }                 
                                     </code></pre>
-
-                                    Usos de punteros: (7:35)
+                                    Usos de punteros:
+                                    <ul>
+                                        Trabajar con referencias en funciones. 
+                                    </ul>
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+void jugar(int n){
+    n=(n+3)*2-1;
+    printf("%d\n",n); // Opera con la copia de la variable 'n'. 25
+}
+int main(){
+    int x=10;
+    jugar(x);
+    printf("%d\n",x); // Imprime la variable x con su valor original. 10
+    return 0;
+}
+                                    </code></pre>
+                                   <i><b> Trabajando con direcciones de memoria.</b></i>
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+void jugar(int* n){
+    int y = *n; // Recupera el valor del puntero, y=10.
+    y=(y+2)/2+2-(3*y);
+    // printf("%d\n",y); // Opera con la copia de la variable 'y'. -22
+    *n=y; 
+}
+int main(){
+    int x=10;
+    jugar(&x);
+    printf("%d\n",x); // Modifica el valor de la direccion de memoria 
+                      // donde estaba ubicada la 'x'.
+    return 0;
+}                                        
+                                    </code></pre>
                                 </p>
+                                <h2>Arrays y VLAs</h2>
+                                <p>
+                                    Estructurar datos, forma de organizar datos en formas contiguas de memorias.
+                                <pre><code>
+#include &lt;stdio.h&gt;
+int main(){
+    int edades[10]; // Array de 10 posiciones contiguas.
+    edades[2]=15;
+    int edadesTotales=edades[2] + edades[3];
+}
+                                </code></pre>
+                                Si los espacios de memoria han sido usados, los valores que había en estas posiciones de memoria como 
+                                resultado de algún programa ejecutado antes en la máquina. <strong>C no va a limpiar la memoria antes 
+                                de usarla.</strong> <br>
+                                Para ello inicializamos las variables con los <i>inline initialization.</i>
+                                <pre><code>
+#include &lt;stdio.h&gt;                                    
+int main(){
+    int edades[8]={1,2,3,4,5,2,2,9};
+}
+                                </code></pre>
+                                Ejemplo con bucles.
+                                <pre><code>
+#include &lt;stdio.h&gt;                                    
+int main(){
+    itn i, edades[8];
+    for ( i=0; i < 8; i++){
+        printf("Introduzca la edad %d ", i+1);
+        scanf("%d", &edades[i]);
+    } 
+    for ( i = 0 ; i < 8 ; i++ ){
+        pritnf("Edades[%d] = %d \n", i, edades[i]);
+    }
+    return 0;
+}
+                                </code></pre>
+                                El uso de las VLAs se encargan de la asignación de las variables y el usuario las define. 
+                                <pre><code>
+#include &lt;stdio.h&gt;                                    
+
+int main(){
+    int tam;
+    printf("¿Cuántas edades vas a registrar? ");
+    scanf("%d", &tam);
+
+    int i,edades[tam];
+
+    for ( i=0; i < tam ; i++){
+        printf("Introduzca la edad %d: ", i+1);
+        scanf("%d", &edades[i]);
+    }
+
+    for ( i=0; i < tam; i++){
+        printf("Edades[%d] = %d \n", i , edades(i));
+    }
+    retunrn 0;
+}
+                                </code></pre>
+                                </p>
+                                
 							</article>
 							
 							<span class="image right img"><img src="../images/logo.jpg" alt="" style="max-width: 100%;"/></span>

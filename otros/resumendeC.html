@@ -419,10 +419,43 @@ int main(){
                                 Los punteros son espacios de memoria que guardan el valor de una variable en dicho espacio, los VLA's son 
                                 definición de variables de una lista que usan un espacio en memoria del ordenador, todos estos valores van 
                                 encadenador. Ver imagen inferior. <br>
-                                <img src="../images/arrays&punteros(similitudes).PNG" alt="">
+                                <img src="../images/arrays&punteros(similitudes).PNG" alt="similitudes entre array y punteros">
                                 <br>
+                                <img src="../images/array4.PNG" alt="array de 4 bits">
+                                <br>
+                                Cuando usamos una función aparte, la declaración del array se hace de manera distinta. Para ello, primero definimos el array,
+                                sin decirle el tamaño dentro de los corchetes, seguidamente, tendremos una variable auxiliar que indica el tamaño del array. Ejemplo: 
+                                <pre><code>
+&lt;stdio.h&gt; 
+
+float media(<strong>int* edades</strong>, int <strong>tamano</strong>){
+    int i; 
+    float vuelta = 0; 
+    for ( i = 0 ; i < tamano ; i++ ){
+        vuelta += edades[i];
+    }
+    return vuelta/tamano;
+}
+
+int main(){
+    int tam;
+    printf("¿Cuántas edades vas a registrar? ");
+    scanf("%d", &tam);
+
+    int i,edades[tam];
+
+    for ( i=0; i < tam ; i++){
+        printf("Introduzca la edad %d: ", i+1);
+        scanf("%d", &edades[i]);
+    }
+
+    for ( i=0; i < tam; i++){
+        printf("Edades[%d] = %d \n", i , edades(i));
+    }
+    retunrn 0;
+}
+                                </code></pre>
                                 </p>
-                                
 							</article>
 							
 							<span class="image right img"><img src="../images/logo.jpg" alt="" style="max-width: 100%;"/></span>

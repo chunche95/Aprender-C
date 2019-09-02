@@ -523,6 +523,43 @@ int main(){
 }
                                     </code></pre>
                                 </p>
+                                <h2>Union,enum y typedef.</h2>
+                                <p>
+                                    Uniones- Son como las struct pero en este caso comparten el mismo sitio en memoria. 
+                                    <pre><code>
+union miUnion_t {
+    int entero; 
+    float flotante;
+};
+int main(){
+    union miUnion_t u;
+    u.entero = 2134344; 
+    u.flotante = 2.54E6; 
+    printf("Entero = %d\n", u.entero);
+    
+    return 0;
+}
+                                    </code></pre>
+                                    Enum - Construye identificadores.
+                                    <pre><code>
+// Declaramos el enumerador.
+enum diasemana{ LUNES,MARTES,MIERCOLES,JUEVES,VIERNES,SABADO,DOMINGO};
+
+int  main(){
+    enum diasemana dia;
+    dia = LUNES;
+    printf("%d\n", dia); // Sale 0.
+    
+    dia == VIERNES;
+    printf("%d\n",dia );
+    return 0;
+}
+                                    </code></pre>
+                                    Si deseamos que los valores de la enumeración tengan un número en concreto, tendremos que inicializarlo.
+                                    <pre><code>
+                                        
+                                    </code></pre>
+                                </p>
 							</article>
 							
 							<span class="image right img"><img src="../images/logo.jpg" alt="" style="max-width: 100%;"/></span>

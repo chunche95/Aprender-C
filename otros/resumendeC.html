@@ -624,6 +624,32 @@ int main(){
     malloc(4000 * sizeof(float));   // malloc devuelve un puntero de tipo void.
 }
                                     </code></pre>
+                                    Para poder usarlo debemos crear nuestro propio puntero. 
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; // Para usar la memoria dinamica tradicional.
+
+int main(){
+    
+    printf("¿Cuantos elementos desea almacenar?");
+    int longitud;
+    scanf("%d", &longitud);
+
+    float* valores = (float*) malloc(4000 * sizeof(float));
+    if (valores == NULL){
+        printf("No tiene tanta memoria \n");
+        return 1;
+    }
+    int i; 
+    for ( i=0; i < longitud; i++ ){
+        valores[i] = 5.55E5;
+    }
+
+    printf("Todo está correcto. Memoria almacenada. \n");
+    return 0;
+
+}                                       
+                                    </code></pre>
                                 </p>
 							</article>
 							

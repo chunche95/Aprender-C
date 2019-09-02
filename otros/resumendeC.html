@@ -557,7 +557,59 @@ int  main(){
                                     </code></pre>
                                     Si deseamos que los valores de la enumeración tengan un número en concreto, tendremos que inicializarlo.
                                     <pre><code>
-                                        
+// Declaramos el enumerador.
+enum diasemana{ LUNES <strong>= 1</strong> ,MARTES,MIERCOLES,JUEVES,VIERNES,SABADO,DOMINGO};
+
+int  main(){
+    enum diasemana dia;
+    dia = LUNES;
+    printf("%d\n", dia); // Sale 0.
+    
+    dia == VIERNES;
+    printf("%d\n",dia );
+    return 0;
+}          
+                                    </code></pre>
+                                    Typedef - Definición de una estructura.
+                                    <pre><code>
+#include &lt;stdio.h&gt; 
+#include &lt;string.h&gt; 
+
+enum tipo_empleado { Analista, Programador };
+
+typedef enum tipo_empleado Tipo;
+typedef int entero;
+
+struct empleado_t {
+    char nombre[20];
+    char apellidos[20];
+    char nif[10];
+    char telefono[10];
+    Tipo tipo;
+};
+
+typedef struct empleado_t Empleado; //'Empleado' -> Palabra reservada.
+
+void imprimir( <strong>Empleado*</strong> empleado ){
+    printf("%s %s \n" empleado->nombre, empleado->apellidos);
+    printf("DNI: %s \n", empleado->nif);
+    printf("Teléfono: %s \n", empleado->telefono);
+    if (empleado->tipo == Analista){
+        printf("Este empleado es un analista. \n");
+    }else{
+        printf("Este empleado es un programador. \n");
+    }
+}
+
+entero main(){
+    Empleado empl; 
+    strcpy(empl.nombre, "Juan", strlen("Juan")+1);
+    strcpy(empl.apellidos, "Alvarez Sanchez", strlen("Alvarez Sanchez")+1);
+    strcpy(empl.nif, "123456789z", strlen("123456789z")+1);
+    strcpy(empl.telefono, "914693545", strlen("914693545")+1);
+    imprimir(&empl);
+    return 0;
+}
                                     </code></pre>
                                 </p>
 							</article>

@@ -650,9 +650,40 @@ int main(){
 
     return 0;
 
-}                                       
+}
                                     </code></pre>
                                     Los 'malloc' se destruyen hasta la finalizacion del programa o que la destruyamos con 'free(puntero)'.
+                                </p>
+                                <h2>El preprocesador.</h2>
+                                <p>
+                                    Es el primer programa invocado por el compilador y procesa directivas como <code>#include, #define, #if</code>. 
+                                    Estas directivas no son específicas de C.  En realidad pueden ser usadas con cualquier tipo de archivo. <br>
+                                    El preprocesador usa 4 etapas denominadas <i>Fases de traducción.</i> Aunque alguna implementación puede elegir 
+                                    hacer alguna o todas las fases simultáneamente, debe comportarse como si fuesen ejecutadas paso a paso.
+                                    <pre>
+                                        <code>
+#include &lt;stdio.h&gt; -->  Sustituye el contenido del archivo stdio.h del sistema.
+
+#include "MiArchivo.h" --> Extrae el contenido del archivo del usuario.
+
+#pragma once --> para prevenir la doble inclusión, porque si se incluye más de una vez 
+puede causar que se intente declarar varias veces las mismas funciones o tipos de variable, 
+lo que va a generar un error al compilar, esto se intenta prevenir de la siguiente forma:
+
+ifndef# __ARCHIVO_H__
+#define __ARCHIVO_H__--> definir constantes, condiciones.
+// declaración de funciones, etc ... 
+#endif 
+                                        </code>
+                                    </pre>
+                                    "Broma" &rarr; Archivo de preprocesador  &rarr; <a href="Ejercicios Resueltos en Cpp/0-Otros/preprocesador.h" target="_blank" rel="noopener noreferrer">preprocesador.h</a> <br>
+                                    Conclusión de define: <br>
+                                    - Definición junto con su valor indicado.
+                                    <code>#define LIMITE 100 </code> <br>
+                                    - Borrar definición declarada. 
+                                    <code>#undef LIMITE</code> <br>
+                                    - Macro - Sustitución parametrizada. 
+                                    <code>#define AREA_RECTANGULO(x,y){x*y}</code>
                                 </p>
 							</article>
 							

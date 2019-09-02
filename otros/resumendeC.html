@@ -646,10 +646,13 @@ int main(){
     }
 
     printf("Todo está correcto. Memoria almacenada. \n");
+    <strong>free(valores);</strong>
+
     return 0;
 
 }                                       
                                     </code></pre>
+                                    Los 'malloc' se destruyen hasta la finalizacion del programa o que la destruyamos con 'free(puntero)'.
                                 </p>
 							</article>
 							

@@ -612,6 +612,19 @@ entero main(){
 }
                                     </code></pre>
                                 </p>
+                                <h2>Memoria dinámica.</h2>
+                                <p>
+                                    Guardar espacio en memoria del ordenador antes de usarlo ya que no conocemos el espacio a usar.
+                                    <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; // Para usar la memoria dinamica tradicional.
+
+int main(){
+    // Buffer que guarda los datos de tipo float -> 1000 bytes * 4.
+    malloc(4000 * sizeof(float));   // malloc devuelve un puntero de tipo void.
+}
+                                    </code></pre>
+                                </p>
 							</article>
 							
 							<span class="image right img"><img src="../images/logo.jpg" alt="" style="max-width: 100%;"/></span>

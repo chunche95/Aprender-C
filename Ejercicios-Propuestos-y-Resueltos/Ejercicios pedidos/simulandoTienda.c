@@ -11,7 +11,7 @@
 #define chuches 0.75
 
 int main() {
-    char op, fp, fg, vv, vr, ov, bp, bg, ch;
+    char op, f, g, v, r, o, p, b, c;
     float litros= 0, coste = 0;
     int cantidad = 0;
 
@@ -20,43 +20,43 @@ int main() {
         printf("\n bp - Bebidas pequennas \n bg - Bebidas grandes \n ch - chuches. \n s - Salir de la fruteria Chufruve. ");
 
         switch( op ){
-            case 'fp':
+            case 'f':
                 printf("¿Cuantas frutas pequennas llevas?");
                 float coste = aPagar(cantidad, op);
                 printf("€ %.2f", coste);
                 break;
-            case 'fg':
-                printf("¿Cuantas frutas pequennas llevas?");
+            case 'g':
+                printf("¿Cuantas frutas grandes llevas?");
                 float coste = aPagar(cantidad, op);
                 printf("€ %.2f", coste);
                 break;
-            case 'vv':
-                printf("¿Cuantas frutas pequennas llevas?");
+            case 'v':
+                printf("¿Cuantas verduras verdes llevas?");
                 float coste = aPagar(cantidad, op);
                 printf("€ %.2f", coste);
                 break;
-            case 'vr':
-                printf("¿Cuantas frutas pequennas llevas?");
+            case 'r':
+                printf("¿Cuantas verduras rojas llevas?");
                 float coste = aPagar(cantidad, op);
                 printf("€ %.2f", coste);
                 break;
-            case 'ov':
-                printf("¿Cuantas frutas pequennas llevas?");
+            case 'o':
+                printf("¿Cuantas verduras de otro tipo llevas?");
                 float coste = aPagar(cantidad, op);
                 printf("€ %.2f", coste);
                 break;
-            case 'bp':
-                printf("¿Cuantas frutas pequennas llevas?");
+            case 'p':
+                printf("¿Cuantas bebidas pequennas llevas?");
                 float coste = aPagar(litros, op);
                 printf("€ %.2f", coste);
                 break;
-            case 'bg':
-                printf("¿Cuantas frutas pequennas llevas?");
+            case 'b':
+                printf("¿Cuantas bebidas grandes llevas?");
                 float coste = aPagar(litros, op);
                 printf("€ %.2f", coste);
                 break;
-            case 'ch':
-                printf("¿Cuantas frutas pequennas llevas?");
+            case 'c':
+                printf("¿Cuantas chuches llevas?");
                 float coste = aPagar(cantidad, op);
                 printf("€ %.2f", coste);
                 break;
@@ -74,21 +74,23 @@ int main() {
 }
 
 float aPagar(int cantidad, char op) {
-    if  ( op == 'fp' ) {
+    if  ( op == 'f' ) {
         return( cantidad * precioFrutasPequennas);
-    } else if ( op == 'fg' ) {
+    } else if ( op == 'g' ) {
         return ( cantidad * precioFrutasGrandes);
-    } else if ( op == 'vv' ) {
+    } else if ( op == 'v' ) {
         return ( cantidad * precioVerdurasVerdes);
-    } else if ( op == 'vr' ) {
+    } else if ( op == 'r' ) {
         return ( cantidad * precioVerdurasRojas);
-    } else if ( op == 'ov' ) {
+    } else if ( op == 'o' ) {
         return ( cantidad * precioOtrasVerduras);
-    } else if ( op == 'bp' ) {
+    } else if ( op == 'p' ) {
         return ( cantidad * bebidaPequennas);
-    } else if ( op == 'bg' ) {
+    } else if ( op == 'b' ) {
         return ( cantidad * bebidasGrandes);
-    } else if ( op == 'ch' ) {
+    } else if ( op == 'c' ) {
         return ( cantidad * chuches);
+    } else {
+        return 0;
     }
 }
